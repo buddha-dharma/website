@@ -500,7 +500,5 @@ class Grav extends Container
                 Utils::download($page->path() . DIRECTORY_SEPARATOR . $uri->basename(), $download);
             }
         }
-
-        return $page;
     }
 }

@@ -35,7 +35,7 @@ class JsonFile extends File
      * Encode contents into RAW string.
      *
      * @param string $var
-     * @param int $options
+     * @params bitmask $options
      * @return string
      */
     protected function encode($var, $options = 0)
