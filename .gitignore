@@ -1,16 +1,1 @@
-# Grav Specific
-accounts/*
-!accounts/.*
-data/*
-!data/.*
-plugins/*
-!plugins/.*
-themes/*
-!themes/.*
-
-# OS Generated
-.DS_Store*
-thumbs.db
-Icon?
-Thumbs.db
-*.swp
+cache

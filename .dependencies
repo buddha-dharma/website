@@ -1,89 +1,34 @@
 git:
-    admin:
-        url: https://github.com/getgrav/grav-plugin-admin
-        path: user/plugins/admin
-        branch: master
-    archives:
-        url: https://github.com/getgrav/grav-plugin-archives
-        path: user/plugins/archives
-        branch: master
-    email:
-        url: https://github.com/getgrav/grav-plugin-email
-        path: user/plugins/email
+    problems:
+        url: https://github.com/getgrav/grav-plugin-problems
+        path: user/plugins/problems
         branch: master
     error:
         url: https://github.com/getgrav/grav-plugin-error
         path: user/plugins/error
         branch: master
-    external_links:
-        url: https://github.com/Sommerregen/grav-plugin-external-links
-        path: user/plugins/external_links
-        branch: master
-    featherlight:
-        url: https://github.com/getgrav/grav-plugin-featherlight
-        path: user/plugins/featherlight
-        branch: master
-    feed:
-        url: https://github.com/getgrav/grav-plugin-feed
-        path: user/plugins/feed
-        branch: master
-    form:
-        url: https://github.com/getgrav/grav-plugin-form
-        path: user/plugins/form
-        branch: master
-    git-sync:
-        url: https://github.com/trilbymedia/grav-plugin-git-sync
-        path: user/plugins/git-sync
-        branch: master
-    login:
-        url: https://github.com/getgrav/grav-plugin-login
-        path: user/plugins/login
-        branch: master
     markdown-notices:
-        url: https://github.com/yoshikin/grav-plugin-markdown-fontawesome
+        url: https://github.com/getgrav/grav-plugin-markdown-notices
         path: user/plugins/markdown-notices
         branch: master
-    markdown-fontawesome:
-        url: https://github.com/getgrav/grav-plugin-markdown-notices
-        path: user/plugins/markdown-fontawesome
+    antimatter:
+        url: https://github.com/getgrav/grav-theme-antimatter
+        path: user/themes/antimatter
         branch: master
-    page-inject:
-        url: https://github.com/getgrav/grav-plugin-page-inject
-        path: user/plugins/page-inject
-        branch: master
-    pagination:
-        url: https://github.com/getgrav/grav-plugin-pagination
-        path: user/plugins/pagination
-        branch: master
+links:
     problems:
-        url: https://github.com/getgrav/grav-plugin-problems
+        src: grav-plugin-problems
         path: user/plugins/problems
-        branch: master
-    relatedpages:
-        url: https://github.com/getgrav/grav-plugin-relatedpages
-        path: user/plugins/relatedpages
-        branch: master
-    simplesearch:
-        url: https://github.com/getgrav/grav-plugin-simplesearch
-        path: user/plugins/simplesearch
-        branch: master
-    sitemap:
-        url: https://github.com/getgrav/grav-plugin-sitemap
-        path: user/plugins/sitemap
-        branch: master
-    taxonomylist:
-        url: https://github.com/getgrav/grav-plugin-taxonomylist
-        path: user/plugins/taxonomylist
-        branch: master
-    youtube:
-        url: https://github.com/getgrav/grav-plugin-youtube
-        path: user/plugins/youtube
-        branch: master
-    course-hub-bones:
-        url: https://github.com/hibbitts-design/grav-theme-course-hub-bones
-        path: user/themes/course-hub-bones
-        branch: master
-    course-hub-bootstrap:
-        url: https://github.com/hibbitts-design/grav-theme-course-hub-bootstrap
-        path: user/themes/course-hub-bootstrap
-        branch: master
+        scm: github
+    error:
+        src: grav-plugin-error
+        path: user/plugins/error
+        scm: github
+    markdown-notices:
+        src: grav-plugin-markdown-notices
+        path: user/plugins/markdown-notices
+        scm: github
+    antimatter:
+        src: grav-theme-antimatter
+        path: user/themes/antimatter
+        scm: github

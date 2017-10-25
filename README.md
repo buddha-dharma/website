@@ -1,185 +1,187 @@
-# Grav Course Hub Skeleton
+# ![](https://avatars1.githubusercontent.com/u/8237355?v=2&s=50) Grav
 
-[![Demo](https://img.shields.io/badge/Demo-CourseHub-blue.svg?style=flat-square)](http://demo.hibbittsdesign.org/grav-course-hub-bones/)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](https://github.com/hibbitts-design/grav-skeleton-course-hub/blob/master/LICENSE)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/cfd20465-d0f8-4a0a-8444-467f5b5f16ad/mini.png)](https://insight.sensiolabs.com/projects/cfd20465-d0f8-4a0a-8444-467f5b5f16ad) [![Slack](https://grav-chat.now.sh/badge.svg)](https://chat.getgrav.org) [![Build Status](https://travis-ci.org/getgrav/grav.svg?branch=develop)](https://travis-ci.org/getgrav/grav) [![OpenCollective](https://opencollective.com/grav/backers/badge.svg)](#backers) [![OpenCollective](https://opencollective.com/grav/sponsors/badge.svg)](#sponsors)
 
-[![Slack](https://grav-chat.now.sh/badge.svg)](https://chat.getgrav.org)
+Grav is a **Fast**, **Simple**, and **Flexible**, file-based Web-platform.  There is **Zero** installation required.  Just extract the ZIP archive, and you are already up and running.  It follows similar principles to other flat-file CMS platforms, but has a different design philosophy than most. Grav comes with a powerful **Package Management System** to allow for simple installation and upgrading of plugins and themes, as well as simple updating of Grav itself.
 
-> Detailed documentation for this project is now available at http://learn.hibbittsdesign.org/coursehub
+The underlying architecture of Grav is designed to use well-established and _best-in-class_ technologies to ensure that Grav is simple to use and easy to extend. Some of these key technologies include:
 
-The **Course Hub** skeleton is intended to accompany a face-to-face, blended or fully online university course. It supports a [flipped-LMS approach](http://hibbittsdesign.org/blog/posts/flipped-lms-using-an-open-and-collaborative-platform) using the modern flat-file (no database) Grav CMS as an open and collaborative Web platform.
+* [Twig Templating](http://twig.sensiolabs.org/): for powerful control of the user interface
+* [Markdown](http://en.wikipedia.org/wiki/Markdown): for easy content creation
+* [YAML](http://yaml.org): for simple configuration
+* [Parsedown](http://parsedown.org/): for fast Markdown and Markdown Extra support
+* [Doctrine Cache](http://doctrine-orm.readthedocs.io/projects/doctrine-orm/en/latest/reference/caching.html): layer for performance
+* [Pimple Dependency Injection Container](http://pimple.sensiolabs.org/): for extensibility and maintainability
+* [Symfony Event Dispatcher](http://symfony.com/doc/current/components/event_dispatcher/introduction.html): for plugin event handling
+* [Symfony Console](http://symfony.com/doc/current/components/console/introduction.html): for CLI interface
+* [Gregwar Image Library](https://github.com/Gregwar/Image): for dynamic image manipulation
 
-**Table of Contents**  
-[Why Flip your LMS with Grav?](#why-flip-your-lms-with-grav)  
-[Why Use a Modern flat-file CMS?](#why-use-a-modern-flat-file-cms)  
-[Course Hub Screenshot](#course-hub-screenshot)  
-[Course Hub Highlights](#course-hub-highlights)  
-[Quick Install (Web server only)](#quick-install-web-server-only)  
-[Page Templates](#page-templates)  
-[Site Structure](#site-structure)  
-[Site Configuration](#site-configuration)  
-[Page Header Options](#page-header-options)
+# Requirements
 
-## Flipping your LMS with the Grav Course Hub
+- PHP 5.5.9 or higher. Check the [required modules list](https://learn.getgrav.org/basics/requirements#php-requirements)
+- Check the [Apache](https://learn.getgrav.org/basics/requirements#apache-requirements) or [IIS](https://learn.getgrav.org/basics/requirements#iis-requirements) requirements
 
-### Why Flip your LMS with Grav?
-* To support pedagogical goals unmet by current LMS/platform
-* To deliver a better student (and facilitator) experience
-* To increase capability of access, sharing and collaboration
+# QuickStart
 
-### Why Use a Modern flat-file CMS?
-As an open source modern flat-file CMS, Grav offers a distinct set of advantages to Web-savvy educators looking to move beyond their institutional LMS:
-* Modern means...
-  * Modern PHP code (i.e. reliability, speed, extensibility, etc.)
-  * Use of current standards (i.e. Markdown, Twig, YAML, etc.)
-  * Modular/customizable content chunks (i.e. reuse of content)
-  * Further separation of content (i.e. files) from presentation
-* Flat-file means...
-  * No database means less (or no) IT involvement needed
-  * Content stored in text files rather than in a database
-  * Takes full advantage of the collaborative ecosystem now available (i.e. GitHub)
-  * Increased portability, as moving a site now only requires simply copying files to another location
-  * All template and content files are 100% version controllable
+These are the options to get Grav:
 
-### Course Hub Screenshot
-![Course Hub Screenshot](/assets/screenshot.jpg)  
-_Figure 1. Example Grav Course Hub website, with GitHub collaborative page editing enabled.  Explore an example **single** course site at [demo.hibbittsdesign.org/grav-course-hub/](http://demo.hibbittsdesign.org/grav-course-hub/) and a **multiple** course site at [demo.hibbittsdesign.org/grav-multi-course-hub/](http://demo.hibbittsdesign.org/grav-multi-course-hub/)._
+### Downloading a Grav Package
 
-### Course Hub Highlights
-* A complete ready-to-run Grav package (open source)
-* Blog-format, with 'featured' (sticky) posts
-* [Single course](http://hibbittsdesign.org/demo/grav-course-hub-bootstrap/) per Hub, [multiple courses](http://hibbittsdesign.org/demo/grav-multi-course-blog-hub/) per Hub or even [multiple course sub-sites](http://hibbittsdesign.org/demo/grav-multi-course-pages-hub/) (blog + multiple pages per course) per Hub
-* Optional important reminders & class preparations areas
-* Hub pages can be easily added/removed/changed
-* Uses [Markdown](https://daringfireball.net/projects/markdown/) for streamlined cross-platform content
-* Image header area above Hub navigation bar
-* Sidebar is a simple markdown file, which can also contain HTML
-* 'Chromeless Pages' option to hide global navigation elements for all pages (to support embedding multiple pages within LMS)
-* URL flag to only display page content (for display within LMS). For example, [http://demo.hibbittsdesign.org/grav-course-hub-bootstrap/home/week-03/chromeless:true](http://demo.hibbittsdesign.org/grav-course-hub-bootstrap/home/week-03/chromeless:true)
-* External links are automatically opened in a new Tab/Window
-* Built-in support for entire Hub to be collaboratively maintained on GitHub or GitLab (for local hosting)
-* Since everything is built with Grav it can be _entirely_ customized
+You can download a **ready-built** package from the [Downloads page on https://getgrav.org](https://getgrav.org/downloads)
 
-To learn more about how to most effectively use the Grav Course Hub, visit [hibbittdesign.org](http://hibbittsdesign.org/blog/)
+### With Composer
 
-## Grav Course Hub Installation  
-
-### Quick Install (Web server only)
-**Pre-flight Checklist**  
-
-1. Confirm Web server PHP version (PHP 5.5.9 or higher)
-2. Web server login credentials (username and password)
-
-**Installation Steps**  
-
-1. Download the ready-to-run [Course Hub Skeleton Package](http://hibbittsdesign.org/blog/downloads/grav-skeleton-course-hub-site.zip)
-2. Unzip the package onto your desktop  
-3. Copy the entire Grav Course Hub folder to your Web server  
-4. Point your browser to the Web server folder  
-5. Create your site administrator account when prompted  
-6. And you're done! (press the ![Right Arrow Circle Icon](/assets/fa-arrow-circle-right.png) icon in the Admin Panel to preview site)
-
-## Grav Course Hub Details  
-
-### Page Templates
-* Blog template (blog.html.twig)
-* Important reminders template (important_reminders.html.twig)
-* Weekly preparations template (preparations.html.twig)
-* Blog item template (blog_item.html.twig)
-* Item template (item.html.twig)
-* Page with Sidebar template (sidebarpage.html.twig)
-* Full width Page template (fullwidthpage.html.twig)
-* Sidebar template (sidebar.html.twig)
-
-### Site Structure
+You can create a new project with the latest **stable** Grav release with the following command:
 
 ```
-/user
-  - /pages
-    - /01.blog | blog.html.twig and blog_item.html.twig
-      -/_important-reminders | important-reminders.html.twig
-      -/_class-preparations | class-preparations.html.twig
-      -/week-01 | item.html.twig
-      -/week-02 | item.html.twig
-      - etc..
-    - /02.resources | sidebarpage.html.twig
-      -/sidebarpage.md
-    - /03.syllabus | fullwidthpage.html.twig
-      -/fullwidthpage.md
-    - /sidebar | sidebar.html.twig
-        -/sidebar.md
-    - /headerimage | default.html.twig
-        -/default.md
-    - /footer | default.html.twig (Course Hub Bones theme element)
-        -/default.md
-    - /logo | default.html.twig (Course Hub Bones theme element)
-        -/default.md
-    - /mobilemenu | default.html.twig (Course Hub Bones theme element)
-        -/default.md
+$ composer create-project getgrav/grav ~/webroot/grav
 ```
 
-### Site Configuration
-The 'site.yaml' file located in the '/user/config/' folder contains the following default values:
+### From GitHub
+
+1. Clone the Grav repository from [https://github.com/getgrav/grav]() to a folder in the webroot of your server, e.g. `~/webroot/grav`. Launch a **terminal** or **console** and navigate to the webroot folder:
+   ```
+   $ cd ~/webroot
+   $ git clone https://github.com/getgrav/grav.git
+   ```
+
+2. Install the **plugin** and **theme dependencies** by using the [Grav CLI application](https://learn.getgrav.org/advanced/grav-cli) `bin/grav`:
+   ```
+   $ cd ~/webroot/grav
+   $ bin/grav install
+   ```
+
+Check out the [install procedures](https://learn.getgrav.org/basics/installation) for more information.
+
+# Adding Functionality
+
+You can download [plugins](https://getgrav.org/downloads/plugins) or [themes](https://getgrav.org/downloads/themes) manually from the appropriate tab on the [Downloads page on https://getgrav.org](https://getgrav.org/downloads), but the preferred solution is to use the [Grav Package Manager](https://learn.getgrav.org/advanced/grav-gpm) or `GPM`:
+
 ```
-title: CPT-363
-metadata:
-    description: 'A short description of your course would go here'
-displaymenuentries:
-    enabled: true         # display of additional menu entries
-menu:                     # menu entry for adding external sites/tools
-    - text: Grav
-      icon: arrow-circle-right
-      url: http://getgrav.org/
-icon:                     # default Font Awesome icons for preparation and post entries
-    post: calendar-o
-github:
-    location: none        # menu | page | none
-    icon: github
-    tree: https://github.com/hibbitts-design/grav-skeleton-course-hub-site/edit/master/user/pages/
-twittertimeline:
-    enabled: false        # display of Twitter timeline on sidebar
-    url: https://twitter.com/hibbittsdesign/lists/cpt-363
-    text: A Twitter List by hibbittsdesign
-    height: 700
-hidehomemenulink: false   # suppress Home menu link
+$ bin/gpm index
 ```
 
-| Setting | Child Setting | Description                                                                                                            |
-|---------|---------------|------------------------------------------------------------------------------------------------------------------------|
-| title   |               | The course number/id, to be displayed at the top of every page.                                                      |
-| metadata  |  description | The short description of the course hub site.                                       |
-| displaymenuentries  |  enabled | Can be set to `true` or `false`. When set to `true`, all defined menu items are added to the navbar.                                       |
-| menu  |  text | Text label for an external link to be included on navbar.                                       |
-| menu  |  icon | Font Awesome icon code for an external link (optional).                                        |
-| menu  |  url | URL for an external link. |                                    
-| icon  | post          | Change the default Font Awesome icon for the weekly blog posts (i.e. weekly summaries).           |
-| github  | location       | Can be set to `page`, `menu` or `none`. When set to `page` or `menu`, it will display the **Edit this page** link to your GitHub repo in the indicated location. |
-| github  | icon       | Set the Font Awesome icon for the **Edit this page** menu or page link. |
-| github  | tree          | Sets the tree by which your site's content is based. Generally the repo your site's content is pulled from.            |
-| twittertimeline  | enabled       | Can be set to `true` or `false`. When set to `true`, it displays the Twitter timeline on your sidebar. |
-| twittertimeline  | URL       | The URL of the Twitter timeline you want to embed on your sidebar. |
-| twittertimeline  | text       | The text label of the Twitter timeline you want to embed on your sidebar. |
-| twittertimeline  | height       | The height of the Twitter timeline you want to embed on your sidebar. |
-| hidehomemenulink  |       | Can be set to `true` or `false`. When set to `true`, the Home menu link in the navbar is not displayed.|
+This will display all the available plugins and then you can install one or more with:
 
-##Page Header Options
-
-### Page Options for Blog Items
-Blog item pages support the following additional options:
 ```
-icon: users             # optional Font Awesome icon for page title
-header_image: false     # display of header image located within page folder
-continue_link: false    # display entire post on blog listing page
-taxonomy:
-  tag: Featured         # setting to make post 'sticky' (i.e. remain at top)
-hidefrompostlist: true  # hide this blog post from blog index
+$ bin/gpm install <plugin/theme>
 ```
 
-### Page Options for All Pages
-All pages support the following additional options:
+# Updating
+
+To update Grav you should use the [Grav Package Manager](https://learn.getgrav.org/advanced/grav-gpm) or `GPM`:
+
 ```
-hidegithublink: true    # hide GitHub edit link for this page
-githublink: https://github.com/hibbitts-design/grav-skeleton-course-hub/tree/master/pages/01.home     # to override the automatically calculated GitHub URL
-hidepagetitle: true   # hide the display of the title of this page
+$ bin/gpm selfupgrade
 ```
----
+
+To update plugins and themes:
+
+```
+$ bin/gpm update
+```
+
+
+# Contributing
+We appreciate any contribution to Grav, whether it is related to bugs, grammar, or simply a suggestion or improvement! Please refer to the [Contributing guide](CONTRIBUTING.md) for more guidance on this topic.
+
+## Security issues
+If you discover a possible security issue related to Grav or one of its plugins, please send an email to the core team at contact@getgrav.org and we'll address it as soon as possible.
+
+# Getting Started
+
+* [What is Grav?](https://learn.getgrav.org/basics/what-is-grav)
+* [Install](https://learn.getgrav.org/basics/installation) Grav in few seconds
+* Understand the [Configuration](https://learn.getgrav.org/basics/grav-configuration)
+* Take a peek at our available free [Skeletons](https://getgrav.org/downloads/skeletons)
+* If you have questions, jump on our [Slack Room](https://getgrav.org/slack)!
+* Have fun!
+
+# Exploring More
+
+* Have a look at our [Basic Tutorial](https://learn.getgrav.org/basics/basic-tutorial)
+* Dive into more [advanced](https://learn.getgrav.org/advanced) functions
+
+# Backers
+Support us with a monthly donation and help us continue our activities. [[Become a backer](https://opencollective.com/grav#backer)]
+
+<a href="https://opencollective.com/grav/backer/0/website" target="_blank"><img src="https://opencollective.com/grav/backer/0/avatar.svg"></a>
+<a href="https://opencollective.com/grav/backer/1/website" target="_blank"><img src="https://opencollective.com/grav/backer/1/avatar.svg"></a>
+<a href="https://opencollective.com/grav/backer/2/website" target="_blank"><img src="https://opencollective.com/grav/backer/2/avatar.svg"></a>
+<a href="https://opencollective.com/grav/backer/3/website" target="_blank"><img src="https://opencollective.com/grav/backer/3/avatar.svg"></a>
+<a href="https://opencollective.com/grav/backer/4/website" target="_blank"><img src="https://opencollective.com/grav/backer/4/avatar.svg"></a>
+<a href="https://opencollective.com/grav/backer/5/website" target="_blank"><img src="https://opencollective.com/grav/backer/5/avatar.svg"></a>
+<a href="https://opencollective.com/grav/backer/6/website" target="_blank"><img src="https://opencollective.com/grav/backer/6/avatar.svg"></a>
+<a href="https://opencollective.com/grav/backer/7/website" target="_blank"><img src="https://opencollective.com/grav/backer/7/avatar.svg"></a>
+<a href="https://opencollective.com/grav/backer/8/website" target="_blank"><img src="https://opencollective.com/grav/backer/8/avatar.svg"></a>
+<a href="https://opencollective.com/grav/backer/9/website" target="_blank"><img src="https://opencollective.com/grav/backer/9/avatar.svg"></a>
+<a href="https://opencollective.com/grav/backer/10/website" target="_blank"><img src="https://opencollective.com/grav/backer/10/avatar.svg"></a>
+<a href="https://opencollective.com/grav/backer/11/website" target="_blank"><img src="https://opencollective.com/grav/backer/11/avatar.svg"></a>
+<a href="https://opencollective.com/grav/backer/12/website" target="_blank"><img src="https://opencollective.com/grav/backer/12/avatar.svg"></a>
+<a href="https://opencollective.com/grav/backer/13/website" target="_blank"><img src="https://opencollective.com/grav/backer/13/avatar.svg"></a>
+<a href="https://opencollective.com/grav/backer/14/website" target="_blank"><img src="https://opencollective.com/grav/backer/14/avatar.svg"></a>
+<a href="https://opencollective.com/grav/backer/15/website" target="_blank"><img src="https://opencollective.com/grav/backer/15/avatar.svg"></a>
+<a href="https://opencollective.com/grav/backer/16/website" target="_blank"><img src="https://opencollective.com/grav/backer/16/avatar.svg"></a>
+<a href="https://opencollective.com/grav/backer/17/website" target="_blank"><img src="https://opencollective.com/grav/backer/17/avatar.svg"></a>
+<a href="https://opencollective.com/grav/backer/18/website" target="_blank"><img src="https://opencollective.com/grav/backer/18/avatar.svg"></a>
+<a href="https://opencollective.com/grav/backer/19/website" target="_blank"><img src="https://opencollective.com/grav/backer/19/avatar.svg"></a>
+<a href="https://opencollective.com/grav/backer/20/website" target="_blank"><img src="https://opencollective.com/grav/backer/20/avatar.svg"></a>
+<a href="https://opencollective.com/grav/backer/21/website" target="_blank"><img src="https://opencollective.com/grav/backer/21/avatar.svg"></a>
+<a href="https://opencollective.com/grav/backer/22/website" target="_blank"><img src="https://opencollective.com/grav/backer/22/avatar.svg"></a>
+<a href="https://opencollective.com/grav/backer/23/website" target="_blank"><img src="https://opencollective.com/grav/backer/23/avatar.svg"></a>
+<a href="https://opencollective.com/grav/backer/24/website" target="_blank"><img src="https://opencollective.com/grav/backer/24/avatar.svg"></a>
+<a href="https://opencollective.com/grav/backer/25/website" target="_blank"><img src="https://opencollective.com/grav/backer/25/avatar.svg"></a>
+<a href="https://opencollective.com/grav/backer/26/website" target="_blank"><img src="https://opencollective.com/grav/backer/26/avatar.svg"></a>
+<a href="https://opencollective.com/grav/backer/27/website" target="_blank"><img src="https://opencollective.com/grav/backer/27/avatar.svg"></a>
+<a href="https://opencollective.com/grav/backer/28/website" target="_blank"><img src="https://opencollective.com/grav/backer/28/avatar.svg"></a>
+<a href="https://opencollective.com/grav/backer/29/website" target="_blank"><img src="https://opencollective.com/grav/backer/29/avatar.svg"></a>
+
+
+# Sponsors
+Become a sponsor and get your logo on our README on Github with a link to your site. [[Become a sponsor](https://opencollective.com/grav#sponsor)]
+
+<a href="https://opencollective.com/grav/sponsor/0/website" target="_blank"><img src="https://opencollective.com/grav/sponsor/0/avatar.svg"></a>
+<a href="https://opencollective.com/grav/sponsor/1/website" target="_blank"><img src="https://opencollective.com/grav/sponsor/1/avatar.svg"></a>
+<a href="https://opencollective.com/grav/sponsor/2/website" target="_blank"><img src="https://opencollective.com/grav/sponsor/2/avatar.svg"></a>
+<a href="https://opencollective.com/grav/sponsor/3/website" target="_blank"><img src="https://opencollective.com/grav/sponsor/3/avatar.svg"></a>
+<a href="https://opencollective.com/grav/sponsor/4/website" target="_blank"><img src="https://opencollective.com/grav/sponsor/4/avatar.svg"></a>
+<a href="https://opencollective.com/grav/sponsor/5/website" target="_blank"><img src="https://opencollective.com/grav/sponsor/5/avatar.svg"></a>
+<a href="https://opencollective.com/grav/sponsor/6/website" target="_blank"><img src="https://opencollective.com/grav/sponsor/6/avatar.svg"></a>
+<a href="https://opencollective.com/grav/sponsor/7/website" target="_blank"><img src="https://opencollective.com/grav/sponsor/7/avatar.svg"></a>
+<a href="https://opencollective.com/grav/sponsor/8/website" target="_blank"><img src="https://opencollective.com/grav/sponsor/8/avatar.svg"></a>
+<a href="https://opencollective.com/grav/sponsor/9/website" target="_blank"><img src="https://opencollective.com/grav/sponsor/9/avatar.svg"></a>
+<a href="https://opencollective.com/grav/sponsor/10/website" target="_blank"><img src="https://opencollective.com/grav/sponsor/10/avatar.svg"></a>
+<a href="https://opencollective.com/grav/sponsor/11/website" target="_blank"><img src="https://opencollective.com/grav/sponsor/11/avatar.svg"></a>
+<a href="https://opencollective.com/grav/sponsor/12/website" target="_blank"><img src="https://opencollective.com/grav/sponsor/12/avatar.svg"></a>
+<a href="https://opencollective.com/grav/sponsor/13/website" target="_blank"><img src="https://opencollective.com/grav/sponsor/13/avatar.svg"></a>
+<a href="https://opencollective.com/grav/sponsor/14/website" target="_blank"><img src="https://opencollective.com/grav/sponsor/14/avatar.svg"></a>
+<a href="https://opencollective.com/grav/sponsor/15/website" target="_blank"><img src="https://opencollective.com/grav/sponsor/15/avatar.svg"></a>
+<a href="https://opencollective.com/grav/sponsor/16/website" target="_blank"><img src="https://opencollective.com/grav/sponsor/16/avatar.svg"></a>
+<a href="https://opencollective.com/grav/sponsor/17/website" target="_blank"><img src="https://opencollective.com/grav/sponsor/17/avatar.svg"></a>
+<a href="https://opencollective.com/grav/sponsor/18/website" target="_blank"><img src="https://opencollective.com/grav/sponsor/18/avatar.svg"></a>
+<a href="https://opencollective.com/grav/sponsor/19/website" target="_blank"><img src="https://opencollective.com/grav/sponsor/19/avatar.svg"></a>
+<a href="https://opencollective.com/grav/sponsor/20/website" target="_blank"><img src="https://opencollective.com/grav/sponsor/20/avatar.svg"></a>
+<a href="https://opencollective.com/grav/sponsor/21/website" target="_blank"><img src="https://opencollective.com/grav/sponsor/21/avatar.svg"></a>
+<a href="https://opencollective.com/grav/sponsor/22/website" target="_blank"><img src="https://opencollective.com/grav/sponsor/22/avatar.svg"></a>
+<a href="https://opencollective.com/grav/sponsor/23/website" target="_blank"><img src="https://opencollective.com/grav/sponsor/23/avatar.svg"></a>
+<a href="https://opencollective.com/grav/sponsor/24/website" target="_blank"><img src="https://opencollective.com/grav/sponsor/24/avatar.svg"></a>
+<a href="https://opencollective.com/grav/sponsor/25/website" target="_blank"><img src="https://opencollective.com/grav/sponsor/25/avatar.svg"></a>
+<a href="https://opencollective.com/grav/sponsor/26/website" target="_blank"><img src="https://opencollective.com/grav/sponsor/26/avatar.svg"></a>
+<a href="https://opencollective.com/grav/sponsor/27/website" target="_blank"><img src="https://opencollective.com/grav/sponsor/27/avatar.svg"></a>
+<a href="https://opencollective.com/grav/sponsor/28/website" target="_blank"><img src="https://opencollective.com/grav/sponsor/28/avatar.svg"></a>
+<a href="https://opencollective.com/grav/sponsor/29/website" target="_blank"><img src="https://opencollective.com/grav/sponsor/29/avatar.svg"></a>
+
+# License
+
+See [LICENSE](LICENSE.txt)
+
+
+[gitflow-model]: http://nvie.com/posts/a-successful-git-branching-model/
+[gitflow-extensions]: https://github.com/nvie/gitflow
+
+# Running Tests
+
+First install the dev dependencies by running `composer update` from the Grav root.
+Then `composer test` will run the Unit Tests, which should be always executed successfully on any site.
+
+You can also run a single unit test file, e.g. `composer test tests/unit/Grav/Common/AssetsTest.php`

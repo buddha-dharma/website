@@ -1,0 +1,30 @@
+{# new twig template file - hibbittsdesign.org #}
+{% embed 'partials/base.html.twig' %}
+
+  {% block content %}
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 blog-main">
+          {% if not page.header.hidepagetitle %}
+          <h3>{{page.title}}</h3>
+          {% else %}
+          <h3 aria-label={{page.title}}></h3>
+          {% endif %}
+          {{ page.content }}
+          {# Git repository edit link -  hibbittsdesign.org #}
+          {% if config.site.gitrepo.editlinklocation == 'page' and not (page.header.hidegitrepoeditlink) and not (page.slug == 'pages') %}
+            <hr>
+            <br>
+            <span style="color: #888888;">
+            <p>{{ config.site.gitrepo.editnotetext }}
+            {% include 'partials/gitrepo_link.html.twig' %}
+            </p>
+            <br>
+          {% endif %}
+        </div>
+        {# removed sidebar rendering - hibbittsdesign.org #}
+      </div>
+    </div>
+  {% endblock %}
+
+{% endembed %}
