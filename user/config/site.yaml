@@ -19,7 +19,7 @@ blog:
 chromeless:
   enabled: false
 gitrepo:
-  edittreeurl: https://github.com/buddha-dharma/micro-site
+  edittreeurl: https://github.com/buddha-dharma/micro-site/tree/master/user
   editlinklocation: menu
   editnotetext: 'Have a suggestion?'
   editlinktext: 'Edit this Page'
