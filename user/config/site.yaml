@@ -26,12 +26,10 @@ gitrepo:
   editthemelinklocation: none
   editthemelinktext: 'Site Theme Files'
 displaymenuentries:
-  enabled: false
+  enabled: true
 menu:
-  -
-    text: Grav
-    icon: arrow-circle-right
-    url: 'http://getgrav.org/'
+  - text: Meditation
+    url: http://www.starting-meditation.com/
 hidehomemenulink: false
 hidesidebaronblogpages:
   enabled: false
