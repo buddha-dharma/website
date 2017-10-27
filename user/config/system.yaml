@@ -9,7 +9,9 @@ custom_base_url: ''
 username_regex: '^[a-z0-9_-]{3,16}$'
 pwd_regex: '(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}'
 languages:
-  supported: {  }
+  supported:
+    - en
+    - de
   include_default_lang: true
   translations: true
   translations_fallback: true
