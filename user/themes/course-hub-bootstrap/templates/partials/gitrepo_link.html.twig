@@ -21,11 +21,11 @@
       {% set gitrepoeditlinkurl = config.site.gitrepo.edittreeurl ~  ('/'~page.filePathClean)|replace({'/user/':'/'}) %}
     {% endif %}
   {% endif %}
-  <a class="newwindow external-link" href="{{ gitrepoeditlinkurl }}" title="{{ config.site.gitrepo.editlinktext }}">
-  {% if gitrepolinkicon %}
-    <i class="fa fa-{{ gitrepolinkicon }}" aria-hidden="true"></i>
-  {% endif %}
-  {{ config.site.gitrepo.editlinktext }}</a>
+  <a class="newwindow external-link" href="{{ gitrepoeditlinkurl }}" title="{{ "GITHUB.EDIT_LINK_TEXT"|t }}">
+      {% if gitrepolinkicon %}
+          <i class="fa fa-{{ gitrepolinkicon }}" aria-hidden="true"></i>
+      {% endif %}
+      {{ "GITHUB.EDIT_LINK_TEXT"|t}}</a>
 {% else %}
   {% if config.plugins['git-sync'].enabled and config.plugins['git-sync'].repository is empty %}
     {% set admin_panel_gitsync_plugin = grav.base_url ~ '/admin/plugins/git-sync#' %}
@@ -56,8 +56,8 @@
     {% if config.site.gitrepo.editlinkicon %}
     	{% set gitrepolinkicon = config.site.gitrepo.editlinkicon %}
   	{% endif %}
-	<a class="newwindow external-link" href="{{ gitrepoeditlinkurl }}" title="{{ config.site.gitrepo.editlinktext }}">
-  	<i class="fa fa-{{ gitrepolinkicon }}" aria-hidden="true"></i>
-  	{{ config.site.gitrepo.editlinktext }}</a>
+	  <a class="newwindow external-link" href="{{ gitrepoeditlinkurl }}" title="{{"GITHUB.EDIT_LINK_TEXT"|t }}">
+        <i class="fa fa-{{ gitrepolinkicon }}" aria-hidden="true"></i>
+        {{ "GITHUB.EDIT_LINK_TEXT"|t }}</a>
   {% endif %}
 {% endif %}
