@@ -8,7 +8,7 @@ routable: false
 Die Buddha-Dharma-Webseite ist ein Open-Source-Projekt. Es wirbt und organisiert ein offenes Sangha. 
 
 Wenn du ein Entwickler bist, kannst du uns helfen diese Webseite zu verbessern.
-[Besuche uns auf Github](https://github.com/buddha-dharma).
+Besuche uns [auf Github](https://github.com/buddha-dharma).
 ##### Andere Sprachen
 <a href="/en">Englisch</a>
 ##### Twitter
