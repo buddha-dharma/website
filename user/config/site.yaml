@@ -30,11 +30,8 @@ displaymenuentries:
 menu:
   - text: Meditation
     url: http://www.starting-meditation.com/
-  - text: DE
-    url: /de
-  - text: EN
-    url: /en
-hidehomemenulink: false
+    external: true
+hidehomemenulink: true
 hidesidebaronblogpages:
   enabled: false
 twittertimeline:

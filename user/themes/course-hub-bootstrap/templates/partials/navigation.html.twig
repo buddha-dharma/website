@@ -72,12 +72,14 @@
                   {% endif %}
                 {% endif %}
               {% endfor %}
-              {# Additional menu entries check and display - hibbittsdesign.org #}
               {% if config.site.displaymenuentries.enabled %}
                 {% for mitem in site.menu %}
-                  <li>
-                    {# Added newwindow class - hibbittsdesign.org #}
-                    <a class="newwindow" href="{{ mitem.url }}">
+                    <li>
+                      {% if mitem.external %}
+                          <a class="newwindow external-link" href="{{ mitem.url }}">
+                      {% else %}
+                          <a class="newwindow" href="{{ mitem.url }}">
+                      {% endif %}
                       {% if mitem.icon %}
                         <i class="fa fa-{{ mitem.icon }}"></i>
                         <span>{{ mitem.text }}</span>
@@ -88,7 +90,6 @@
                   </li>
                 {% endfor %}
               {% endif %}
-              {# Added Git repository edit link -  hibbittsdesign.org #}
               {% if config.site.gitrepo.editlinklocation == 'menu' and not (page.header.hidegitrepoeditlink) and not (page.slug == 'pages') %}
                 <li>
                   {% include 'partials/gitrepo_link.html.twig' %}
