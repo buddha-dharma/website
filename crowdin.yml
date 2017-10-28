@@ -1,0 +1,6 @@
+files:
+  - source: '*.%two_letters_code%.md'
+    translation: '*.%two_letters_code%.md'
+    languages_mapping:
+      two_letters_code:
+        en: en
