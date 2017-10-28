@@ -6,4 +6,4 @@ icon: lightbulb-o
 hidefrompostlist: false
 continue_link: false
 ---
-Open Sangha ist eine Reaktion auf die Tatsache, dass an einigen Orten gute Lehrer nicht verfügbar sind, und das Dharma Geld kosten oder anderweitig an Bedingungen geknüpft ist. Buddha-Dharma wants to empower individuals on their path and help them connect so that they can practice together.
+Open Sangha ist eine Reaktion auf die Tatsache, dass an einigen Orten gute Lehrer nicht verfügbar sind, und das Dharma Geld kosten oder anderweitig an Bedingungen geknüpft ist. Buddha-Dharma will Einzelpersonen auf ihrem Weg stärken und eine Verbindung herstellen, damit sie gemeinsam praktizieren können.
