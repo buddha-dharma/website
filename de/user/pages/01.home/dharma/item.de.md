@@ -1,5 +1,5 @@
 ---
-title: What is Open Dharma
+title: Was ist Open Dharma
 date: 10/25/2017
 header_image: 0
 icon: lightbulb-o
