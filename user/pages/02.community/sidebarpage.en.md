@@ -1,5 +1,9 @@
+---
+title: Open Sangha
+---
+
 Connect with other practicioners directly. Use this discussion to share your experience
-with fellow open sangha members.
+with fellow open sangha members and to connect to groups.
 
 [Discussion](https://discord.gg/Tyqd22a?classes=btn,btn-primary)
 
