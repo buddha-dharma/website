@@ -76,15 +76,15 @@
                 {% for mitem in site.menu %}
                     <li>
                       {% if mitem.external %}
-                          <a class="newwindow external-link" href="{{ mitem.url }}">
+                          <a class="newwindow external-link" href="{{ mitem.url|t }}">
                       {% else %}
-                          <a class="newwindow" href="{{ mitem.url }}">
+                              <a class="newwindow" href="{{ mitem.url|t }}">
                       {% endif %}
                       {% if mitem.icon %}
                         <i class="fa fa-{{ mitem.icon }}"></i>
-                        <span>{{ mitem.text }}</span>
+                        <span>{{ mitem.text|t }}</span>
                       {% else %}
-                        {{ mitem.text }}
+                        {{ mitem.text|t }}
                       {% endif %}
                     </a>
                   </li>

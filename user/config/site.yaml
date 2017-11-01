@@ -29,7 +29,7 @@ displaymenuentries:
   enabled: true
 menu:
   - text: Meditation
-    url: http://www.starting-meditation.com/
+    url: "MEDITATION.URL"
     external: true
 hidehomemenulink: true
 hidesidebaronblogpages:
