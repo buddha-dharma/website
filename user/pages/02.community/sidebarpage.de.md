@@ -1,18 +1,18 @@
 * * *
 
-title: Open Sangha
+\--- title: Gemeinschaft slug: gemeinschaft \---
 
 * * *
 
-Connect with other practicioners directly. Use this discussion to share your experience with fellow open sangha members and to connect to groups.
+Unterhalte dich mit anderen Praktizierenden und teile deine Erfahrungen mit anderen Open-Sangha-Mitgliedern.
 
-[Discussion](https://discord.gg/Tyqd22a?classes=btn,btn-primary)
+[Unterhaltung](https://discord.gg/Tyqd22a?classes=btn,btn-primary)
 
-#### Groups
+#### Gruppen
 
-This is a list of groups that agree to our [code of conduct](../code/). Please report if groups are missing or don't meet our quality standards.
+Das ist eine Liste von Gruppen die unseren Verhaltenskodex zustimmen. Bitte melde dich bei uns wenn Gruppen fehlen oder nicht unseren Qualitätsstandard genügen.
 
-To establish contact with a group use the discussion link above.
+Um Kontakt mit einer Gruppe aufzunehmen nutze den Unterhaltungs-Link weiter oben.
 
-- Germany 
-    - Meditation Group in Neuenburg
+- Deutschland 
+    - Meditationsgruppe Neuenburg
