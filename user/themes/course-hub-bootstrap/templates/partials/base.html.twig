@@ -32,7 +32,8 @@
 
       {% endblock %}
       {{ assets.js() }}
-
+      {% include 'partials/scripts.html.twig' %}
+      {% include 'partials/analytics.html.twig' %}
     {% endblock head%}
   </head>
 
