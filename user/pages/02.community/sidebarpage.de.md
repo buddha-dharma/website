@@ -6,7 +6,7 @@
 
 Unterhalte dich mit anderen Praktizierenden und teile deine Erfahrungen mit anderen Open-Sangha-Mitgliedern.
 
-[Unterhaltung](https://discord.gg/Tyqd22a?classes=btn,btn-primary)
+[Discussion](https://discord.gg/Tyqd22a?classes=btn,btn-primary) [Talk on Reddit](https://www.reddit.com/r/OpenBuddhaDharma/?classes=btn,btn-primary)
 
 #### Gruppen
 
