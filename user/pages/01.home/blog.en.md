@@ -22,15 +22,15 @@ content:
     limit: 0
 
 feed:
-    description: Course Hub Description
+    description: The Buddha-Dharma website is an open source project promoting and organizing an open sangha.
     limit: 10
 
 pagination: false
 
 metadata:
     'twitter:card' : summary
-    'twitter:site' : @yourtwitteraccount
-    'twitter:title' : Course Hub Title
-    'twitter:description' : Course Hub Description
+    'twitter:site' : @global_dharma
+    'twitter:title' : Buddha Dharma
+    'twitter:description' : The Buddha-Dharma website is an open source project promoting and organizing an open sangha.
     'twitter:image': full_URL_to_headerimage_file
 ---
