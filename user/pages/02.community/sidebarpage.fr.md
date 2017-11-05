@@ -6,7 +6,7 @@ title: Open Sangha
 
 Connect with other practicioners directly. Use this discussion to share your experience with fellow open sangha members and to connect to groups.
 
-[Discussion](https://discord.gg/Tyqd22a?classes=btn,btn-primary)
+[Discussion](https://discord.gg/Tyqd22a?classes=btn,btn-primary) [Talk on Reddit](https://www.reddit.com/r/OpenBuddhaDharma/?classes=btn,btn-primary)
 
 #### Groups
 
