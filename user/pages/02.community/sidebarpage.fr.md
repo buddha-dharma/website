@@ -4,16 +4,16 @@ titre: Open Sangha
 
 * * *
 
-Connect with other practicioners directly. Use this discussion to share your experience with fellow open sangha members and to connect to groups.
+Connectez-vous directement à d'autres pratiquants. Utilisez cette discussion pour partager votre experience avec les autres membres de Open Sangha et vous connecter aux groupes.
 
-[Discussion](https://discord.gg/Tyqd22a?classes=btn,btn-primary) [Talk on Reddit](https://www.reddit.com/r/OpenBuddhaDharma/?classes=btn,btn-primary)
+[Discussion](https://discord.gg/Tyqd22a?classes=btn,btn-primary) [Parlez sur Reddit](https://www.reddit.com/r/OpenBuddhaDharma/?classes=btn,btn-primary)
 
-### Groups
+### Groupes
 
-This is a list of groups that agree to our [code of conduct](../code/). Please report if groups are missing or don't meet our quality standards.
+Ceci est une liste de groupes qui sont conformes à notre [code de conduite](../code/). Veuillez nous prévenir si certains groupes n'apparaissent pas ou si ils ne respectent pas nos normes de qualité.
 
-To establish contact with a group use the discussion link above.
+Pour entrer en contact avec un groupe, utilisez le lien de discussion ci-dessus.
 
-#### Germany
+#### Allemagne
 
-- Meditation Group in Neuenburg
+- Groupe de méditation à Neuenburg
