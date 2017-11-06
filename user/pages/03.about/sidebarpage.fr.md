@@ -1,9 +1,9 @@
 Ce site web est un project open source sur github.
 
-Check [the github contributions page](https://github.com/buddha-dharma/micro-site/graphs/contributors) to see the contributors to this website.
+Consultez [la page des contributions de github](https://github.com/buddha-dharma/micro-site/graphs/contributors) pour voir les contributeurs à ce site Web.
 
-Our Open Sanghas are independent and agree to operate under our [code of conduct](../code/).
+Nos Open Sanghas sont indépendants et s'accordent pour adhérer à notre [code de conduite](../code/).
 
-### Credit
+### Remerciement
 
-Header Image by Frida Aguilar Estrada
+Image d’en-tête par Frida Aguilar Estrada
