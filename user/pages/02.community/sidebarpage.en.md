@@ -11,6 +11,7 @@ with fellow open sangha members and to connect to groups.
 This is a list of groups that agree to our [code of conduct](../code/).
 Please report if groups are missing or don't meet our quality standards.
 
-To establish contact with a group use the discussion link above.
+If you want to join a group or you want to found a new group in your area please join the discussion
+with one of the buttons above.
 #### Germany
 - Meditation Group in Neuenburg

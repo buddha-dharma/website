@@ -11,5 +11,8 @@ Open-Sangha-Mitgliedern.
 ### Gruppen
 Das ist eine Liste von Gruppen die unseren [Verhaltenskodex](../code/) zustimmen.
 Bitte melde dich bei uns wenn Gruppen fehlen oder nicht unseren Qualitätsstandard genügen.
+
+Wenn du einer Gruppe beitreten willst oder deine eigene Gründen möchtest, dann klicke bitte einen
+der Knöpfe weiter oben.
 #### Deutschland
 - Meditationsgruppe in Neuenburg
