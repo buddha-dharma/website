@@ -1,6 +1,6 @@
 ---
-title: What is Open Dharma
-date: 10/25/2017
+title: Ce qu'est Open Dharma
+date: 25/10/2017
 header_image: 0
 icon: lightbulb-o
 hidefrompostlist: false
