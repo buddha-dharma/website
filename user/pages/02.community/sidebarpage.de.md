@@ -12,7 +12,7 @@ Unterhalte dich mit anderen Praktizierenden und teile deine Erfahrungen mit ande
 
 Das ist eine Liste von Gruppen die unseren Verhaltenskodex zustimmen. Bitte melde dich bei uns wenn Gruppen fehlen oder nicht unseren Qualitätsstandard genügen.
 
-Um Kontakt mit einer Gruppe aufzunehmen nutze den Unterhaltungs-Link weiter oben.
+If you want to join a group or you want to found a new group in your area please join the discussion with one of the buttons above.
 
 #### Germany
 
