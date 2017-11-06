@@ -1,6 +1,6 @@
 ---
 title: Ce qu'est Open Sangha
-date: 26/10/2017
+date: 10/26/2017
 header_image: 0
 icon: lightbulb-o
 hidefrompostlist: false
