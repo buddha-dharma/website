@@ -12,7 +12,7 @@ Connectez-vous directement à d'autres pratiquants. Utilisez cette discussion po
 
 Ceci est une liste de groupes qui sont conformes à notre [code de conduite](../code/). Veuillez nous prévenir si certains groupes n'apparaissent pas ou si ils ne respectent pas nos normes de qualité.
 
-If you want to join a group or you want to found a new group in your area please join the discussion with one of the buttons above.
+Si vous souhaitez vous joindre à un groupe ou fonder un nouveau groupe dans votre région, veuillez s'il-vous-plaît vous joindre à la discussion à l'aide d'un des boutons ci-dessus.
 
 #### Allemagne
 
