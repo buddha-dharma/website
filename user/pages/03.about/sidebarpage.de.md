@@ -1,10 +1,9 @@
----
-title: Entwickler
-slug: entwickler
----
-Diese Webseite ist ein Open-Source-Project auf Github.
+This website is an open source project on github.
 
-Sieh dir die [Github-Contributions-Seite](https://github.com/buddha-dharma/micro-site/graphs/contributors) an um zu sehen wer zur Entwicklung dieser Seite beigetragen hat.
+Check [the github contributions page](https://github.com/buddha-dharma/micro-site/graphs/contributors) to see the contributors to this website.
 
-### Erwähnungen
-Bild im Seitenkopf von Frida Aguilar Estrada
+Our Open Sanghas are independent and agree to operate under our [code of conduct](../code/).
+
+### Credit
+
+Header Image by Frida Aguilar Estrada
