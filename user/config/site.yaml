@@ -28,8 +28,8 @@ gitrepo:
 displaymenuentries:
   enabled: true
 menu:
-  - text: Meditation
-    url: "MEDITATION.URL"
+  - text: "MEDITATION.TEXT"
+    url:  "MEDITATION.URL"
     external: true
 hidehomemenulink: true
 hidesidebaronblogpages:
