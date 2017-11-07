@@ -1,6 +1,5 @@
 ---
-title: 'Wichtige Erinnerungen'
+title: Important Reminders
 published: true
 ---
-
-* Diese Webseite ist Open-Source helfe uns sie auf Github zu verbessern.
+* This website is open source. Help us improve it on github.
