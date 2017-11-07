@@ -1,3 +1,7 @@
+---
+title: Open Sangha
+slug: open-sangha
+---
 Connectez-vous directement à d'autres pratiquants. Utilisez cette discussion pour partager votre experience avec les autres membres de Open Sangha et vous connecter aux groupes.
 
 [Discussion](https://discord.gg/Tyqd22a?classes=btn,btn-primary) [Parlez sur Reddit](https://www.reddit.com/r/OpenBuddhaDharma/?classes=btn,btn-primary)
