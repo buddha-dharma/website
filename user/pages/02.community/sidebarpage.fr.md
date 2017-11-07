@@ -16,4 +16,8 @@ Si vous souhaitez vous joindre à un groupe ou fonder un nouveau groupe dans vot
 
 #### Allemagne
 
-- Groupe de méditation à Neuenburg
+- Meditation Group in Neuenburg, Baden. Managed by Henry.
+
+#### United-States
+
+- Meditation Group in Brooklyn, New York. Managed by Ric.
