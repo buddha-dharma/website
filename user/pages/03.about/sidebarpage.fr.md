@@ -1,5 +1,5 @@
 ---
-title: à propos
+title: À propos
 ---
 Ce site web est un project open source sur github.
 
