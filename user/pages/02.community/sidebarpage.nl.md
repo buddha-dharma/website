@@ -1,16 +1,16 @@
 * * *
 
-\--- title: Gemeinschaft slug: gemeinschaft \---
+title: Open Sangha
 
 * * *
 
-Unterhalte dich mit anderen Praktizierenden und teile deine Erfahrungen mit anderen Open-Sangha-Mitgliedern.
+Connect with other practicioners directly. Use this discussion to share your experience with fellow open sangha members and to connect to groups.
 
 [Discussion](https://discord.gg/Tyqd22a?classes=btn,btn-primary) [Talk on Reddit](https://www.reddit.com/r/OpenBuddhaDharma/?classes=btn,btn-primary)
 
 ### Groups
 
-Das ist eine Liste von Gruppen die unseren Verhaltenskodex zustimmen. Bitte melde dich bei uns wenn Gruppen fehlen oder nicht unseren Qualitätsstandard genügen.
+This is a list of groups that agree to our [code of conduct](../code/). Please report if groups are missing or don't meet our quality standards.
 
 If you want to join a group or you want to found a new group in your area please join the discussion with one of the buttons above.
 
