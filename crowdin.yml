@@ -13,3 +13,5 @@ files:
     translation: /%original_path%/sidebarpage.%two_letters_code%.md
   - source: sidebar.en.md
     translation: /%original_path%/sidebar.%two_letters_code%.md
+  - source: important-reminders.en.md
+    translation: /%original_path%/important-reminders.%two_letters_code%.md
