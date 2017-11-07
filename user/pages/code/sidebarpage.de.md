@@ -1,8 +1,8 @@
 ---
-title: Verhaltenskodex
+title: Code of Conduct
 ---
-Dies ist der Verhaltenskodex für Open-Sangha-Gruppen
+This is a code of conduct for open sangha groups.
 
-- Open-Sangha-Gruppen sind kostenlos für keinen der erbrachten Dienste kann eine Gegenleistung erwartet werden.
-- Open-Sangha-Gruppen konzentrieren sich nicht auf einen einzigen Lehrer und seine Bücher.
-- Open-Sangha-Gruppen sind offen für Kritik von aussen und nehmen sie ernst.
+- Open Sanghas are free. None of the services an Open Sangha provides is tied to a fee or donation.
+- Open Sanghas don't focus on one single teacher and his books.
+- Open Sanghas welcome criticism from outside and take it seriously.
