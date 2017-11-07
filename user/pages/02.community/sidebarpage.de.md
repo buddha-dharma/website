@@ -16,5 +16,6 @@ Wenn du einer Gruppe beitreten willst oder deine eigene Gründen möchtest, dann
 der Knöpfe weiter oben.
 #### Deutschland
 - Meditationsgruppe in Neuenburg, Baden. Geleitet von Henry
+
 #### Vereinigte Staaten
 - Meditationsgruppe in Brooklyn, New York. Geleitet von Ric 
