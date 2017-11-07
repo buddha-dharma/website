@@ -19,3 +19,4 @@ der Knöpfe weiter oben.
 
 #### Vereinigte Staaten
 - Meditationsgruppe in Brooklyn, New York. Geleitet von Ric.
+- Meditationsgruppe in Chico, Californien. Geleitet von Mike.

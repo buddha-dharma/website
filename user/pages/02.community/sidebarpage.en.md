@@ -18,3 +18,4 @@ with one of the buttons above.
 
 #### United-States
 - Meditation Group in Brooklyn, New York. Managed by Ric.
+- Meditation Group in Chico, California. Managed by Mike.
