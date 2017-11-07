@@ -16,4 +16,8 @@ If you want to join a group or you want to found a new group in your area please
 
 #### Germany
 
-- Meditation Group in Neuenburg
+- Meditation Group in Neuenburg, Baden. Managed by Henry.
+
+#### United-States
+
+- Meditation Group in Brooklyn, New York. Managed by Ric.
