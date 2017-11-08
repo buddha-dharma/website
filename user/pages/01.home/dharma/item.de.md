@@ -10,4 +10,4 @@ Open Dharma ist eine Initiative um Praktizierende mit Lehrern zu verbinden. Daf�
 
 Sie enthält kostenlose Bücher, Vorlesungen, Kurse, Videos und Artikel und ist quelloffen und frei damit jeder zur Verbesserung beitragen kann.
 
-[Explore Open Dharma](https://github.com/buddha-dharma/buddhismus)
+[Open-Dharma entdecken](https://github.com/buddha-dharma/buddhismus)
