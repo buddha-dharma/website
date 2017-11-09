@@ -10,4 +10,4 @@ Open Dharma est un projet qui vise à rassembler pratiquants et enseignants à t
 
 Il contient des livres, conférences, cours, vidéos, et articles gratuits, et est open source, donc tout le monde peut y contribuer.
 
-[Explore Open Dharma](https://github.com/buddha-dharma/buddhism)
+[Explorez Open Dharma](https://github.com/buddha-dharma/buddhism)
