@@ -20,5 +20,4 @@ If you want to join a group or you want to found a new group in your area please
 
 #### United-States
 
-- Meditation Group in Brooklyn, New York. Managed by Ric.
 - Meditation Group in Chico, California. Managed by Mike.
