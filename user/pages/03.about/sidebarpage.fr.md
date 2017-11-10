@@ -1,4 +1,4 @@
-Ce site web est un project open source sur github.
+\--- title: À propos \--- Ce site web est un project open source sur github.
 
 Consultez [la page des contributions de github](https://github.com/buddha-dharma/micro-site/graphs/contributors) pour voir les contributeurs à ce site Web.
 
