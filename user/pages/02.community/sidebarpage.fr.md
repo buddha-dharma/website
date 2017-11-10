@@ -20,5 +20,4 @@ Si vous souhaitez vous joindre à un groupe ou fonder un nouveau groupe dans vot
 
 #### États-Unis
 
-- Groupe de méditation à Brooklyn, New York. Géré par Ric.
-- Groupe de méditation à Chico, Californie. Géré par Mike.
+- Meditation Group in Chico, California. Managed by Mike.
