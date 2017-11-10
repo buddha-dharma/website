@@ -8,4 +8,4 @@ continue_link: false
 ---
 Open Sangha reconnaît que dans certains endroits, les bons enseignants se trouvent difficilement et le dharma est attaché à un prix, ou autres conditions. Buddha-Dharma vise à outiller les individus dans leur cheminement et à les mettre en relation afin qu'ils puissent pratiquer ensemble.
 
-[Se joindre à Open Sangha](/community)
+[Se joindre à Open Sangha](/open-sangha)
