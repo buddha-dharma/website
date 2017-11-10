@@ -1,6 +1,6 @@
 * * *
 
-title: Open Sangha
+title: Open Sangha slug: open-sangha
 
 * * *
 
