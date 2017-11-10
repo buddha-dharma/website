@@ -1,6 +1,6 @@
 * * *
 
-titre: Open Sangha
+title: Open Sangha
 
 * * *
 
