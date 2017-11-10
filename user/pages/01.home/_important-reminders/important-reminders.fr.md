@@ -1,5 +1,5 @@
 ---
-title: Important Reminders
+title: Rappels importants
 published: true
 ---
-* This website is open source. Help us improve it on github.
+* Ce site web est open source. Aidez-nous à l'améliorer sur github.
