@@ -18,5 +18,4 @@ der Knöpfe weiter oben.
 - Meditationsgruppe in Neuenburg, Baden. Geleitet von Henry.
 
 #### Vereinigte Staaten
-- Meditationsgruppe in Brooklyn, New York. Geleitet von Ric.
 - Meditationsgruppe in Chico, Californien. Geleitet von Mike.

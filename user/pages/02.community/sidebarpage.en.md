@@ -17,5 +17,4 @@ with one of the buttons above.
 - Meditation Group in Neuenburg, Baden. Managed by Henry.
 
 #### United-States
-- Meditation Group in Brooklyn, New York. Managed by Ric.
 - Meditation Group in Chico, California. Managed by Mike.
