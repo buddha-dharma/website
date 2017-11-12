@@ -21,3 +21,7 @@ If you want to join a group or you want to found a new group in your area please
 #### United-States
 
 - Meditation Group in Chico, California. Managed by Mike.
+
+#### Canada
+
+- Meditation Group in Vernon, British Columbia. Managed by Ken.
