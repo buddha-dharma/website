@@ -18,3 +18,6 @@ with one of the buttons above.
 
 #### United-States
 - Meditation Group in Chico, California. Managed by Mike.
+
+#### Canada
+- Meditation Group in Vernon, British Columbia. Managed by Ken.
