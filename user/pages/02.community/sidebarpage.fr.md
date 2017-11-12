@@ -24,4 +24,6 @@ Si vous souhaitez vous joindre à un groupe ou fonder un nouveau groupe dans vot
 
 #### Canada
 
-- Meditation Group in Vernon, British Columbia. Managed by Ken.
+- Meditation Group in Vernon, British Columbia. Managed by Ken. <iframe width="100%" height="300px" frameborder="0" src="https://umap.openstreetmap.fr/en/map/open-sanghas_179302?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=false&allowEdit=false&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=undefined&captionBar=false" mark="crwd-mark"></iframe> 
+
+[Open map in new tab](https://umap.openstreetmap.fr/en/map/open-sanghas_179302)
