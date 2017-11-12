@@ -21,3 +21,7 @@ Si vous souhaitez vous joindre à un groupe ou fonder un nouveau groupe dans vot
 #### États-Unis
 
 - Meditation Group in Chico, California. Managed by Mike.
+
+#### Canada
+
+- Meditation Group in Vernon, British Columbia. Managed by Ken.
