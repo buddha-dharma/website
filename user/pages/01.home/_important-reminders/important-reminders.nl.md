@@ -1,5 +1,5 @@
 ---
-title: Important Reminders
-published: true
+title: Belangrijke opmerkingen
+published: ja
 ---
-* This website is open source. Help us improve it on github.
+* Deze website is open source. Help ons de site te verbeteren op github.
