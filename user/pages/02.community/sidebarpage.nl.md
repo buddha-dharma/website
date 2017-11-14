@@ -14,16 +14,16 @@ Dit is een lijst van groepen die akkoord gaat met onze [gedragscode](../code/). 
 
 Als u wilt deelnemen aan een groep of als u een nieuwe groep wilt oprichten in uw eigen omgeving, doe dan mee aan het gesprek met behulp van een van de knoppen hierboven.
 
-#### Germany
+#### Duitsland
 
-- Meditation Group in Neuenburg, Baden. Managed by Henry.
+- Meditatie groep in Neuenburg, Baden. Beheerd door Henry.
 
-#### United-States
+#### Verenigde Staten
 
-- Meditation Group in Chico, California. Managed by Mike.
+- Meditatie groep in Chico, Californië. Beheerd door Mike.
 
 #### Canada
 
-- Meditation Group in Vernon, British Columbia. Managed by Ken. <iframe width="100%" height="300px" frameborder="0" src="https://umap.openstreetmap.fr/en/map/open-sanghas_179302?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=false&allowEdit=false&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=undefined&captionBar=false" mark="crwd-mark"></iframe> 
+- Meditatie groep in Vernon, Brits-Columbia. Beheerd door Ken. <iframe width="100%" height="300px" frameborder="0" src="https://umap.openstreetmap.fr/en/map/open-sanghas_179302?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=false&allowEdit=false&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=undefined&captionBar=false" mark="crwd-mark"></iframe> 
 
-[Open map in new tab](https://umap.openstreetmap.fr/en/map/open-sanghas_179302)
+[Open link in een nieuw tabblad](https://umap.openstreetmap.fr/en/map/open-sanghas_179302)
