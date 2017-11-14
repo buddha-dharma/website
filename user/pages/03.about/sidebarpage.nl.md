@@ -4,6 +4,6 @@ Bezoek de [github contributions page](https://github.com/buddha-dharma/micro-sit
 
 Onze Open Sanghas zijn onafhankelijk en stemmen erin toe te werken onder onze [gedragscode](../code/).
 
-### Credit
+### bronvermelding
 
-Header Image by Frida Aguilar Estrada
+Plaatje header door Frida Aguilar Estrada
