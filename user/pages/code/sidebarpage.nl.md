@@ -1,13 +1,13 @@
 ---
-title: Code of Conduct
+title: Gedragscode
 ---
-This is a code of conduct for Open Sangha groups.
+Dit is een gedragscode voor Open Sangha groepen.
 
-- It has to be pointed out to members of an Open Sangha that this code of conduct exists and it must be made available to them.
+- Leden van een Open Sangha moeten erop gewezen worden dat deze gedragscode bestaat en de gedragscode moet aan hen ter beschikking gesteld worden.
 
-#### Open Nature
+#### Open karakter
 
-- There is no central leadership behind the project and the website. All of the material is Open Source and can be changed by everyone and everyone is allowed to make suggestions. If you disagree with any of the content and you feel treated unfairly in your suggestions you can publish your own version of it and create a new project. We just ask you to choose another name as to not missrepresent our group.
+- Er is geen centrale leiding achter het project en de website. Al het materiaal is open source en kan door iedereen worden veranderd. Het is iedereen toegestaan om suggesties te doen. If you disagree with any of the content and you feel treated unfairly in your suggestions you can publish your own version of it and create a new project. We just ask you to choose another name as to not missrepresent our group.
 - Open Sanghas are free. None of the services an Open Sangha provides is tied to a fee or donation.
 - Open Sanghas don't focus on one single teacher and his books.
 - Open Sanghas welcome criticism from outside and take it seriously.
