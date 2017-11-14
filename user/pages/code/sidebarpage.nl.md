@@ -7,15 +7,15 @@ Dit is een gedragscode voor Open Sangha groepen.
 
 #### Open karakter
 
-- Er is geen centrale leiding achter het project en de website. Al het materiaal is open source en kan door iedereen worden veranderd. Het is iedereen toegestaan om suggesties te doen. If you disagree with any of the content and you feel treated unfairly in your suggestions you can publish your own version of it and create a new project. We just ask you to choose another name as to not missrepresent our group.
-- Open Sanghas are free. None of the services an Open Sangha provides is tied to a fee or donation.
-- Open Sanghas don't focus on one single teacher and his books.
-- Open Sanghas welcome criticism from outside and take it seriously.
+- Er is geen centrale leiding achter het project en de website. Al het materiaal is open source en kan door iedereen worden veranderd. Het is iedereen toegestaan om suggesties te doen. Als u niet akkoord met de inhoud gaat en u vindt dat uw suggesties oneerlijk behandeld worden, dan kunt u uw eigen versie van de gedragscode publiceren en een nieuw project starten. Wij vragen u alleen dan een andere naam te kiezen om zo onze groep niet te blijven vertegenwoordigen.
+- Open Sangha's zijn gratis. Geen van de diensten die een Open Sangha aanbiedt is gebonden aan een vergoeding of donatie.
+- Open Sangha's richten zich niet op één enkele leraar en zijn boeken.
+- Open Sangha's verwelkomen kritiek van buiten en nemen die serieus.
 
-#### Goals
+#### Doelstellingen
 
-- The goal of an Open Sangha is to make you feel better and empower you as a human being. If the oposite happens then try another group or practicing on your own for a while and contemplate about the reasons.
-- Open Sanghas are not quality controlled we depend on the members of a group to report if a group does not agree with this code of conduct. If a group does not feel right, there is nothing wrong with founding your own group even in the same city.
+- Het doel van een Open Sangha is ervoor te zorgen dat u zich beter voelt en u als mens verder te brengen. Als het omgekeerde gebeurt, probeer dan een andere groep of oefen een tijdje voor uzelf. Bedenk wat de redenen zijn geweest.
+- Open Sangha's worden niet op kwaliteit gecontroleerd. Wij zijn afhankelijk van de leden van een groep voor meldingen dat een bepaalde groep het niet eens is met deze gedragscode of zich hier niet aan houdt. Als een groep voor u niet goed voelt, dan is er niets mis met de oprichting van uw eigen groep, zelfs in dezelfde stad of omgeving.
 - The main goal of an Open Sangha is to practice together and to talk about meditation experience.
 - An optional goal is to advertise the group and help people that are too far away to found and advertise their own group.
 
