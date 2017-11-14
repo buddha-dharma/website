@@ -1,8 +1,8 @@
 Deze website is een open source project op github.
 
-Check [the github contributions page](https://github.com/buddha-dharma/micro-site/graphs/contributors) to see the contributors to this website.
+Bezoek de [github contributions page](https://github.com/buddha-dharma/micro-site/graphs/contributors) om te zien wij bijdraagt aan deze website.
 
-Our Open Sanghas are independent and agree to operate under our [code of conduct](../code/).
+Onze Open Sanghas zijn onafhankelijk en stemmen erin toe te werken onder onze [gedragscode](../code/).
 
 ### Credit
 
