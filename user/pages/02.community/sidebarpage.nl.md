@@ -1,18 +1,18 @@
 * * *
 
-title: Open Sangha
+titel: Open Sangha
 
 * * *
 
-Connect with other practicioners directly. Use this discussion to share your experience with fellow open sangha members and to connect to groups.
+Kom direct in contact met andere beoefenaars. Gebruik dit forum om ervaringen te delen met andere leden van open sangha en om lid te worden van groepen.
 
-[Discussion](https://discord.gg/Tyqd22a?classes=btn,btn-primary) [Talk on Reddit](https://www.reddit.com/r/OpenBuddhaDharma/?classes=btn,btn-primary)
+[Discussie](https://discord.gg/Tyqd22a?classes=btn,btn-primary) [Praten op Reddit](https://www.reddit.com/r/OpenBuddhaDharma/?classes=btn,btn-primary)
 
-### Groups
+### Groepen
 
-This is a list of groups that agree to our [code of conduct](../code/). Please report if groups are missing or don't meet our quality standards.
+Dit is een lijst van groepen die akkoord gaat met onze [gedragscode](../code/). Meldt het als groepen ontbreken op de lijst of als groepen niet voldoen aan onze kwaliteitsnormen.
 
-If you want to join a group or you want to found a new group in your area please join the discussion with one of the buttons above.
+Als u wilt deelnemen aan een groep of als u een nieuwe groep wilt oprichten in uw eigen omgeving, doe dan mee aan het gesprek met behulp van een van de knoppen hierboven.
 
 #### Germany
 
