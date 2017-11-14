@@ -3,9 +3,9 @@ title: Wat is Open Sangha
 date: 26-10-2017
 header_image: 0
 icon: lightbulb-o
-hidefrompostlist: false
-continue_link: false
+hidefrompostlist: nee
+continue_link: nee
 ---
-Open Sangha acknowledges the fact that in some places good teachers are hard to come by and the dharma comes with a price tag or other strings attached. Buddha-Dharma wants to empower individuals on their path and help them connect so that they can practice together.
+Open Sangha onderkent dat het op sommige plekken moeilijk is om goede leraren te vinden en dat soms aan de dharma een prijskaartje zit of andere addertjes onder het gras. Boeddha-Dharma wil mensen sterker maken op hun pad en hen helpen in contact te komen met elkaar zodat zij samen kunnen oefenen.
 
-[Join Open Sangha](/community)
+[Wordt lid van Open Sangha](/community)
