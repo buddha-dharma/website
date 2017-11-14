@@ -16,12 +16,12 @@ Dit is een gedragscode voor Open Sangha groepen.
 
 - Het doel van een Open Sangha is ervoor te zorgen dat u zich beter voelt en u als mens verder te brengen. Als het omgekeerde gebeurt, probeer dan een andere groep of oefen een tijdje voor uzelf. Bedenk wat de redenen zijn geweest.
 - Open Sangha's worden niet op kwaliteit gecontroleerd. Wij zijn afhankelijk van de leden van een groep voor meldingen dat een bepaalde groep het niet eens is met deze gedragscode of zich hier niet aan houdt. Als een groep voor u niet goed voelt, dan is er niets mis met de oprichting van uw eigen groep, zelfs in dezelfde stad of omgeving.
-- The main goal of an Open Sangha is to practice together and to talk about meditation experience.
-- An optional goal is to advertise the group and help people that are too far away to found and advertise their own group.
+- Het hoofddoel van een Open Sangha is samen oefenen en praten over meditatie-ervaringen.
+- Een mogelijk extra doel is de groep meer bekend te maken en mensen die te ver weg wonen te helpen hun eigen groep op te richten en bekend te maken.
 
-#### No Teachers and Leadership
+#### Geen leraren of leiderschap
 
-- Usually there are no teachers in an Open Sangha. Lay people will give basic instructions for very simple exercises. Members are encouraged to use our [list of resources](https://github.com/buddha-dharma/buddhism) to find instructions by real teachers to intesify and correct what they have learned. All the material that can be found on the website is written by lay people and not reviewed by a monastic, teacher or master.
-- Open Sanghas are organized by a maintainer, nobody leads or owns the group.
-- The maintainers job is to keep the group together and keep it focused on the main goal.
+- Meestal zijn er geen leraren in een Open Sangha. Leken zullen basisinstructies geven voor zeer eenvoudige oefeningen. Leden worden aangemoedigd om onze [lijst met hulpbronnen](https://github.com/buddha-dharma/buddhism) te gebruiken om te zoeken naar onderricht door echte leraren, om zo wat ze geleerd hebben te verdiepen en zo nodig bij te sturen. Al het materiaal op de website is geschreven door leken en niet beoordeeld door een monnik of non, een leraar of een meester.
+- Open Sangha's zijn georganiseerd door een coördinator maar niemand leidt of is eigenaar van de groep.
+- De taak van de coördinator is om de groep bijeen te houden en gericht te houden op de hoofddoelen.
 - In order to emphasize that nobody leads the group Open Sanghas can meet at different members homes.
