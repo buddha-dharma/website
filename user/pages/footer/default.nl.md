@@ -1,6 +1,6 @@
 ---
-title: Footer
-routable: false
-visible: false
+title: Voetregel
+routable: nee
+visible: nee
 ---
-Built with [Grav CMS](http://getgrav.org) Course Hub package by [hibbittsdesign.org](http://hibbittsdesign.org)
+Gebouwd met [Grav CMS](http://getgrav.org) Course Hub package door [ hibbittsdesign.org](http://hibbittsdesign.org)
