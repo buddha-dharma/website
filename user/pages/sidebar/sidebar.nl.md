@@ -1,7 +1,7 @@
 ---
 title: Zijbalk
-published: nee
-routable: nee
+published: false
+routable: false
 ---
 ##### Over Boeddha-Dharma
 
