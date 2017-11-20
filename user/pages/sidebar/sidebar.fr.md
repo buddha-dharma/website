@@ -11,7 +11,7 @@ Si vous êtes développeur, vous pouvez nous aider à améliorer ce site Web, [v
 
 ##### Autres langues
 
-<a href="/de">Deutsch</a>, <a href="/fr">Français</a>
+<a href="/de">Deutsch</a>, <a href="/fr">Français</a>, <a href="/nl">Nederlands</a>
 
 ##### Twitter
 
