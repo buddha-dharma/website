@@ -10,4 +10,4 @@ Le Bouddha n'est pas une dieu tout-puissant et immortelle qui règne et surveill
 
 Le bouddhisme est une voie qui nous aide à reconnaître notre propre souffrance, ainsi qu'un moyen d'en sortir.
 
-Le bouddhisme ne demande pas qu'on ait un esprit particulièrement ésotérique, ni que l'on croit aux miracles. A very important aspect of the practice is direct experience and instead of having to blindly accept a dogmatic message you are encouraged to experience and investigate much like the scientific method.
+Le bouddhisme ne demande pas qu'on ait un esprit particulièrement ésotérique, ni que l'on croit aux miracles. Un aspect très important de la pratique est l'expérience directe, et au lieu de devoir accepter aveuglément un message dogmatique, vous êtes encouragé à découvrir et à étudier, d'une manière qui s'apparente à la méthode scientifique.
