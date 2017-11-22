@@ -20,10 +20,10 @@ Si vous souhaitez vous joindre à un groupe ou fonder un nouveau groupe dans vot
 
 #### États-Unis
 
-- Meditation Group in Chico, California. Managed by Mike.
+- Groupe de méditation à Chico, en Californie. Géré par Mike.
 
 #### Canada
 
-- Meditation Group in Vernon, British Columbia. Managed by Ken. <iframe width="100%" height="300px" frameborder="0" src="https://umap.openstreetmap.fr/en/map/open-sanghas_179302?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=false&allowEdit=false&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=undefined&captionBar=false" mark="crwd-mark"></iframe> 
+- Groupe de méditation à Vernon, en Colombie-Britannique. Géré par Ken. <iframe width="100%" height="300px" frameborder="0" src="https://umap.openstreetmap.fr/en/map/open-sanghas_179302?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=false&allowEdit=false&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=undefined&captionBar=false" mark="crwd-mark"></iframe> 
 
-[Open map in new tab](https://umap.openstreetmap.fr/en/map/open-sanghas_179302)
+[Ouvrir la carte dans un nouvel onglet](https://umap.openstreetmap.fr/en/map/open-sanghas_179302)
