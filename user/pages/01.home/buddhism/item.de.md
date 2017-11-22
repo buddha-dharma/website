@@ -6,7 +6,7 @@ icon: lightbulb-o
 hidefrompostlist: false
 continue_link: false
 ---
-The Buddha is no almighty, immortal deity that reigns and watches over humans. The Buddha was a human beeing who had a deep insight into the nature of our discomfort and the nature of the universe.
+Der Buddha ist keine allmächtige, unsterbliche Gottheit die über Menschen herrscht und wacht. Der Buddha war ein Mensch der tiefe Einsichten in die Natur unseres Unbehangens und des Universums hatte.
 
 Buddhism is a path that helps us recognize our own suffering and a way out of the suffering.
 
