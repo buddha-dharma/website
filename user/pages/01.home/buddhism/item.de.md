@@ -1,5 +1,5 @@
 ---
-title: Why Buddhism
+title: Warum Buddhismus
 date: 10/30/2017
 header_image: 0
 icon: lightbulb-o
