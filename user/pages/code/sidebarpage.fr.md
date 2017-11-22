@@ -1,11 +1,11 @@
 ---
 title: Code de conduite
 ---
-This is a code of conduct for Open Sangha groups.
+Ceci est un code de conduite pour les groupes Open Sangha.
 
-- It has to be pointed out to members of an Open Sangha that this code of conduct exists and it must be made available to them.
+- Il doit être signalé aux membre d'un Open Sangha que ce code de conduite existe et il doit être mis à leur disposition.
 
-#### Open Nature
+#### L'aspect "open"
 
 - There is no central leadership behind the project and the website. All of the material is Open Source and can be changed by everyone and everyone is allowed to make suggestions. If you disagree with any of the content and you feel treated unfairly in your suggestions you can publish your own version of it and create a new project. We just ask you to choose another name as to not missrepresent our group.
 - Open Sanghas are free. None of the services an Open Sangha provides is tied to a fee or donation.
