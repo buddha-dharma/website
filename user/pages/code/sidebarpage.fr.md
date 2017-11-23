@@ -21,7 +21,7 @@ Ceci est un code de conduite pour les groupes Open Sangha.
 
 #### Pas d'enseignants ni de direction centrale
 
-- Habituellement, il n'y a pas d'enseignants dans un Open Sangha. Les membres donnerons des instructions de base pour de très simples exercices. Members are encouraged to use our [list of resources](https://github.com/buddha-dharma/buddhism) to find instructions by real teachers to intesify and correct what they have learned. All the material that can be found on the website is written by lay people and not reviewed by a monastic, teacher or master.
-- Open Sanghas are organized by a maintainer, nobody leads or owns the group.
+- Habituellement, il n'y a pas d'enseignants dans un Open Sangha. Les membres donnerons des instructions de base pour de très simples exercices. Les membres sont encouragés à utiliser notre [ liste de ressources](https://github.com/buddha-dharma/buddhism), pour y trouver des instructions de vrais enseignants, afin d'approfondir et corriger ce qu'ils ont appris. Tout le contenu qui se trouve sur le site Web est écrit par des amateurs laïcs et n'a été passé en revue par aucun moine, enseignant, ou maître.
+- Les Open Sanghas sont organisés par un responsable. Personne ne dirige ce groupe ni en est propriétaire.
 - The maintainers job is to keep the group together and keep it focused on the main goal.
 - In order to emphasize that nobody leads the group Open Sanghas can meet at different members homes.
