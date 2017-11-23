@@ -15,8 +15,8 @@ Ceci est un code de conduite pour les groupes Open Sangha.
 #### Objectifs
 
 - L'objectif d'un Open Sangha, c'est de vous faire vous sentir mieux et de vous capabiliser en tant qu'être humain. Si l'inverse se produit, essayez alors un autre groupe, ou pratiquez par vous-même pendant un certain temps pour en contempler les raisons.
-- Open Sanghas are not quality controlled we depend on the members of a group to report if a group does not agree with this code of conduct. If a group does not feel right, there is nothing wrong with founding your own group even in the same city.
-- The main goal of an Open Sangha is to practice together and to talk about meditation experience.
+- Les Open Sanghas n'ont pas de contrôle de qualité externe. C'est donc aux membre d'un groupe de signaler si celui-ci ne se tient pas au code conduite. Si un groupe vous rend mal-à-l'aise, il n'y a aucun mal à créer votre propre groupe, même dans une même ville.
+- L'objectif principal d'un Open Sangha est de pratiquer ensemble et de discuter de nos expériences de la méditation.
 - An optional goal is to advertise the group and help people that are too far away to found and advertise their own group.
 
 #### No Teachers and Leadership
