@@ -23,5 +23,5 @@ Ceci est un code de conduite pour les groupes Open Sangha.
 
 - Habituellement, il n'y a pas d'enseignants dans un Open Sangha. Les membres donnerons des instructions de base pour de très simples exercices. Les membres sont encouragés à utiliser notre [ liste de ressources](https://github.com/buddha-dharma/buddhism), pour y trouver des instructions de vrais enseignants, afin d'approfondir et corriger ce qu'ils ont appris. Tout le contenu qui se trouve sur le site Web est écrit par des amateurs laïcs et n'a été passé en revue par aucun moine, enseignant, ou maître.
 - Les Open Sanghas sont organisés par un responsable. Personne ne dirige ce groupe ni en est propriétaire.
-- The maintainers job is to keep the group together and keep it focused on the main goal.
-- In order to emphasize that nobody leads the group Open Sanghas can meet at different members homes.
+- Le rôle du responsable est de promouvoir l'unité du groupe et de le garder axé sur l'objectif principal.
+- Afin de souligner le fait que personne ne dirige le groupe, un Open Sangha peut alterner les points de rencontre entre les domiciles des différents membres.
