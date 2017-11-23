@@ -8,13 +8,13 @@ Ceci est un code de conduite pour les groupes Open Sangha.
 #### L'aspect "open"
 
 - Il n'y a pas de leadership central derrière ce projet et ce site Web. Tout le contenu est Open Source et peut être modifié par tout le monde, et tout le monde a le droit de faire des suggestions. Si vous êtes en désaccord avec un certain aspect du contenu, vous vous sentez traité injustement par rapport à vos suggestions, vous pouvez en publier votre propre version et créer un nouveau projet. Nous vous demandons simplement de choisir un nom différent, afin de ne pas faussement représenter notre groupe.
-- Open Sanghas are free. None of the services an Open Sangha provides is tied to a fee or donation.
-- Open Sanghas don't focus on one single teacher and his books.
-- Open Sanghas welcome criticism from outside and take it seriously.
+- Les Open Sanghas sont gratuits. Aucun des services qu'offre un Open Sangha ne sont rattachés à des frais ou dons.
+- Les Open Sanghas ne se concentrent pas sur un enseignant particulier ou ses livres.
+- Les Open Sanghas acceuillent la critique externe et la prennent au sérieux.
 
-#### Goals
+#### Objectifs
 
-- The goal of an Open Sangha is to make you feel better and empower you as a human being. If the oposite happens then try another group or practicing on your own for a while and contemplate about the reasons.
+- L'objectif d'un Open Sangha, c'est de vous faire vous sentir mieux et de vous capabiliser en tant qu'être humain. Si l'inverse se produit, essayez alors un autre groupe, ou pratiquez par vous-même pendant un certain temps pour en contempler les raisons.
 - Open Sanghas are not quality controlled we depend on the members of a group to report if a group does not agree with this code of conduct. If a group does not feel right, there is nothing wrong with founding your own group even in the same city.
 - The main goal of an Open Sangha is to practice together and to talk about meditation experience.
 - An optional goal is to advertise the group and help people that are too far away to found and advertise their own group.
