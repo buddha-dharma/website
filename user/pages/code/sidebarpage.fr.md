@@ -7,7 +7,7 @@ Ceci est un code de conduite pour les groupes Open Sangha.
 
 #### L'aspect "open"
 
-- Il n'y a pas de leadership central derrière ce projet et ce site Web. Tout le contenu est Open Source et peut être modifié par tout le monde, et tout le monde a le droit de faire des suggestions. Si vous êtes en désaccord avec un certain aspect du contenu, vous vous sentez traité injustement par rapport à vos suggestions, vous pouvez en publier votre propre version et créer un nouveau projet. We just ask you to choose another name as to not missrepresent our group.
+- Il n'y a pas de leadership central derrière ce projet et ce site Web. Tout le contenu est Open Source et peut être modifié par tout le monde, et tout le monde a le droit de faire des suggestions. Si vous êtes en désaccord avec un certain aspect du contenu, vous vous sentez traité injustement par rapport à vos suggestions, vous pouvez en publier votre propre version et créer un nouveau projet. Nous vous demandons simplement de choisir un nom différent, afin de ne pas faussement représenter notre groupe.
 - Open Sanghas are free. None of the services an Open Sangha provides is tied to a fee or donation.
 - Open Sanghas don't focus on one single teacher and his books.
 - Open Sanghas welcome criticism from outside and take it seriously.
