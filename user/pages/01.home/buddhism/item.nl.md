@@ -1,6 +1,6 @@
 ---
 title: Waarom Boeddhisme
-date: 30-10-2017
+date: 10/30/2017
 header_image: 0
 icon: lightbulb-o
 hidefrompostlist: false
