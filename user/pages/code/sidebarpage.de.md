@@ -1,5 +1,5 @@
 ---
-title: Code of Conduct
+title: Verhaltensgrundsätze
 ---
 This is a code of conduct for Open Sangha groups.
 
