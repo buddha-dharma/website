@@ -3,7 +3,7 @@ title: Verhaltensgrundsätze
 ---
 Das sind Verhaltensgrundsätze für Open-Sangha-Gruppen.
 
-- It has to be pointed out to members of an Open Sangha that this code of conduct exists and it must be made available to them.
+- Mitglieder der Gruppe müssen über die Existenz dieser Verhaltensgrundsätze unterrichtet werden und das Dokument muss ihnen zugänglich gemacht werden.
 
 #### Open Nature
 
