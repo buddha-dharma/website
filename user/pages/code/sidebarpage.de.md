@@ -12,7 +12,7 @@ Das sind Verhaltensgrundsätze für Open-Sangha-Gruppen.
 - Open Sanghas don't focus on one single teacher and his books.
 - Open Sanghas welcome criticism from outside and take it seriously.
 
-#### Goals
+#### Ziele
 
 - The goal of an Open Sangha is to make you feel better and empower you as a human being. If the oposite happens then try another group or practicing on your own for a while and contemplate about the reasons.
 - Open Sanghas are not quality controlled we depend on the members of a group to report if a group does not agree with this code of conduct. If a group does not feel right, there is nothing wrong with founding your own group even in the same city.
