@@ -24,12 +24,14 @@ Als u wilt deelnemen aan een groep of als u een nieuwe groep wilt oprichten in u
 
 #### Canada
 
-- Meditatie groep in Vernon, Brits-Columbia. Beheerd door Ken. <iframe width="100%" height="300px" frameborder="0" src="https://umap.openstreetmap.fr/en/map/open-sanghas_179302?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=false&allowEdit=false&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=undefined&captionBar=false" mark="crwd-mark"></iframe> 
+- Meditatie groep in Vernon, Brits-Columbia. Beheerd door Ken.
 
-[Open link in een nieuw tabblad](https://umap.openstreetmap.fr/en/map/open-sanghas_179302)
+<p>
+<iframe width="100%" height="300px" frameborder="0" src="https://umap.openstreetmap.fr/en/map/open-sanghas_179302?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=false&allowEdit=false&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=undefined&captionBar=false" mark="crwd-mark"></iframe><p><a href="https://umap.openstreetmap.fr/en/map/open-sanghas_179302">Open map in new tab</a></p>
+</p>
 
 ### Other Groups
 
-These are not open sanghas
+These are not open sanghas so they are not bound by the [code of conduct](../code/).
 
 - [Find Groups in Thich Nhat Hanhs tradition](https://plumvillage.org/about/international-sangha-directory/)
