@@ -24,12 +24,14 @@ If you want to join a group or you want to found a new group in your area please
 
 #### Canada
 
-- Meditation Group in Vernon, British Columbia. Managed by Ken. <iframe width="100%" height="300px" frameborder="0" src="https://umap.openstreetmap.fr/en/map/open-sanghas_179302?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=false&allowEdit=false&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=undefined&captionBar=false" mark="crwd-mark"></iframe> 
+- Meditation Group in Vernon, British Columbia. Managed by Ken.
 
-[Open map in new tab](https://umap.openstreetmap.fr/en/map/open-sanghas_179302)
+<p>
+<iframe width="100%" height="300px" frameborder="0" src="https://umap.openstreetmap.fr/en/map/open-sanghas_179302?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=false&allowEdit=false&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=undefined&captionBar=false" mark="crwd-mark"></iframe><p><a href="https://umap.openstreetmap.fr/en/map/open-sanghas_179302">Open map in new tab</a></p>
+</p>
 
 ### Other Groups
 
-These are not open sanghas
+These are not open sanghas so they are not bound by the [code of conduct](../code/).
 
 - [Find Groups in Thich Nhat Hanhs tradition](https://plumvillage.org/about/international-sangha-directory/)
