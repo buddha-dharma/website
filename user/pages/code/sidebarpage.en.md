@@ -18,7 +18,7 @@ This is a code of conduct for Open Sangha groups.
 - An optional goal is to advertise the group and help people that are too far away to found and advertise their own group.
 
 #### No Teachers and Leadership
-- Usually there are no teachers in an Open Sangha. Lay people will give basic instructions for very simple exercises. Members are encouraged to use our [list of resources](https://github.com/buddha-dharma/buddhism) to find instructions by real teachers to intesify and correct what they have learned. All the material that can be found on the website is written by lay people and not reviewed by a monastic, teacher or master.
+- Usually there are no teachers in an Open Sangha. Lay people will give basic instructions for very simple exercises. Members are encouraged to use our [list of resources](https://github.com/buddha-dharma/buddhism) to find instructions by real teachers to intensify and correct what they have learned. All the material that can be found on the website is written by lay people and not reviewed by a monastic, teacher or master.
 - Open Sanghas are organized by a maintainer, nobody leads or owns the group.
 - The maintainers job is to keep the group together and keep it focused on the main goal.
 - In order to emphasize that nobody leads the group Open Sanghas can meet at different members homes.
