@@ -1,5 +1,5 @@
 ---
-title: Este site é de código aberto. Ajude-nos a melhora-lo no github
+title: 'Informações importantes'
 published: true
 ---
-* This website is open source. Help us improve it on github.
+* Este site é de código aberto. Ajude-nos a melhora-lo no github.
