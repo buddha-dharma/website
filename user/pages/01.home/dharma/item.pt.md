@@ -1,13 +1,13 @@
 ---
-title: What is Open Dharma
+title: O que é o Open Dharma
 date: 10/25/2017
 header_image: 0
 icon: lightbulb-o
 hidefrompostlist: false
 continue_link: false
 ---
-Open Dharma is an initiative to connect practicioners with teachers through a curated list of free and open resources that can be found [here](https://github.com/buddha-dharma/buddhism).
+Open Dharma é uma iniciativa para conectar participantes com professores através de de listas de conteúdo gratuito que pode ser encontrado [aqui](https://github.com/buddha-dharma/buddhism).
 
-It contains free books, lectures, courses, videos and articles and is open source so everyone can contribute.
+Contem livro gratuitos, aulas, cursos, videos e artigos e é open source por isso toda a gente pode contribuir.
 
-[Explore Open Dharma](https://github.com/buddha-dharma/buddhism)
+[Explora o Open Dharma](https://github.com/buddha-dharma/buddhism)
