@@ -10,4 +10,4 @@ O Buda não era uma entidade divina toda poderosa e imortal que reinava e olhava
 
 Budismo é o caminho que nos ajuda a reconhecer o nosso próprio sofrimento e o caminho para nos livrármo-nos dele.
 
-Buddhism does not require an especially esoteric mind or believe in miracles. A very important aspect of the practice is direct experience and instead of having to blindly accept a dogmatic message you are encouraged to experience and investigate much like the scientific method.
+O budismo não requisita que acredites em coisas sobrenaturais ou em milagres. Um aspeto bastante importante da pratica é experiência direta ao invés de aceitar cegamente uma mensagem religiosa, tu es incentivado a experienciar e investigar, como um método cientifico.
