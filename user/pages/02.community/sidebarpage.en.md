@@ -5,7 +5,7 @@ title: Open Sangha
 Connect with other practicioners directly. Use this discussion to share your experience
 with fellow open sangha members and to connect to groups.
 
-[Chat about Meditation](https://kiwiirc.com/client/irc.freenode.net/?nick=meditator|?##meditation&classes=btn,btn-primary)
+[Chat about Meditation](https://kiwiirc.com/client/irc.freenode.net/?nick=meditator|?##meditation?classes=btn,btn-primary)
 [Talk on Reddit](https://www.reddit.com/r/OpenBuddhaDharma/?classes=btn,btn-primary)
 ### Groups
 This is a list of groups that agree to our [code of conduct](../code/).
