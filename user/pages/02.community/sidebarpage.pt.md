@@ -1,14 +1,14 @@
 * * *
 
-title: Open Sangha
+titulo: Open sangha
 
 * * *
 
-Connect with other practicioners directly. Use this discussion to share your experience with fellow open sangha members and to connect to groups.
+Conecta-te com outros participantes directamente. utiliza esta discussão para partilhar a tua experiência com os teus amigos do Open sangha e para conectar para grupos.
 
-[Discussion](https://discord.gg/Tyqd22a?classes=btn,btn-primary) [Talk on Reddit](https://www.reddit.com/r/OpenBuddhaDharma/?classes=btn,btn-primary)
+[discute](https://discord.gg/Tyqd22a?classes=btn,btn-primary) [no Reddit](https://www.reddit.com/r/OpenBuddhaDharma/?classes=btn,btn-primary)
 
-### Groups
+### Grupos
 
 This is a list of groups that agree to our [code of conduct](../code/). Please report if groups are missing or don't meet our quality standards.
 
