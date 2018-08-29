@@ -1,12 +1,12 @@
 * * *
 
-\--- title: Gemeinschaft slug: gemeinschaft \---
+title: Community
 
 * * *
 
 Unterhalte dich mit anderen Praktizierenden und teile deine Erfahrungen mit anderen Open-Sangha-Mitgliedern.
 
-[Discussion](https://discord.gg/Tyqd22a?classes=btn,btn-primary) [Talk on Reddit](https://www.reddit.com/r/OpenBuddhaDharma/?classes=btn,btn-primary)
+[Talk on Discord](https://discord.gg/Tyqd22a?classes=btn,btn-primary) [Talk on Reddit](https://www.reddit.com/r/OpenBuddhaDharma/?classes=btn,btn-primary)
 
 ### Groups
 
