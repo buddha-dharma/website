@@ -1,12 +1,12 @@
 * * *
 
-titulo: Open sangha
+title: Community
 
 * * *
 
 Conecta-te com outros participantes directamente. utiliza esta discussão para partilhar a tua experiência com os teus amigos do Open sangha e para conectar para grupos.
 
-[discute](https://discord.gg/Tyqd22a?classes=btn,btn-primary) [no Reddit](https://www.reddit.com/r/OpenBuddhaDharma/?classes=btn,btn-primary)
+[Talk on Discord](https://discord.gg/Tyqd22a?classes=btn,btn-primary) [Talk on Reddit](https://www.reddit.com/r/OpenBuddhaDharma/?classes=btn,btn-primary)
 
 ### Grupos
 
