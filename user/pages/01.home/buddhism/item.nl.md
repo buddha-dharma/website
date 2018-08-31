@@ -6,7 +6,7 @@ icon: lightbulb-o
 hidefrompostlist: false
 continue_link: false
 ---
-De Boeddha is geen almachtige, onsterfelijke god die heerst en waakt over de mensen. De Boeddha was een mens die een diep inzicht had in het karakter van ons ongerief en de natuur van het universum.
+The Buddha is no almighty, immortal deity that reigns and watches over humans. The Buddha was a human being who had a deep insight into the nature of our discomfort and the nature of the universe.
 
 Het boeddhisme is een weg die ons helpt ons eigen lijden te herkennen en een uitweg uit het lijden.
 
