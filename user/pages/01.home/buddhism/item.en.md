@@ -7,7 +7,7 @@ hidefrompostlist: false
 continue_link: false
 ---
 The Buddha is no almighty, immortal deity that reigns and watches over humans.
-The Buddha was a human beeing who had a deep insight into the nature of our discomfort and the 
+The Buddha was a human being who had a deep insight into the nature of our discomfort and the 
 nature of the universe.
 
 Buddhism is a path that helps us recognize our own suffering and a way out of the suffering.
