@@ -6,7 +6,7 @@ icon: lightbulb-o
 hidefrompostlist: false
 continue_link: false
 ---
-O Buda não era uma entidade divina toda poderosa e imortal que reinava e olhava sobre os humanos. O Buda foi um ser humano que tinha grandes conhecimentos sobre a natureza do nosso desconforto e da natureza do universo.
+The Buddha is no almighty, immortal deity that reigns and watches over humans. The Buddha was a human being who had a deep insight into the nature of our discomfort and the nature of the universe.
 
 Budismo é o caminho que nos ajuda a reconhecer o nosso próprio sofrimento e o caminho para nos livrármo-nos dele.
 
