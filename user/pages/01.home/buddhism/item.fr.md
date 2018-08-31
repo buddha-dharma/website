@@ -6,7 +6,7 @@ icon: lightbulb-o
 hidefrompostlist: false
 continue_link: false
 ---
-Le Bouddha n'est pas une dieu tout-puissant et immortelle qui règne et surveille les humains. Le Bouddha était un être humain qui avait une connaissance profonde de la nature de notre inconfort et de la nature de l'univers.
+The Buddha is no almighty, immortal deity that reigns and watches over humans. The Buddha was a human being who had a deep insight into the nature of our discomfort and the nature of the universe.
 
 Le bouddhisme est une voie qui nous aide à reconnaître notre propre souffrance, ainsi qu'un moyen d'en sortir.
 
