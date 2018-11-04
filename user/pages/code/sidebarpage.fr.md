@@ -7,7 +7,7 @@ Ceci est un code de conduite pour les groupes Open Sangha.
 
 #### L'aspect "open"
 
-- Il n'y a pas de leadership central derrière ce projet et ce site Web. Tout le contenu est Open Source et peut être modifié par tout le monde, et tout le monde a le droit de faire des suggestions. Si vous êtes en désaccord avec un certain aspect du contenu, vous vous sentez traité injustement par rapport à vos suggestions, vous pouvez en publier votre propre version et créer un nouveau projet. Nous vous demandons simplement de choisir un nom différent, afin de ne pas faussement représenter notre groupe.
+- There is no central leadership behind the project and the website. The material is Open Source and suggestions and improvments are welcome. You are encouraged to fork and expand this project.
 - Open Sanghas are free. None of the services an Open Sangha provides are tied to a fee or donation.
 - Les Open Sanghas ne se concentrent pas sur un enseignant particulier ou ses livres.
 - Les Open Sanghas acceuillent la critique externe et la prennent au sérieux.
@@ -15,7 +15,7 @@ Ceci est un code de conduite pour les groupes Open Sangha.
 #### Objectifs
 
 - L'objectif d'un Open Sangha, c'est de vous faire vous sentir mieux et de vous capabiliser en tant qu'être humain. Si l'inverse se produit, essayez alors un autre groupe, ou pratiquez par vous-même pendant un certain temps pour en contempler les raisons.
-- Les Open Sanghas n'ont pas de contrôle de qualité externe. C'est donc aux membre d'un groupe de signaler si celui-ci ne se tient pas au code conduite. Si un groupe vous rend mal-à-l'aise, il n'y a aucun mal à créer votre propre groupe, même dans une même ville.
+- Open Sanghas are not quality controlled. We depend on the members of a group to report if a group does not agree with this code of conduct. If a group does not feel right, there is nothing wrong with founding your own group.
 - L'objectif principal d'un Open Sangha est de pratiquer ensemble et de discuter de nos expériences de la méditation.
 - Un objectif optionnel est de faire de la publicité pour le groupe et d'aider les gens qui sont trop loin des groupes existants à créer et promouvoir leur propre groupe.
 
