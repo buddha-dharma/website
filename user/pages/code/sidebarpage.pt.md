@@ -3,12 +3,12 @@ title: Code of Conduct
 ---
 This is a code of conduct for Open Sangha groups.
 
-- It has to be pointed out to members of an Open Sangha that this code of conduct exists and it must be made available to them.
+- Members of an Open Sangha have to be informed that this code of conduct exists and it must be made available to them.
 
 #### Open Nature
 
 - There is no central leadership behind the project and the website. All of the material is Open Source and can be changed by everyone and everyone is allowed to make suggestions. If you disagree with any of the content and you feel treated unfairly in your suggestions you can publish your own version of it and create a new project. We just ask you to choose another name as to not missrepresent our group.
-- Open Sanghas are free. None of the services an Open Sangha provides is tied to a fee or donation.
+- Open Sanghas are free. None of the services an Open Sangha provides are tied to a fee or donation.
 - Open Sanghas don't focus on one single teacher and his books.
 - Open Sanghas welcome criticism from outside and take it seriously.
 
