@@ -6,14 +6,14 @@ This is a code of conduct for Open Sangha groups.
 - Members of an Open Sangha have to be informed that this code of conduct exists and it must be made available to them.
 
 #### Open Nature
-- There is no central leadership behind the project and the website. All of the material is Open Source and can be changed by everyone and everyone is allowed to make suggestions. If you disagree with any of the content and you feel treated unfairly in your suggestions you can publish your own version of it and create a new project. We just ask you to choose another name as to not missrepresent our group.
+- There is no central leadership behind the project and the website. The material is Open Source and suggestions and improvments are welcome. You are encouraged to fork and expand this project.
 - Open Sanghas are free. None of the services an Open Sangha provides are tied to a fee or donation.
 - Open Sanghas don't focus on one single teacher and his books.
 - Open Sanghas welcome criticism from outside and take it seriously.
 
 #### Goals
 - The goal of an Open Sangha is to make you feel better and empower you as a human being. If the oposite happens then try another group or practicing on your own for a while and contemplate about the reasons.
-- Open Sanghas are not quality controlled we depend on the members of a group to report if a group does not agree with this code of conduct. If a group does not feel right, there is nothing wrong with founding your own group even in the same city.
+- Open Sanghas are not quality controlled. We depend on the members of a group to report if a group does not agree with this code of conduct. If a group does not feel right, there is nothing wrong with founding your own group.
 - The main goal of an Open Sangha is to practice together and to talk about meditation experience.
 - An optional goal is to advertise the group and help people that are too far away to found and advertise their own group.
 
