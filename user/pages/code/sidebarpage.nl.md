@@ -7,7 +7,7 @@ Dit is een gedragscode voor Open Sangha groepen.
 
 #### Open karakter
 
-- Er is geen centrale leiding achter het project en de website. Al het materiaal is open source en kan door iedereen worden veranderd. Het is iedereen toegestaan om suggesties te doen. Als u niet akkoord met de inhoud gaat en u vindt dat uw suggesties oneerlijk behandeld worden, dan kunt u uw eigen versie van de gedragscode publiceren en een nieuw project starten. Wij vragen u alleen dan een andere naam te kiezen om zo onze groep niet te blijven vertegenwoordigen.
+- There is no central leadership behind the project and the website. The material is Open Source and suggestions and improvments are welcome. You are encouraged to fork and expand this project.
 - Open Sanghas are free. None of the services an Open Sangha provides are tied to a fee or donation.
 - Open Sangha's richten zich niet op één enkele leraar en zijn boeken.
 - Open Sangha's verwelkomen kritiek van buiten en nemen die serieus.
@@ -15,7 +15,7 @@ Dit is een gedragscode voor Open Sangha groepen.
 #### Doelstellingen
 
 - Het doel van een Open Sangha is ervoor te zorgen dat u zich beter voelt en u als mens verder te brengen. Als het omgekeerde gebeurt, probeer dan een andere groep of oefen een tijdje voor uzelf. Bedenk wat de redenen zijn geweest.
-- Open Sangha's worden niet op kwaliteit gecontroleerd. Wij zijn afhankelijk van de leden van een groep voor meldingen dat een bepaalde groep het niet eens is met deze gedragscode of zich hier niet aan houdt. Als een groep voor u niet goed voelt, dan is er niets mis met de oprichting van uw eigen groep, zelfs in dezelfde stad of omgeving.
+- Open Sanghas are not quality controlled. We depend on the members of a group to report if a group does not agree with this code of conduct. If a group does not feel right, there is nothing wrong with founding your own group.
 - Het hoofddoel van een Open Sangha is samen oefenen en praten over meditatie-ervaringen.
 - Een mogelijk extra doel is de groep meer bekend te maken en mensen die te ver weg wonen te helpen hun eigen groep op te richten en bekend te maken.
 
