@@ -3,12 +3,12 @@ title: Code de conduite
 ---
 Ceci est un code de conduite pour les groupes Open Sangha.
 
-- Il doit être signalé aux membre d'un Open Sangha que ce code de conduite existe et il doit être mis à leur disposition.
+- Members of an Open Sangha have to be informed that this code of conduct exists and it must be made available to them.
 
 #### L'aspect "open"
 
 - Il n'y a pas de leadership central derrière ce projet et ce site Web. Tout le contenu est Open Source et peut être modifié par tout le monde, et tout le monde a le droit de faire des suggestions. Si vous êtes en désaccord avec un certain aspect du contenu, vous vous sentez traité injustement par rapport à vos suggestions, vous pouvez en publier votre propre version et créer un nouveau projet. Nous vous demandons simplement de choisir un nom différent, afin de ne pas faussement représenter notre groupe.
-- Les Open Sanghas sont gratuits. Aucun des services qu'offre un Open Sangha ne sont rattachés à des frais ou dons.
+- Open Sanghas are free. None of the services an Open Sangha provides are tied to a fee or donation.
 - Les Open Sanghas ne se concentrent pas sur un enseignant particulier ou ses livres.
 - Les Open Sanghas acceuillent la critique externe et la prennent au sérieux.
 
