@@ -6,13 +6,13 @@ en:
     URL: http://www.starting-meditation.com/
 de:
   GITHUB:
-    EDIT_LINK_TEXT: Seite bearbeiten
+    EDIT_LINK_TEXT: bearbeiten
   MEDITATION:
     TEXT: Meditation
     URL: http://www.starting-meditation.com/de
 fr:
   GITHUB:
-    EDIT_LINK_TEXT: Modifier cette page
+    EDIT_LINK_TEXT: Modifier
   MEDITATION:
     TEXT: Méditation
     URL: http://www.starting-meditation.com/
