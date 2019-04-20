@@ -21,7 +21,5 @@ Dit is een gedragscode voor Open Sangha groepen.
 
 #### Geen leraren of leiderschap
 
-- Meestal zijn er geen leraren in een Open Sangha. Leken zullen basisinstructies geven voor zeer eenvoudige oefeningen. Members are encouraged to use our [list of resources](https://github.com/buddha-dharma/buddhism) to find instructions by real teachers to intensify and correct what they have learned. Al het materiaal op de website is geschreven door leken en niet beoordeeld door een monnik of non, een leraar of een meester.
+- There are no teachers in an Open Sangha. Members are encouraged to use our [list of resources](https://github.com/buddha-dharma/buddhism) to find instructions by teachers. All the material that can be found on the website is written by lay people and not reviewed by a monastic, teacher or master.
 - Open Sangha's zijn georganiseerd door een coördinator maar niemand leidt of is eigenaar van de groep.
-- De taak van de coördinator is om de groep bijeen te houden en gericht te houden op de hoofddoelen.
-- Om te benadrukken dat niemand de Open Sangha groepen leidt, kunnen ontmoetingen plaatsvinden in de huizen van verschillende leden.
