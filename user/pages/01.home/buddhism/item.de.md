@@ -11,4 +11,4 @@ The Buddha is no almighty, immortal deity that reigns and watches over humans. T
 
 Buddhismus ist ein Weg der uns Hilft unser eigenes Leiden und ein Weg aus dem Leiden zu erkennen.
 
-Buddhismus erfordert keine Esoterik oder glauben an Übersinnliches. A very important aspect of the practice is direct experience and instead of blind acceptance you are encouraged to experience and investigate much like the scientific method.
+A very important aspect of the practice is direct experience and instead of blind acceptance you are encouraged to experience and investigate much like the scientific method.
