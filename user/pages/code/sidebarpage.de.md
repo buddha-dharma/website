@@ -1,6 +1,7 @@
 ---
 title: Verhaltensgrundsätze
 ---
+
 Das sind Verhaltensgrundsätze für Open-Sangha-Gruppen.
 
 - Members of an Open Sangha have to be informed that this code of conduct exists and it must be made available to them.
