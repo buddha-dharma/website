@@ -13,5 +13,5 @@ nature of the universe.
 Buddhism is a path that helps us recognize our own suffering and a way out of the suffering.
 
 Buddhism does not require an especially esoteric mind or believe in miracles. 
-A very important aspect of the practice is direct experience and instead of having to blindly
-accept a dogmatic message you are encouraged to experience and investigate much like the scientific method.
+A very important aspect of the practice is direct experience and instead of blind acceptance 
+you are encouraged to experience and investigate much like the scientific method.
