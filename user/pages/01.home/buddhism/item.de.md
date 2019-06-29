@@ -10,4 +10,4 @@ Der Buddha ist keine allmächtige, unsterbliche Gottheit die über Menschen herr
 
 Buddhismus ist ein Weg der uns Hilft unser eigenes Leiden und ein Weg aus dem Leiden zu erkennen.
 
-Buddhismus erfordert keine Esoterik oder glauben an Übersinnliches. Ein sehr wichtiger Aspekt der Praxis ist die direkte Erfahrung und anstelle blinder Akzeptanz und Dogmen wird eigenes Erfahren und Entdecken wie mit der Wissenschaftlichen Methode ermutigt.
+Buddhismus erfordert keinen glauben an Übersinnliches. Ein sehr wichtiger Aspekt der Praxis ist die direkte Erfahrung und anstelle blinder Akzeptanz wird eigenes Erfahren und Entdecken wie mit der Wissenschaftlichen Methode ermutigt.
