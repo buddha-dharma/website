@@ -6,6 +6,7 @@ icon: lightbulb-o
 hidefrompostlist: false
 continue_link: false
 ---
+
 Open Sangha reconhece o facto de que nalguns sítios é difícil de encontrar bons professores e o Dharma vem com um preço. Buda-Dharma quer habilitar individuais no seu caminho e ajudar-los a conectar para que possam praticar juntos.
 
 [Junte-se ao Open Sangha](/community)
