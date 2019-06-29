@@ -1,6 +1,7 @@
 ---
 title: Code de conduite
 ---
+
 Ceci est un code de conduite pour les groupes Open Sangha.
 
 - Members of an Open Sangha have to be informed that this code of conduct exists and it must be made available to them.
