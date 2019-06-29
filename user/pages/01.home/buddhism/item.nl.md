@@ -11,4 +11,4 @@ The Buddha is no almighty, immortal deity that reigns and watches over humans. T
 
 Het boeddhisme is een weg die ons helpt ons eigen lijden te herkennen en een uitweg uit het lijden.
 
-Voor Boeddhisme hoef je niet speciaal esoterisch ingesteld te zijn, noch hoef je te geloven in wonderen. A very important aspect of the practice is direct experience and instead of blind acceptance you are encouraged to experience and investigate much like the scientific method.
+A very important aspect of the practice is direct experience and instead of blind acceptance you are encouraged to experience and investigate much like the scientific method.
