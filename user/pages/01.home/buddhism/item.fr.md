@@ -11,4 +11,4 @@ The Buddha is no almighty, immortal deity that reigns and watches over humans. T
 
 Le bouddhisme est une voie qui nous aide à reconnaître notre propre souffrance, ainsi qu'un moyen d'en sortir.
 
-Le bouddhisme ne demande pas qu'on ait un esprit particulièrement ésotérique, ni que l'on croit aux miracles. A very important aspect of the practice is direct experience and instead of blind acceptance you are encouraged to experience and investigate much like the scientific method.
+A very important aspect of the practice is direct experience and instead of blind acceptance you are encouraged to experience and investigate much like the scientific method.
