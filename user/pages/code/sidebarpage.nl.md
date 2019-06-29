@@ -1,6 +1,7 @@
 ---
 title: Gedragscode
 ---
+
 Dit is een gedragscode voor Open Sangha groepen.
 
 - Members of an Open Sangha have to be informed that this code of conduct exists and it must be made available to them.
