@@ -1,6 +1,7 @@
 ---
 title: Code of Conduct
 ---
+
 This is a code of conduct for Open Sangha groups.
 
 - Members of an Open Sangha have to be informed that this code of conduct exists and it must be made available to them.
