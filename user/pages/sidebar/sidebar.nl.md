@@ -3,6 +3,7 @@ title: 'Zijbalk'
 published: false
 routable: false
 ---
+
 ##### Over Boeddha-Dharma
 
 De Boeddha-Dharma-website is een open source project dat Open Sangha groepen organiseert en promoot volgens een [gedragscode](/code).
