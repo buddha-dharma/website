@@ -9,7 +9,7 @@ Ceci est un code de conduite pour les groupes Open Sangha.
 #### L'aspect "open"
 
 - There is no central leadership behind the project and the website. The material is Open Source and suggestions and improvments are welcome. You are encouraged to fork and expand this project.
-- Open Sanghas are free. None of the services an Open Sangha provides are tied to a fee or donation.
+- Open Sanghas are free. There are no fees or donations to unlock perks.
 - Les Open Sanghas ne se concentrent pas sur un enseignant particulier ou ses livres.
 - Les Open Sanghas acceuillent la critique externe et la prennent au sérieux.
 
