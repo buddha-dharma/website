@@ -9,7 +9,7 @@ Dit is een gedragscode voor Open Sangha groepen.
 #### Open karakter
 
 - There is no central leadership behind the project and the website. The material is Open Source and suggestions and improvments are welcome. You are encouraged to fork and expand this project.
-- Open Sanghas are free. None of the services an Open Sangha provides are tied to a fee or donation.
+- Open Sanghas are free. There are no fees or donations to unlock perks.
 - Open Sangha's richten zich niet op één enkele leraar en zijn boeken.
 - Open Sangha's verwelkomen kritiek van buiten en nemen die serieus.
 
