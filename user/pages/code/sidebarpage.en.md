@@ -12,7 +12,7 @@ This is a code of conduct for Open Sangha groups.
 - Open Sanghas welcome criticism from outside and take it seriously.
 
 #### Goals
-- The goal of an Open Sangha is to make you feel better and empower you as a human being. If the oposite happens then try another group or practicing on your own for a while and contemplate about the reasons.
+- The goal of an Open Sangha is to make you feel better and empower you as a human being.
 - Open Sanghas are not quality controlled. We depend on the members of a group to report if a group does not agree with this code of conduct. If a group does not feel right, there is nothing wrong with founding your own group.
 - The main goal of an Open Sangha is to practice together and to talk about meditation experience.
 - An optional goal is to advertise the group and help people that are too far away to found and advertise their own group.
