@@ -9,7 +9,7 @@ Das sind Verhaltensgrundsätze für Open-Sangha-Gruppen.
 #### Open Nature
 
 - There is no central leadership behind the project and the website. The material is Open Source and suggestions and improvments are welcome. You are encouraged to fork and expand this project.
-- Open Sanghas are free. None of the services an Open Sangha provides are tied to a fee or donation.
+- Open Sanghas are free. There are no fees or donations to unlock perks.
 - Open Sanghas don't focus on one single teacher and his books.
 - Open Sanghas welcome criticism from outside and take it seriously.
 
