@@ -28,8 +28,14 @@ class StubCaster
             $stub->value = $c->value;
             $stub->handle = $c->handle;
             $stub->cut = $c->cut;
+            $stub->attr = $c->attr;
 
-            $a = array();
+            if (Stub::TYPE_REF === $c->type && !$c->class && \is_string($c->value) && !preg_match('//u', $c->value)) {
+                $stub->type = Stub::TYPE_STRING;
+                $stub->class = Stub::STRING_BINARY;
+            }
+
+            $a = [];
         }
 
         return $a;
@@ -43,9 +49,9 @@ class StubCaster
     public static function cutInternals($obj, array $a, Stub $stub, $isNested)
     {
         if ($isNested) {
-            $stub->cut += count($a);
+            $stub->cut += \count($a);
 
-            return array();
+            return [];
         }
 
         return $a;
@@ -54,11 +60,13 @@ class StubCaster
     public static function castEnum(EnumStub $c, array $a, Stub $stub, $isNested)
     {
         if ($isNested) {
-            $stub->class = '';
+            $stub->class = $c->dumpKeys ? '' : null;
             $stub->handle = 0;
             $stub->value = null;
+            $stub->cut = $c->cut;
+            $stub->attr = $c->attr;
 
-            $a = array();
+            $a = [];
 
             if ($c->value) {
                 foreach (array_keys($c->value) as $k) {

@@ -1,3 +1,28 @@
+# v1.2.2
+## 04/15/2019
+
+1. [](#new)
+    * Requires Grav 1.5.0
+1. [](#improved)
+    * Updated type hints from `Page` to `PageInterface`
+    * Fixed ordering of the related pages with same score
+
+# v1.2.1
+## 01/08/2018
+
+1. [](#improved)
+    * Languages updates
+1. [](#bugfix)
+  * Fixed deprecated YAML syntax in `relatedpages.yaml` config file
+
+# v1.2.0
+## 08/21/2018
+
+1. [](#new)
+    * Added support for multiple taxonomies [#12](https://github.com/getgrav/grav-plugin-relatedpages/pull/12)
+1. [](#improved)
+    * Languages updates
+    
 # v1.1.4
 ## 07/18/2016
 

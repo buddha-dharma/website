@@ -18,7 +18,7 @@ class IniFile extends File
     /**
      * @var array|File[]
      */
-    static protected $instances = array();
+    static protected $instances = [];
 
     /**
      * Check contents and make sure it is in correct format.
@@ -29,7 +29,7 @@ class IniFile extends File
      */
     protected function check($var)
     {
-        if (!is_array($var)) {
+        if (!\is_array($var)) {
             throw new \RuntimeException('Provided data is not an array');
         }
 
@@ -65,12 +65,12 @@ class IniFile extends File
      */
     protected function decode($var)
     {
-        $var = file_exists($this->filename) ? @parse_ini_file($this->filename) : [];
+        $decoded = file_exists($this->filename) ? @parse_ini_file($this->filename) : [];
 
-        if ($var === false) {
+        if ($decoded === false) {
             throw new \RuntimeException("Decoding file '{$this->filename}' failed'");
         }
 
-        return $var;
+        return $decoded;
     }
 }

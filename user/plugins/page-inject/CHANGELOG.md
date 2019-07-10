@@ -1,3 +1,15 @@
+# v1.3.1
+## 04/15/2019
+
+1. [](#bugfix)
+    * Fixed issue with Feed plugin and Page-Inject by forcing template to `html` [feed#42](https://github.com/getgrav/grav-plugin-feed/issues/42)
+
+# v1.3.0
+## 12/08/2017
+
+1. [](#new)
+    * Added multi-lang support to Page Inject plugin [#10](https://github.com/getgrav/grav-plugin-page-inject/issues/10)
+
 # v1.2.0
 ## 10/11/2016
 
