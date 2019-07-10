@@ -1,14 +1,12 @@
 <?php
 namespace Grav\Plugin;
 
+use Grav\Common\Page\Interfaces\PageInterface;
 use \Grav\Common\Plugin;
-use \Grav\Common\Grav;
 use \Grav\Common\Cache;
 use \Grav\Common\Debugger;
 use \Grav\Common\Config\Config;
-use \Grav\Common\Page\Page;
 use \Grav\Common\Page\Pages;
-use RocketTheme\Toolbox\Event\Event;
 
 class RelatedPagesPlugin extends Plugin
 {
@@ -63,13 +61,12 @@ class RelatedPagesPlugin extends Plugin
         $cache = $this->grav['cache'];
         /** @var Pages $pages */
         $pages = $this->grav['pages'];
-        /** @var Page $page */
+        /** @var PageInterface $page */
         $page = $this->grav['page'];
         /** @var Debugger $debugger */
         $debugger = $this->grav['debugger'];
 
         $config = $this->config;
-
 
 
         $this->enable([
@@ -79,19 +76,19 @@ class RelatedPagesPlugin extends Plugin
         $cache_id = md5('relatedpages'.$page->path().$cache->getKey());
         $this->related_pages = $cache->fetch($cache_id);
 
-        if ($this->related_pages === false) {
+        if (1 or $this->related_pages === false) {
 
             // get all the pages
             $collection = $page->collection($config['filter']);
 
             // perform check if page must be in filter values
-            if ($config['page_in_filter'] && !in_array($page, iterator_to_array($collection))) {
+            if ($config['page_in_filter'] && !\in_array($page, iterator_to_array($collection), true)) {
                 return;
             }
 
             // reset array
             $this->related_pages = [];
-            $debugger->addMessage("RelatedPages Plugin cache miss. Rebuilding...");
+            $debugger->addMessage('RelatedPages Plugin cache miss. Rebuilding...');
 
             // check for explicit related pages
             if ($config['explicit_pages']['process']) {
@@ -110,75 +107,101 @@ class RelatedPagesPlugin extends Plugin
                 }
             }
 
+            // check for taxonomy and content
+            $process_taxonomy2taxonomy = $config['taxonomy_match']['taxonomy_taxonomy']['process'];
+            $process_taxonomy2content = $config['taxonomy_match']['taxonomy_content']['process'];
+            $process_content = $config['content_match']['process'];
 
-            if ($config['taxonomy_match']['taxonomy_taxonomy']['process'] ||
-                $config['taxonomy_match']['taxonomy_content']['process'] ||
-                $config['content_match']['process']) {
-
+            if ($process_taxonomy2taxonomy || $process_taxonomy2content || $process_content) {
                 $taxonomy_taxonomy_matches = [];
                 $taxonomy_content_matches = [];
                 $content_matches = [];
                 $page_taxonomies = $page->taxonomy();
 
                 foreach ($collection as $item) {
-
-                    if ($page == $item) {
+                    if ($page === $item) {
                         continue;
                     }
 
                     // count taxonomy to taxonomy matches
-                    if ($config['taxonomy_match']['taxonomy_taxonomy']['process']) {
+                    if ($process_taxonomy2taxonomy) {
 
-                        $taxonomy = $config['taxonomy_match']['taxonomy'];
+                        // Check for multiple taxonomies.
+                        $taxonomy_list = $config['taxonomy_match']['taxonomy'];
+                        // Support the single value by converting it to array.
+                        if (!\is_array ($taxonomy_list)) {
+                            $taxonomy_list = array($taxonomy_list);
+                        }
                         $score_scale = $config['taxonomy_match']['taxonomy_taxonomy']['score_scale'];
+                        
+                        $score = 0;
+                        $has_matches = false;
+                        foreach ($taxonomy_list as $taxonomy) {
+                            if (isset($page_taxonomies[$taxonomy])) {
+                                $page_taxonomy = $page_taxonomies[$taxonomy];
+                                $item_taxonomies = $item->taxonomy();
 
+                                if (isset($item_taxonomies[$taxonomy])) {
+                                    $item_taxonomy = $item_taxonomies[$taxonomy];
+                                    $count = count(array_intersect($page_taxonomy, $item_taxonomy));
 
-                        if (isset($page_taxonomies[$taxonomy])) {
-                            $page_taxonomy = $page_taxonomies[$taxonomy];
-                            $item_taxonomies = $item->taxonomy();
-
-                            if (isset($item_taxonomies[$taxonomy])) {
-                                $item_taxonomy = $item_taxonomies[$taxonomy];
-                                $count = count(array_intersect($page_taxonomy, $item_taxonomy));
-
-                                if ($count > 0) {
-                                    if (array_key_exists($count, $score_scale)) {
-                                        $score = $score_scale[$count];
-                                    } else {
-                                        $score = max(array_keys($score_scale));
+                                    if ($count > 0) {
+                                        if (array_key_exists($count, $score_scale)) {
+                                            $score += $score_scale[$count];
+                                        } else {
+                                            $score += max(array_keys($score_scale));
+                                        }
+                                        
+                                        $has_matches = true;
                                     }
-                                    $taxonomy_taxonomy_matches[$item->path()] = $score;
                                 }
                             }
+                        }
+                        
+                        if ($has_matches) {
+                            $taxonomy_taxonomy_matches[$item->path()] = $score;
                         }
                     }
 
                     // count taxonomy to content matches
-                    if ($config['taxonomy_match']['taxonomy_content']['process']) {
+                    if ($process_taxonomy2content) {
 
-                        $taxonomy = $config['taxonomy_match']['taxonomy'];
+                        // Check for multiple taxonomies.
+                        $taxonomy_list = $config['taxonomy_match']['taxonomy'];
+                        // Support the single value by converting it to array.
+                        if (!is_array ($taxonomy_list)) {
+                            $taxonomy_list = array($taxonomy_list);
+                        }
                         $score_scale = $config['taxonomy_match']['taxonomy_content']['score_scale'];
 
+                        $score = 0;
+                        $has_matches = false;
+                        foreach ($taxonomy_list as $taxonomy) {
+                            if (isset($page_taxonomies[$taxonomy])) {
+                                $page_taxonomy = $page_taxonomies[$taxonomy];
+                                $count = $this->substringCountArray($item->title().' '.$item->rawMarkdown(), $page_taxonomy);
 
-                        if (isset($page_taxonomies[$taxonomy])) {
-                            $page_taxonomy = $page_taxonomies[$taxonomy];
-                            $count = $this->substringCountArray($item->title().' '.$item->rawMarkdown(), $page_taxonomy);
-
-                            if ($count > 0) {
-                                if (array_key_exists($count, $score_scale)) {
-                                    $score = $score_scale[$count];
-                                } else {
-                                    $score = max(array_keys($score_scale));
+                                if ($count > 0) {
+                                    if (array_key_exists($count, $score_scale)) {
+                                        $score += $score_scale[$count];
+                                    } else {
+                                        $score += max(array_keys($score_scale));
+                                    }
+                                    
+                                    $has_matches = true;
                                 }
-                                $taxonomy_content_matches[$item->path()] = $score;
                             }
+                        }
+                        
+                        if ($has_matches) {
+                            $taxonomy_content_matches[$item->path()] = $score;
                         }
                     }
 
                     // compute score of content to content matches
-                    if ($config['content_match']['process']) {
+                    if ($process_content) {
                         similar_text($page->rawMarkdown(), $item->rawMarkdown(), $score);
-                        $content_matches[$item->path()] = intval($score);
+                        $content_matches[$item->path()] = (int)$score;
                     }
                 }
                 $this->mergeRelatedPages($taxonomy_taxonomy_matches);
@@ -187,8 +210,7 @@ class RelatedPagesPlugin extends Plugin
             }
 
             // Sort the resulting list
-            asort($this->related_pages, SORT_NUMERIC);
-            $this->related_pages = array_reverse($this->related_pages);
+            arsort($this->related_pages, SORT_NUMERIC);
 
             // Shorten the resulting list if configured
             if ($config['limit'] > 0) {
