@@ -1,9 +1,8 @@
 <?php
-
 /**
- * @package    Grav\Common\Config
+ * @package    Grav.Common.Config
  *
- * @copyright  Copyright (C) 2015 - 2019 Trilby Media, LLC. All rights reserved.
+ * @copyright  Copyright (C) 2014 - 2017 RocketTheme, LLC. All rights reserved.
  * @license    MIT License; see LICENSE file for details.
  */
 
@@ -208,7 +207,7 @@ class ConfigFileFinder
                     continue;
                 }
 
-                $name = $directory->getFilename();
+                $name = $directory->getBasename();
                 $find = ($lookup ?: $name) . '.yaml';
                 $filename = "{$path}/{$name}/{$find}";
 

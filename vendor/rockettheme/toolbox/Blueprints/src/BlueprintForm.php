@@ -4,7 +4,6 @@ namespace RocketTheme\Toolbox\Blueprints;
 use RocketTheme\Toolbox\ArrayTraits\Export;
 use RocketTheme\Toolbox\ArrayTraits\ExportInterface;
 use RocketTheme\Toolbox\ArrayTraits\NestedArrayAccessWithGetters;
-use RuntimeException;
 
 /**
  * The Config class contains configuration information.
@@ -13,29 +12,38 @@ use RuntimeException;
  */
 abstract class BlueprintForm implements \ArrayAccess, ExportInterface
 {
-    use NestedArrayAccessWithGetters;
-    use Export;
+    use NestedArrayAccessWithGetters, Export;
 
-    /** @var array */
+    /**
+     * @var array
+     */
     protected $items;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $filename;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $context;
 
-    /** @var array */
+    /**
+     * @var array
+     */
     protected $overrides = [];
 
-    /** @var array */
+    /**
+     * @var array
+     */
     protected $dynamic = [];
 
     /**
      * Load file and return its contents.
      *
      * @param string $filename
-     * @return array
+     * @return string
      */
     abstract protected function loadFile($filename);
 
@@ -115,7 +123,7 @@ abstract class BlueprintForm implements \ArrayAccess, ExportInterface
      *
      * @return $this
      */
-    public function load($extends = null)
+    public function load()
     {
         // Only load and extend blueprint if it has not yet been loaded.
         if (empty($this->items) && $this->filename) {
@@ -123,7 +131,7 @@ abstract class BlueprintForm implements \ArrayAccess, ExportInterface
             $files = $this->getFiles($this->filename);
 
             // Load and extend blueprints.
-            $data = $this->doLoad($files, $extends);
+            $data = $this->doLoad($files);
 
             $this->items = (array) array_shift($data);
 
@@ -149,23 +157,20 @@ abstract class BlueprintForm implements \ArrayAccess, ExportInterface
             // Locate field.
             $path = explode('/', $key);
             $current = &$this->items;
-
             foreach ($path as $field) {
-                if (\is_object($current)) {
+                if (is_object($current)) {
                     // Handle objects.
                     if (!isset($current->{$field})) {
-                        $current->{$field} = [];
+                        $current->{$field} = array();
                     }
-
                     $current = &$current->{$field};
                 } else {
                     // Handle arrays and scalars.
-                    if (!\is_array($current)) {
-                        $current = [$field => []];
+                    if (!is_array($current)) {
+                        $current = array($field => array());
                     } elseif (!isset($current[$field])) {
-                        $current[$field] = [];
+                        $current[$field] = array();
                     }
-
                     $current = &$current[$field];
                 }
             }
@@ -202,12 +207,10 @@ abstract class BlueprintForm implements \ArrayAccess, ExportInterface
     public function fields()
     {
         $fields = $this->get('form/fields');
-
         if ($fields === null) {
             $field = $this->get('form/field');
             $fields = $field !== null ? ['' => (array) $field] : $fields;
         }
-
         return (array) $fields;
     }
 
@@ -220,7 +223,7 @@ abstract class BlueprintForm implements \ArrayAccess, ExportInterface
      */
     public function extend($extends, $append = false)
     {
-        if ($extends instanceof self) {
+        if ($extends instanceof BlueprintForm) {
             $extends = $extends->toArray();
         }
 
@@ -248,7 +251,7 @@ abstract class BlueprintForm implements \ArrayAccess, ExportInterface
     {
         $oldValue = $this->get($name, null, $separator);
 
-        if (\is_array($oldValue) && \is_array($value)) {
+        if (is_array($oldValue) && is_array($value)) {
             if ($append) {
                 $a = $oldValue;
                 $b = $value;
@@ -298,9 +301,9 @@ abstract class BlueprintForm implements \ArrayAccess, ExportInterface
                 $current = $current[$field];
                 $fields = false;
 
-            } elseif (isset($current[$index = '.' . $field])) {
+            } elseif (isset($current['.' . $field])) {
                 $parts[] = array_shift($path);
-                $current = $current[$index];
+                $current = $current['.' . $field];
                 $fields = false;
 
             } else {
@@ -320,8 +323,8 @@ abstract class BlueprintForm implements \ArrayAccess, ExportInterface
      */
     protected function deepMerge(array $a, array $b)
     {
-        $bref_stack = [&$a];
-        $head_stack = [$b];
+        $bref_stack = array(&$a);
+        $head_stack = array($b);
 
         do {
             end($bref_stack);
@@ -329,33 +332,28 @@ abstract class BlueprintForm implements \ArrayAccess, ExportInterface
             $head = array_pop($head_stack);
             unset($bref_stack[key($bref_stack)]);
 
-            foreach ($head as $key => $value) {
-                if (strpos($key, '@') !== false) {
-                    // Remove @ from the start and the end. Key syntax `import@2` is supported to allow multiple operations of the same type.
-                    $list = explode('-', preg_replace('/^(@*)?([^@]+)(@\d*)?$/', '\2', $key), 2);
+            foreach (array_keys($head) as $key) {
+                if (!empty($key) && ($key[0] === '@' || $key[strlen($key) - 1] === '@')) {
+                    $list = explode('-', trim($key, '@'), 2);
                     $action = array_shift($list);
-                    $property = array_shift($list);
-
-                    switch ($action) {
-                        case 'unset':
-                        case 'replace':
-                            if (!$property) {
-                                $bref = ['unset@' => true];
-                            } else {
-                                unset($bref[$property]);
-                            }
-                            continue 2;
+                    if ($action === 'unset' || $action === 'replace') {
+                        $property = array_shift($list);
+                        if (!$property) {
+                            $bref = ['unset@' => true];
+                        } else {
+                            unset($bref[$property]);
+                        }
+                        continue;
                     }
                 }
-
-                if (isset($key, $bref[$key]) && \is_array($bref[$key]) && \is_array($head[$key])) {
+                if (isset($key, $bref[$key]) && is_array($bref[$key]) && is_array($head[$key])) {
                     $bref_stack[] = &$bref[$key];
                     $head_stack[] = $head[$key];
                 } else {
                     $bref = array_merge($bref, [$key => $head[$key]]);
                 }
             }
-        } while (\count($head_stack));
+        } while (count($head_stack));
 
         return $a;
     }
@@ -378,9 +376,8 @@ abstract class BlueprintForm implements \ArrayAccess, ExportInterface
             }
 
             // Handle special instructions in the form.
-            if (strpos($key, '@') !== false) {
-                // Remove @ from the start and the end. Key syntax `import@2` is supported to allow multiple operations of the same type.
-                $list = explode('-', preg_replace('/^(@*)?([^@]+)(@\d*)?$/', '\2', $key), 2);
+            if (!empty($key) && ($key[0] === '@' || $key[strlen($key) - 1] === '@')) {
+                $list = explode('-', trim($key, '@'), 2);
                 $action = array_shift($list);
                 $property = array_shift($list);
 
@@ -392,8 +389,8 @@ abstract class BlueprintForm implements \ArrayAccess, ExportInterface
                         }
                         break;
                     case 'import':
-                        unset($items[$key]);
                         $this->doImport($item, $path);
+                        unset($items[$key]);
                         break;
                     case 'ordering':
                         $ordering = $item;
@@ -403,7 +400,7 @@ abstract class BlueprintForm implements \ArrayAccess, ExportInterface
                         $this->dynamic[implode('/', $path)][$property] = ['action' => $action, 'params' => $item];
                 }
 
-            } elseif (\is_array($item)) {
+            } elseif (is_array($item)) {
                 // Recursively initialize form.
                 $newPath = array_merge($path, [$key]);
 
@@ -415,7 +412,6 @@ abstract class BlueprintForm implements \ArrayAccess, ExportInterface
                 }
             }
         }
-        unset($item);
 
         if ($order) {
             // Reorder fields if needed.
@@ -427,68 +423,38 @@ abstract class BlueprintForm implements \ArrayAccess, ExportInterface
 
     /**
      * @param array|string $value
-     * @return array|null
-     */
-    protected function loadImport($value)
-    {
-        $type = !\is_string($value) ? (!isset($value['type']) ? null : $value['type']) : $value;
-        $field = 'form';
-
-        if ($type && strpos($type, ':') !== false) {
-            list ($type, $field) = explode(':', $type, 2);
-        }
-
-        if (!$type && !$field) {
-            return null;
-        }
-
-        if ($type) {
-            $files = $this->getFiles($type, isset($value['context']) ? $value['context'] : null);
-
-            if (!$files) {
-                return null;
-            }
-
-            /** @var BlueprintForm $blueprint */
-            $blueprint = new static($files);
-            $blueprint->setContext($this->context)->setOverrides($this->overrides)->load();
-        } else {
-            $blueprint = $this;
-        }
-
-        $import = $blueprint->get($field);
-
-        return \is_array($import) ? $import : null;
-    }
-
-    /**
-     * @param array|string $value
      * @param array $path
      */
-    protected function doImport($value, array &$path)
+    protected function doImport(&$value, array &$path)
     {
-        $imported = $this->loadImport($value);
+        $type = !is_string($value) ? !isset($value['type']) ? null : $value['type'] : $value;
 
-        if ($imported) {
-            $this->deepInit($imported, $path);
-            $name = implode('/', $path);
-            $this->embed($name, $imported, '/', false);
+        $files = $this->getFiles($type, isset($value['context']) ? $value['context'] : null);
+
+        if (!$files) {
+            return;
         }
+
+        /** @var BlueprintForm $blueprint */
+        $blueprint = new static($files);
+        $blueprint->setContext($this->context)->setOverrides($this->overrides)->load();
+
+        $name = implode('/', $path);
+
+        $this->embed($name, $blueprint->form(), '/', false);
     }
 
     /**
      * Internal function that handles loading extended blueprints.
      *
      * @param array $files
-     * @param string|array|null $extends
      * @return array
      */
-    protected function doLoad(array $files, $extends = null)
+    protected function doLoad(array $files)
     {
         $filename = array_shift($files);
         $content = $this->loadFile($filename);
 
-        $key = '';
         if (isset($content['extends@'])) {
             $key = 'extends@';
         } elseif (isset($content['@extends'])) {
@@ -497,12 +463,12 @@ abstract class BlueprintForm implements \ArrayAccess, ExportInterface
             $key = '@extends@';
         }
 
-        $override = (bool)$extends;
-        $extends = (array)($key && !$extends ? $content[$key] : $extends);
+        $data = isset($key) ? $this->doExtend($filename, $files, (array) $content[$key]) : [];
 
-        unset($content['extends@'], $content['@extends'], $content['@extends@']);
+        if (isset($key)) {
+            unset($content[$key]);
+        }
 
-        $data = $extends ? $this->doExtend($filename, $files, $extends, $override) : [];
         $data[] = $content;
 
         return $data;
@@ -516,16 +482,17 @@ abstract class BlueprintForm implements \ArrayAccess, ExportInterface
      * @param array $extends
      * @return array
      */
-    protected function doExtend($filename, array $parents, array $extends, $override = false)
+    protected function doExtend($filename, array $parents, array $extends)
     {
-        if (\is_string(key($extends))) {
+        if (is_string(key($extends))) {
             $extends = [$extends];
         }
 
-        $data = [[]];
+        $data = [];
         foreach ($extends as $value) {
             // Accept array of type and context or a string.
-            $type = !\is_string($value) ? (!isset($value['type']) ? null : $value['type']) : $value;
+            $type = !is_string($value)
+                ? !isset($value['type']) ? null : $value['type'] : $value;
 
             if (!$type) {
                 continue;
@@ -533,41 +500,36 @@ abstract class BlueprintForm implements \ArrayAccess, ExportInterface
 
             if ($type === '@parent' || $type === 'parent@') {
                 if (!$parents) {
-                    throw new RuntimeException("Parent blueprint missing for '{$filename}'");
+                    throw new \RuntimeException("Parent blueprint missing for '{$filename}'");
                 }
 
                 $files = $parents;
             } else {
                 $files = $this->getFiles($type, isset($value['context']) ? $value['context'] : null);
 
-                if ($override && !$files) {
-                    throw new RuntimeException("Blueprint '{$type}' missing for '{$filename}'");
-                }
-
                 // Detect extend loops.
                 if ($files && array_intersect($files, $parents)) {
                     // Let's check if user really meant extends@: parent@.
-                    $index = \array_search($filename, $files, true);
+                    $index = array_search($filename, $files);
                     if ($index !== false) {
                         // We want to grab only the parents of the file which is currently being loaded.
-                        $files = \array_slice($files, $index + 1);
+                        $files = array_slice($files, $index + 1);
                     }
                     if ($files !== $parents) {
-                        throw new RuntimeException("Loop detected while extending blueprint file '{$filename}'");
+                        throw new \RuntimeException("Loop detected while extending blueprint file '{$filename}'");
                     }
                     if (!$parents) {
-                        throw new RuntimeException("Parent blueprint missing for '{$filename}'");
+                        throw new \RuntimeException("Parent blueprint missing for '{$filename}'");
                     }
                 }
             }
 
             if ($files) {
-                $data[] = $this->doLoad($files);
+                $data = array_merge($data, $this->doLoad($files));
             }
         }
 
-        // TODO: In PHP 5.6+ use array_merge(...$data);
-        return call_user_func_array('array_merge', $data);
+        return $data;
     }
 
     /**
@@ -583,14 +545,14 @@ abstract class BlueprintForm implements \ArrayAccess, ExportInterface
 
         foreach ($keys as $item => $ordering) {
             if ((string)(int) $ordering === (string) $ordering) {
-                $location = array_search($item, $reordered, true);
+                $location = array_search($item, $reordered);
                 $rel = array_splice($reordered, $location, 1);
                 array_splice($reordered, $ordering, 0, $rel);
 
             } elseif (isset($items[$ordering])) {
-                $location = array_search($item, $reordered, true);
+                $location = array_search($item, $reordered);
                 $rel = array_splice($reordered, $location, 1);
-                $location = array_search($ordering, $reordered, true);
+                $location = array_search($ordering, $reordered);
                 array_splice($reordered, $location + 1, 0, $rel);
             }
         }

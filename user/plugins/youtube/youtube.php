@@ -50,7 +50,6 @@ class YoutubePlugin extends Plugin
             'onTwigExtensions' => ['onTwigExtensions', 0],
             'onTwigSiteVariables' => ['onTwigSiteVariables', 0],
             'onTwigTemplatePaths' => ['onTwigTemplatePaths', 0],
-            'onShortcodeHandlers' => ['onShortcodeHandlers', 0],
         ]);
     }
 
@@ -126,13 +125,5 @@ class YoutubePlugin extends Plugin
     public function onTwigTemplatePaths()
     {
         $this->grav['twig']->twig_paths[] = __DIR__ . '/templates';
-    }
-
-    /**
-     * Initialize shortcodes
-     */
-    public function onShortcodeHandlers()
-    {
-        $this->grav['shortcode']->registerAllShortcodes(__DIR__.'/shortcodes');
     }
 }

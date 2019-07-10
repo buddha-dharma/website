@@ -1,54 +1,24 @@
 <?php
-
 /**
- * @package    Grav\Common\Page
+ * @package    Grav.Common.Page
  *
- * @copyright  Copyright (C) 2015 - 2019 Trilby Media, LLC. All rights reserved.
+ * @copyright  Copyright (C) 2014 - 2017 RocketTheme, LLC. All rights reserved.
  * @license    MIT License; see LICENSE file for details.
  */
 
 namespace Grav\Common\Page\Medium;
 
-use Grav\Common\Grav;
-use Grav\Common\Media\Interfaces\MediaCollectionInterface;
-use Grav\Common\Media\Interfaces\MediaObjectInterface;
-use Grav\Common\Page\Page;
-use Grav\Common\Utils;
-use RocketTheme\Toolbox\ArrayTraits\ArrayAccess;
-use RocketTheme\Toolbox\ArrayTraits\Countable;
-use RocketTheme\Toolbox\ArrayTraits\Export;
-use RocketTheme\Toolbox\ArrayTraits\ExportInterface;
-use RocketTheme\Toolbox\ArrayTraits\Iterator;
+use Grav\Common\Getters;
 
-abstract class AbstractMedia implements ExportInterface, MediaCollectionInterface
+abstract class AbstractMedia extends Getters
 {
-    use ArrayAccess;
-    use Countable;
-    use Iterator;
-    use Export;
+    protected $gettersVariable = 'instances';
 
-    protected $items = [];
-    protected $path;
+    protected $instances = [];
     protected $images = [];
     protected $videos = [];
     protected $audios = [];
     protected $files = [];
-    protected $media_order;
-
-    /**
-     * Return media path.
-     *
-     * @return string
-     */
-    public function getPath()
-    {
-        return $this->path;
-    }
-
-    public function setPath(?string $path)
-    {
-        $this->path = $path;
-    }
 
     /**
      * Get medium by filename.
@@ -73,88 +43,67 @@ abstract class AbstractMedia implements ExportInterface, MediaCollectionInterfac
     }
 
     /**
-     * Set file modification timestamps (query params) for all the media files.
-     *
-     * @param string|int|null $timestamp
-     * @return $this
-     */
-    public function setTimestamps($timestamp = null)
-    {
-        /** @var Medium $instance */
-        foreach ($this->items as $instance) {
-            $instance->setTimestamp($timestamp);
-        }
-
-        return $this;
-    }
-
-    /**
      * Get a list of all media.
      *
-     * @return MediaObjectInterface[]
+     * @return array|Medium[]
      */
     public function all()
     {
-        $this->items = $this->orderMedia($this->items);
-
-        return $this->items;
+        ksort($this->instances, SORT_NATURAL | SORT_FLAG_CASE);
+        return $this->instances;
     }
 
     /**
      * Get a list of all image media.
      *
-     * @return MediaObjectInterface[]
+     * @return array|Medium[]
      */
     public function images()
     {
-        $this->images = $this->orderMedia($this->images);
-
+        ksort($this->images, SORT_NATURAL | SORT_FLAG_CASE);
         return $this->images;
     }
 
     /**
      * Get a list of all video media.
      *
-     * @return MediaObjectInterface[]
+     * @return array|Medium[]
      */
     public function videos()
     {
-        $this->videos = $this->orderMedia($this->videos);
-
+        ksort($this->videos, SORT_NATURAL | SORT_FLAG_CASE);
         return $this->videos;
     }
 
     /**
      * Get a list of all audio media.
      *
-     * @return MediaObjectInterface[]
+     * @return array|Medium[]
      */
     public function audios()
     {
-        $this->audios = $this->orderMedia($this->audios);
-
+        ksort($this->audios, SORT_NATURAL | SORT_FLAG_CASE);
         return $this->audios;
     }
 
     /**
      * Get a list of all file media.
      *
-     * @return MediaObjectInterface[]
+     * @return array|Medium[]
      */
     public function files()
     {
-        $this->files = $this->orderMedia($this->files);
-
+        ksort($this->files, SORT_NATURAL | SORT_FLAG_CASE);
         return $this->files;
     }
 
     /**
      * @param string $name
-     * @param MediaObjectInterface $file
+     * @param Medium $file
      */
-    public function add($name, $file)
+    protected function add($name, $file)
     {
-        $this->offsetSet($name, $file);
+        $this->instances[$name] = $file;
         switch ($file->type) {
             case 'image':
                 $this->images[$name] = $file;
@@ -168,32 +117,6 @@ abstract class AbstractMedia implements ExportInterface, MediaCollectionInterfac
             default:
                 $this->files[$name] = $file;
         }
-    }
-
-    /**
-     * Order the media based on the page's media_order
-     *
-     * @param array $media
-     * @return array
-     */
-    protected function orderMedia($media)
-    {
-        if (null === $this->media_order) {
-            /** @var Page $page */
-            $page = Grav::instance()['pages']->get($this->getPath());
-
-            if ($page && isset($page->header()->media_order)) {
-                $this->media_order = array_map('trim', explode(',', $page->header()->media_order));
-            }
-        }
-
-        if (!empty($this->media_order) && is_array($this->media_order)) {
-            $media = Utils::sortArrayByArray($media, $this->media_order);
-        } else {
-            ksort($media, SORT_NATURAL | SORT_FLAG_CASE);
-        }
-
-        return $media;
     }
 
     /**
@@ -223,8 +146,8 @@ abstract class AbstractMedia implements ExportInterface, MediaCollectionInterfac
             $type = 'base';
 
             while (($part = array_shift($fileParts)) !== null) {
-                if ($part !== 'meta' && $part !== 'thumb') {
-                    if (null !== $extension) {
+                if ($part != 'meta' && $part != 'thumb') {
+                    if (isset($extension)) {
                         $name .= '.' . $extension;
                     }
                     $extension = $part;

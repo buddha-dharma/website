@@ -1,9 +1,8 @@
 <?php
-
 /**
- * @package    Grav\Common\Config
+ * @package    Grav.Common.Config
  *
- * @copyright  Copyright (C) 2015 - 2019 Trilby Media, LLC. All rights reserved.
+ * @copyright  Copyright (C) 2014 - 2017 RocketTheme, LLC. All rights reserved.
  * @license    MIT License; see LICENSE file for details.
  */
 
@@ -13,23 +12,11 @@ use Grav\Common\File\CompiledYamlFile;
 use Grav\Common\Data\Data;
 use Grav\Common\Utils;
 use Pimple\Container;
-use Psr\Http\Message\ServerRequestInterface;
+use RocketTheme\Toolbox\File\YamlFile;
 use RocketTheme\Toolbox\ResourceLocator\UniformResourceLocator;
 
 class Setup extends Data
 {
-    /**
-     * @var array Environment aliases normalized to lower case.
-     */
-    public static $environments = [
-        '' => 'unknown',
-        '127.0.0.1' => 'localhost',
-        '::1' => 'localhost'
-    ];
-
-    /**
-     * @var string Current environment normalized to lower case.
-     */
     public static $environment;
 
     protected $streams = [
@@ -51,7 +38,7 @@ class Setup extends Data
             // If not defined, environment will be set up in the constructor.
         ],
         'asset' => [
-            'type' => 'Stream',
+            'type' => 'ReadOnlyStream',
             'prefixes' => [
                 '' => ['assets'],
             ]
@@ -122,7 +109,7 @@ class Setup extends Data
             ]
         ],
         'image' => [
-            'type' => 'Stream',
+            'type' => 'ReadOnlyStream',
             'prefixes' => [
                 '' => ['user://images', 'system://images']
             ]
@@ -131,13 +118,6 @@ class Setup extends Data
             'type' => 'ReadOnlyStream',
             'prefixes' => [
                 '' => ['user://pages']
-            ]
-        ],
-        'user-data' => [
-            'type' => 'Stream',
-            'force' => true,
-            'prefixes' => [
-                '' => ['user://data']
             ]
         ],
         'account' => [
@@ -153,26 +133,11 @@ class Setup extends Data
      */
     public function __construct($container)
     {
-        // If no environment is set, make sure we get one (CLI or hostname).
-        if (!static::$environment) {
-            if (\defined('GRAV_CLI')) {
-                static::$environment = 'cli';
-            } else {
-                /** @var ServerRequestInterface $request */
-                $request = $container['request'];
-                $host = $request->getUri()->getHost();
-
-                static::$environment = Utils::substrToString($host, ':');
-            }
-        }
-
-        // Resolve server aliases to the proper environment.
-        $environment = $this->environments[static::$environment] ?? static::$environment;
+        $environment = isset(static::$environment) ? static::$environment : ($container['uri']->environment() ?: 'localhost');
 
         // Pre-load setup.php which contains our initial configuration.
         // Configuration may contain dynamic parts, which is why we need to always load it.
-        // If "GRAV_SETUP_PATH" has been defined, use it, otherwise use defaults.
-        $file = \defined('GRAV_SETUP_PATH') ? GRAV_SETUP_PATH :  GRAV_ROOT . '/setup.php';
+        $file = GRAV_ROOT . '/setup.php';
         $setup = is_file($file) ? (array) include $file : [];
 
         // Add default streams defined in beginning of the class.
@@ -185,14 +150,12 @@ class Setup extends Data
         parent::__construct($setup);
 
         // Set up environment.
-        $this->def('environment', $environment);
-        $this->def('streams.schemes.environment.prefixes', ['' => ["user://{$this->get('environment')}"]]);
+        $this->def('environment', $environment ?: 'cli');
+        $this->def('streams.schemes.environment.prefixes', ['' => ($environment ? ["user://{$this->environment}"] : [])]);
     }
 
     /**
      * @return $this
-     * @throws \RuntimeException
-     * @throws \InvalidArgumentException
      */
     public function init()
     {
@@ -212,7 +175,7 @@ class Setup extends Data
             // Update streams.
             foreach (array_reverse($files) as $path) {
                 $file = CompiledYamlFile::instance($path);
-                $content = (array)$file->content();
+                $content = $file->content();
                 if (!empty($content['schemes'])) {
                     $this->items['streams']['schemes'] = $content['schemes'] + $this->items['streams']['schemes'];
                 }
@@ -233,7 +196,6 @@ class Setup extends Data
      * Initialize resource locator by using the configuration.
      *
      * @param UniformResourceLocator $locator
-     * @throws \BadMethodCallException
      */
     public function initializeLocator(UniformResourceLocator $locator)
     {
@@ -246,11 +208,11 @@ class Setup extends Data
                 $locator->addPath($scheme, '', $config['paths']);
             }
 
-            $override = $config['override'] ?? false;
-            $force = $config['force'] ?? false;
+            $override = isset($config['override']) ? $config['override'] : false;
+            $force = isset($config['force']) ? $config['force'] : false;
 
             if (isset($config['prefixes'])) {
-                foreach ((array)$config['prefixes'] as $prefix => $paths) {
+                foreach ($config['prefixes'] as $prefix => $paths) {
                     $locator->addPath($scheme, $prefix, $paths, $override, $force);
                 }
             }
@@ -266,8 +228,8 @@ class Setup extends Data
     {
         $schemes = [];
         foreach ((array) $this->get('streams.schemes') as $scheme => $config) {
-            $type = $config['type'] ?? 'ReadOnlyStream';
-            if ($type[0] !== '\\') {
+            $type = !empty($config['type']) ? $config['type'] : 'ReadOnlyStream';
+            if ($type[0] != '\\') {
                 $type = '\\RocketTheme\\Toolbox\\StreamWrapper\\' . $type;
             }
 
@@ -280,13 +242,11 @@ class Setup extends Data
     /**
      * @param UniformResourceLocator $locator
      * @throws \InvalidArgumentException
-     * @throws \BadMethodCallException
-     * @throws \RuntimeException
      */
     protected function check(UniformResourceLocator $locator)
     {
-        $streams = $this->items['streams']['schemes'] ?? null;
-        if (!\is_array($streams)) {
+        $streams = isset($this->items['streams']['schemes']) ? $this->items['streams']['schemes'] : null;
+        if (!is_array($streams)) {
             throw new \InvalidArgumentException('Configuration is missing streams.schemes!');
         }
         $diff = array_keys(array_diff_key($this->streams, $streams));
@@ -296,26 +256,18 @@ class Setup extends Data
             );
         }
 
-        try {
-            if (!$locator->findResource('environment://config', true)) {
-                // If environment does not have its own directory, remove it from the lookup.
-                $this->set('streams.schemes.environment.prefixes', ['config' => []]);
-                $this->initializeLocator($locator);
-            }
+        if (!$locator->findResource('environment://config', true)) {
+            // If environment does not have its own directory, remove it from the lookup.
+            $this->set('streams.schemes.environment.prefixes', ['config' => []]);
+            $this->initializeLocator($locator);
+        }
 
-            // Create security.yaml if it doesn't exist.
-            $filename = $locator->findResource('config://security.yaml', true, true);
-            $security_file = CompiledYamlFile::instance($filename);
-            $security_content = (array)$security_file->content();
-
-            if (!isset($security_content['salt'])) {
-                $security_content = array_merge($security_content, ['salt' => Utils::generateRandomString(14)]);
-                $security_file->content($security_content);
-                $security_file->save();
-                $security_file->free();
-            }
-        } catch (\RuntimeException $e) {
-            throw new \RuntimeException(sprintf('Grav failed to initialize: %s', $e->getMessage()), 500, $e);
+        // Create security.yaml if it doesn't exist.
+        $filename = $locator->findResource('config://security.yaml', true, true);
+        $file = YamlFile::instance($filename);
+        if (!$file->exists()) {
+            $file->save(['salt' => Utils::generateRandomString(14)]);
+            $file->free();
         }
     }
 }

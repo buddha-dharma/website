@@ -18,7 +18,7 @@ class JsonFile extends File
     /**
      * @var array|File[]
      */
-    static protected $instances = [];
+    static protected $instances = array();
 
     /**
      * Check contents and make sure it is in correct format.
@@ -35,7 +35,7 @@ class JsonFile extends File
      * Encode contents into RAW string.
      *
      * @param string $var
-     * @param int $options
+     * @params bitmask $options
      * @return string
      */
     protected function encode($var, $options = 0)

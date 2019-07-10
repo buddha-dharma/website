@@ -78,13 +78,6 @@ interface AdapterInterface
     public function savePng($file);
 
     /**
-     * Save the image as a Webp.
-     *
-     * @return $this
-     */
-    public function saveWebp($file, $quality);
-
-    /**
      * Save the image as a jpeg.
      *
      * @return $this
@@ -389,10 +382,10 @@ interface AdapterInterface
 
     /**
      * Flips the image.
-     *
+     * 
      * @param int $flipVertical
      * @param int $flipHorizontal
-     *
+     * 
      * @return $this
      */
     public function flip($flipVertical, $flipHorizontal);

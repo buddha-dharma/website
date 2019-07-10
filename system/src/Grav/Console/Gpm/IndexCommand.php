@@ -1,17 +1,14 @@
 <?php
-
 /**
- * @package    Grav\Console\Gpm
+ * @package    Grav.Console
  *
- * @copyright  Copyright (C) 2015 - 2019 Trilby Media, LLC. All rights reserved.
+ * @copyright  Copyright (C) 2014 - 2017 RocketTheme, LLC. All rights reserved.
  * @license    MIT License; see LICENSE file for details.
  */
 
 namespace Grav\Console\Gpm;
 
-use Grav\Common\GPM\Remote\Package;
 use Grav\Common\GPM\GPM;
-use Grav\Common\GPM\Remote\Packages;
 use Grav\Common\Utils;
 use Grav\Console\ConsoleCommand;
 use League\CLImate\CLImate;
@@ -19,22 +16,32 @@ use Symfony\Component\Console\Input\InputOption;
 
 class IndexCommand extends ConsoleCommand
 {
-    /** @var array */
+    /**
+     * @var
+     */
     protected $data;
-
-    /** @var GPM */
+    /**
+     * @var
+     */
     protected $gpm;
 
-    /** @var array */
+    /**
+     * @var
+     */
     protected $options;
 
-    /** @var array */
+    /**
+     * @var array
+     */
     protected $sortKeys = ['name', 'slug', 'author', 'date'];
 
+    /**
+     *
+     */
     protected function configure()
     {
         $this
-            ->setName('index')
+            ->setName("index")
             ->addOption(
                 'force',
                 'f',
@@ -84,11 +91,14 @@ class IndexCommand extends ConsoleCommand
                 InputOption::VALUE_NONE,
                 'Reverses the order of the output.'
             )
-            ->setDescription('Lists the plugins and themes available for installation')
+            ->setDescription("Lists the plugins and themes available for installation")
             ->setHelp('The <info>index</info> command lists the plugins and themes available for installation')
         ;
     }
 
+    /**
+     * @return int|null|void
+     */
     protected function serve()
     {
         $this->options = $this->input->getOptions();
@@ -113,7 +123,7 @@ class IndexCommand extends ConsoleCommand
         }
 
         foreach ($data as $type => $packages) {
-            $this->output->writeln('<green>' . strtoupper($type) . '</green> [ ' . \count($packages) . ' ]');
+            $this->output->writeln("<green>" . strtoupper($type) . "</green> [ " . count($packages) . " ]");
             $packages = $this->sort($packages);
 
             if (!empty($packages)) {
@@ -124,7 +134,7 @@ class IndexCommand extends ConsoleCommand
                 foreach ($packages as $slug => $package) {
                     $row = [
                         'Count' => $index++ + 1,
-                        'Name' => '<cyan>' . Utils::truncate($package->name, 20, false, ' ', '...') . '</cyan> ',
+                        'Name' => "<cyan>" . Utils::truncate($package->name, 20, false, ' ', '...') . "</cyan> ",
                         'Slug' => $slug,
                         'Version'=> $this->version($package),
                         'Installed' => $this->installed($package)
@@ -139,56 +149,55 @@ class IndexCommand extends ConsoleCommand
         }
 
         $this->output->writeln('You can either get more informations about a package by typing:');
-        $this->output->writeln("    <green>{$this->argv} info <cyan><package></cyan></green>");
+        $this->output->writeln('    <green>' . $this->argv . ' info <cyan><package></cyan></green>');
         $this->output->writeln('');
         $this->output->writeln('Or you can install a package by typing:');
-        $this->output->writeln("    <green>{$this->argv} install <cyan><package></cyan></green>");
+        $this->output->writeln('    <green>' . $this->argv . ' install <cyan><package></cyan></green>');
         $this->output->writeln('');
     }
 
     /**
-     * @param Package $package
+     * @param $package
      *
      * @return string
      */
     private function version($package)
     {
         $list      = $this->gpm->{'getUpdatable' . ucfirst($package->package_type)}();
-        $package   = $list[$package->slug] ?? $package;
-        $type      = ucfirst(preg_replace('/s$/', '', $package->package_type));
+        $package   = isset($list[$package->slug]) ? $list[$package->slug] : $package;
+        $type      = ucfirst(preg_replace("/s$/", '', $package->package_type));
         $updatable = $this->gpm->{'is' . $type . 'Updatable'}($package->slug);
         $installed = $this->gpm->{'is' . $type . 'Installed'}($package->slug);
         $local     = $this->gpm->{'getInstalled' . $type}($package->slug);
 
         if (!$installed || !$updatable) {
             $version   = $installed ? $local->version : $package->version;
-            return "v<green>{$version}</green>";
+            return "v<green>" . $version . "</green>";
         }
 
         if ($updatable) {
-            return "v<red>{$package->version}</red> <cyan>-></cyan> v<green>{$package->available}</green>";
+            return "v<red>" . $package->version . "</red> <cyan>-></cyan> v<green>" . $package->available . "</green>";
         }
 
         return '';
     }
 
     /**
-     * @param Package $package
+     * @param $package
      *
      * @return string
      */
     private function installed($package)
     {
-        $package   = $list[$package->slug] ?? $package;
-        $type      = ucfirst(preg_replace('/s$/', '', $package->package_type));
-        $method = 'is' . $type . 'Installed';
-        $installed = $this->gpm->{$method}($package->slug);
+        $package   = isset($list[$package->slug]) ? $list[$package->slug] : $package;
+        $type      = ucfirst(preg_replace("/s$/", '', $package->package_type));
+        $installed = $this->gpm->{'is' . $type . 'Installed'}($package->slug);
 
         return !$installed ? '<magenta>not installed</magenta>' : '<cyan>installed</cyan>';
     }
 
     /**
-     * @param array $data
+     * @param $data
      *
      * @return mixed
      */
@@ -209,28 +218,26 @@ class IndexCommand extends ConsoleCommand
             $this->options['desc']
         ];
 
-        if (\count(array_filter($filter))) {
+        if (count(array_filter($filter))) {
             foreach ($data as $type => $packages) {
                 foreach ($packages as $slug => $package) {
                     $filter = true;
 
                     // Filtering by string
                     if ($this->options['filter']) {
-                        $filter = preg_grep('/(' . implode('|', $this->options['filter']) . ')/i', [$slug, $package->name]);
+                        $filter = preg_grep('/(' . (implode('|', $this->options['filter'])) . ')/i', [$slug, $package->name]);
                     }
 
                     // Filtering updatables only
-                    if ($filter && $this->options['installed-only']) {
-                        $method = ucfirst(preg_replace('/s$/', '', $package->package_type));
-                        $function = 'is' . $method . 'Installed';
-                        $filter = $this->gpm->{$function}($package->slug);
+                    if ($this->options['installed-only'] && $filter) {
+                        $method = ucfirst(preg_replace("/s$/", '', $package->package_type));
+                        $filter = $this->gpm->{'is' . $method . 'Installed'}($package->slug);
                     }
 
                     // Filtering updatables only
-                    if ($filter && $this->options['updates-only']) {
-                        $method = ucfirst(preg_replace('/s$/', '', $package->package_type));
-                        $function = 'is' . $method . 'Updatable';
-                        $filter = $this->gpm->{$function}($package->slug);
+                    if ($this->options['updates-only'] && $filter) {
+                        $method = ucfirst(preg_replace("/s$/", '', $package->package_type));
+                        $filter = $this->gpm->{'is' . $method . 'Updatable'}($package->slug);
                     }
 
                     if (!$filter) {
@@ -244,7 +251,7 @@ class IndexCommand extends ConsoleCommand
     }
 
     /**
-     * @param Packages $packages
+     * @param $packages
      */
     public function sort($packages)
     {

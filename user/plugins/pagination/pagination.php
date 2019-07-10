@@ -1,6 +1,7 @@
 <?php
 namespace Grav\Plugin;
 
+use Grav\Common\Grav;
 use Grav\Common\Page\Collection;
 use Grav\Common\Page\Page;
 use Grav\Common\Plugin;
@@ -35,8 +36,7 @@ class PaginationPlugin extends Plugin
 
         $this->enable([
             'onTwigTemplatePaths' => ['onTwigTemplatePaths', 0],
-            'onPageInitialized' => ['onPageInitialized', 0],
-            'onTwigExtensions' => ['onTwigExtensions', 0]
+            'onPageInitialized' => ['onPageInitialized', 0]
         ]);
     }
 
@@ -46,16 +46,6 @@ class PaginationPlugin extends Plugin
     public function onTwigTemplatePaths()
     {
         $this->grav['twig']->twig_paths[] = __DIR__ . '/templates';
-    }
-
-    /**
-     * Add Twig Extensions
-     */
-    public function onTwigExtensions()
-    {
-        require_once(__DIR__.'/twig/PaginationTwigExtension.php');
-
-        $this->grav['twig']->twig->addExtension(new PaginationTwigExtension());
     }
 
     /**
@@ -109,33 +99,6 @@ class PaginationPlugin extends Plugin
     {
         if ($this->config->get('plugins.pagination.built_in_css')) {
             $this->grav['assets']->add('plugin://pagination/css/pagination.css');
-        }
-    }
-
-    /**
-     * pagination
-     *
-     * @param Collection $collection
-     * @param int $limit
-     * @param array $ignore_param_array      url parameters to be ignored in page links
-     */
-    public function paginateCollection( $collection, $limit, $ignore_param_array = [])
-    {
-        $collection->setParams(['pagination' => 'true']);
-        $collection->setParams(['limit' => $limit]);
-        $collection->setParams(['ignore_params' => $ignore_param_array]);
-
-        if ($collection->count() > $limit) {
-            require_once __DIR__ . '/classes/paginationhelper.php';
-            $this->pagination = new PaginationHelper($collection);
-            $collection->setParams(['pagination' => $this->pagination]);
-
-            $uri = $this->grav['uri'];
-            $start = ($uri->currentPage() - 1) * $limit;
-
-            if ($limit && $collection->count() > $limit) {
-                $collection->slice($start, $limit);
-            }
         }
     }
 }

@@ -23,7 +23,7 @@ class Draw extends BasicTerminalObject
      */
     public function result()
     {
-        $file = $this->artFile($this->art);
+        $file = $this->artFile($this->art) ?: $this->artFile($this->default_art);
 
         return $this->parse($file);
     }

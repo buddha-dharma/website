@@ -1,5 +1,5 @@
 name: Related Pages
-version: 1.2.2
+version: 1.1.4
 description: "A highly sophisticated and configurable plugin that calculates related pages in relation to the current page."
 icon: newspaper-o
 author:
@@ -11,8 +11,6 @@ demo: http://learn.getgrav.org
 keywords: related, plugin
 bugs: https://github.com/getgrav/grav-plugin-relatedpages/issues
 license: MIT
-dependencies:
-  - { name: grav, version: '>=1.5.0' }
 
 form:
   validation: loose
@@ -56,11 +54,11 @@ form:
         type: bool
 
     filter.items:
-      type: multilevel
+      type: text
+      yaml: true
       label: PLUGIN_REL_PAGES.ITEMS
-      value_only: true
-      validate: 
-        type: array
+      help: PLUGIN_REL_PAGES.ITEMS_HELP
+      default: '@page: /blog'
 
     filter.order.by:
       type: select
@@ -120,9 +118,8 @@ form:
       underline: true
 
     taxonomy_match.taxonomy:
-      type: textarea
-      yaml: true
-      size: medium
+      type: text
+      size: x-small
       label: PLUGIN_REL_PAGES.TAXONOMY
       help: PLUGIN_REL_PAGES.TAXONOMY_HELP
       validate:

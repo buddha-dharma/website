@@ -1,9 +1,8 @@
 <?php
-
 /**
- * @package    Grav\Common\Page
+ * @package    Grav.Common.Page
  *
- * @copyright  Copyright (C) 2015 - 2019 Trilby Media, LLC. All rights reserved.
+ * @copyright  Copyright (C) 2014 - 2017 RocketTheme, LLC. All rights reserved.
  * @license    MIT License; see LICENSE file for details.
  */
 
@@ -14,16 +13,6 @@ use RocketTheme\Toolbox\ResourceLocator\UniformResourceLocator;
 
 class GlobalMedia extends AbstractMedia
 {
-    /**
-     * Return media path.
-     *
-     * @return null
-     */
-    public function getPath()
-    {
-        return null;
-    }
-
     /**
      * @param mixed $offset
      *

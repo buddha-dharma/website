@@ -1,49 +1,64 @@
 <?php
-
 /**
- * @package    Grav\Plugin\Login
+ * @package    Grav.Plugin.Login
  *
- * @copyright  Copyright (C) 2014 - 2018 RocketTheme, LLC. All rights reserved.
+ * @copyright  Copyright (C) 2014 - 2017 RocketTheme, LLC. All rights reserved.
  * @license    MIT License; see LICENSE file for details.
  */
-
 namespace Grav\Plugin\Login\RememberMe;
 
-use Grav\Common\File\CompiledYamlFile;
-use Grav\Common\Filesystem\Folder;
+use Grav\Common\Cache;
 use Grav\Common\Grav;
+use Doctrine\Common\Cache\FilesystemCache;
 use Birke\Rememberme\Storage\StorageInterface;
+use Grav\Framework\Cache\Adapter\DoctrineCache;
 
 /**
- * Token Storage wrapper
+ * Storage wrapper for Doctrine cache
  *
  * Used for storing the credential/token/persistentToken triplets.
+ *
+ * @author  Sommerregen <sommerregen@benjamin-regler.de>
  */
 class TokenStorage implements StorageInterface
 {
-    /** @var string */
-    protected $path;
+    /**
+     * @var DoctrineCache
+     */
+    protected $driver;
 
-    /** @var int */
-    protected $timeout;
+    /**
+     * @var string
+     */
+    protected $cache_dir;
 
     /**
      * Constructor
      *
      * @param string    $path   Path to storage directory
-     * @param int       $timeout
-     * @throws \InvalidArgumentException
      */
-    public function __construct($path = 'user-data://rememberme', $timeout = 604800)
+    public function __construct($path = 'cache://rememberme')
     {
-        $this->path = Grav::instance()['locator']->findResource($path, true, true);
-        $this->timeout = $timeout;
+        /** @var Cache $cache */
+        $cache = Grav::instance()['cache'];
+
+        $this->cache_dir = Grav::instance()['locator']->findResource($path, true, true);
+
+        // Setup cache
+        $this->driver = $cache->getCacheDriver();
+        if ($this->driver instanceof FilesystemCache) {
+            $this->driver = new FilesystemCache($this->cache_dir);
+        }
+
+        // Set the cache namespace to our unique key
+        $this->driver->setNamespace($cache->getKey());
     }
 
     /**
      * Return Tri-state value constant
      *
-     * @param mixed     $credential         Unique credential (user id, email address, user name)
+     * @param mixed     $credential         Unique credential (user id,
+     *                                      email address, user name)
      * @param string    $token              One-Time Token
      * @param string    $persistentToken    Persistent Token
      *
@@ -51,47 +66,64 @@ class TokenStorage implements StorageInterface
      */
     public function findTriplet($credential, $token, $persistentToken)
     {
-        // Hash the tokens, because they can contain a salt and can be accessed in the file system
-        $persistentToken = sha1($persistentToken);
-        $token = sha1($token);
 
-        $file = $this->getFile($credential);
-        $tokens = (array)$file->content();
+        // Hash the tokens, because they can contain a salt and can be
+        // accessed in the file system
+        $persistentToken = sha1(trim($persistentToken));
+        $token = sha1(trim($token));
 
-        if (!isset($tokens[$persistentToken]) || $tokens[$persistentToken] < time() + $this->timeout) {
+        $id = $this->getId($credential);
+        if (!$this->driver->contains($id)) {
             return self::TRIPLET_NOT_FOUND;
         }
 
-        $stored = key($tokens[$persistentToken]);
-        if ($stored !== $token) {
-            return self::TRIPLET_INVALID;
+        list($expire, $tokens) = $this->driver->fetch($id);
+        if (isset($tokens[$persistentToken]) && $tokens[$persistentToken] == $token) {
+            return self::TRIPLET_FOUND;
         }
 
-        return self::TRIPLET_FOUND;
+        return self::TRIPLET_INVALID;
     }
 
     /**
-     * Store the new token for the credential and the persistent token. Create a new storage entry, if the combination
-     * of credential and persistent token does not exist.
+     * Store the new token for the credential and the persistent token.
+     * Create a new storage entry, if the combination of credential and
+     * persistent token does not exist.
      *
      * @param mixed     $credential
      * @param string    $token
      * @param string    $persistentToken
-     * @param int       $expire             Timestamp when this triplet will expire (0 = no expiry)
+     * @param int       $expire             Timestamp when this triplet
+     *                                      will expire (0 = no expiry)
      */
     public function storeTriplet($credential, $token, $persistentToken, $expire = null)
     {
-        // Hash the tokens, because they can contain a salt and can be accessed in the file system
-        $persistentToken = sha1($persistentToken);
-        $token = sha1($token);
+        // Hash the tokens, because they can contain a salt and can be
+        // accessed in the file system
+        $persistentToken = sha1(trim($persistentToken));
+        $token = sha1(trim($token));
 
-        $file = $this->getFile($credential);
-        $tokens = (array)$file->content();
+        $e = null;
+        $tokens = [];
+        $id = $this->getId($credential);
+        if ($this->driver->contains($id)) {
+            list($e, $tokens) = $this->driver->fetch($id);
+        }
 
-        // Update token
-        $tokens[$persistentToken] = [$token => time()];
+        // Get cache lifetime for tokens
+        if ($expire === null && $e === null) {
+            /** @var Cache $cache */
+            $cache = Grav::instance()['cache'];
+            $expire = $cache->getLifetime();
+        } elseif ($expire === null) {
+            $expire = $e;
+        }
 
-        $file->save($tokens);
+        // Update tokens
+        $tokens[$persistentToken] = $token;
+        $this->driver->save($id, [$expire, $tokens], $expire);
+
+        return $this;
     }
 
     /**
@@ -104,6 +136,7 @@ class TokenStorage implements StorageInterface
      */
     public function replaceTriplet($credential, $token, $persistentToken, $expire = null)
     {
+        $this->cleanTriplet($credential, $persistentToken);
         $this->storeTriplet($credential, $token, $persistentToken, $expire);
     }
 
@@ -115,25 +148,16 @@ class TokenStorage implements StorageInterface
      */
     public function cleanTriplet($credential, $persistentToken)
     {
-        // Hash the tokens, because they can contain a salt and can be accessed in the file system
-        $persistentToken = sha1($persistentToken);
+        // Hash the tokens, because they can contain a salt and can be
+        // accessed in the file system
+        $persistentToken = sha1(trim($persistentToken));
 
-        $file = $this->getFile($credential);
-        if (!$file->exists()) {
-            return;
-        }
-
-        $tokens = (array)$file->content();
-
-        if (isset($tokens[$persistentToken])) {
-            // Delete token from storage
+        // Delete token from storage
+        $id = $this->getId($credential);
+        if ($this->driver->contains($id)) {
+            list($expire, $tokens) = $this->driver->fetch($id);
             unset($tokens[$persistentToken]);
-
-            if ($tokens) {
-                $file->save($tokens);
-            } else {
-                $file->delete();
-            }
+            $this->driver->save($id, [$expire, $tokens], $expire);
         }
     }
 
@@ -145,10 +169,8 @@ class TokenStorage implements StorageInterface
      */
     public function cleanAllTriplets($credential)
     {
-        $file = $this->getFile($credential);
-        if ($file->exists()) {
-            $file->delete();
-        }
+        $id = $this->getId($credential);
+        $this->driver->delete($id);
     }
 
     /**
@@ -156,17 +178,20 @@ class TokenStorage implements StorageInterface
      */
     public function clearCache()
     {
-        if (is_dir($this->path)) {
-            Folder::delete($this->path, false);
-        }
+        $this->driver->flushAll();
     }
 
     /**
-     * @param string $credential
-     * @return CompiledYamlFile
+     * Get the cache id
+     *
+     * @param  string $key A key to compute the cache id for
+     * @return string      The cache id
      */
-    protected function getFile($credential)
+    protected function getId($key)
     {
-        return CompiledYamlFile::instance($this->path . '/' . sha1($credential) . '.yaml');
+        /** @var Cache $cache */
+        $cache = Grav::instance()['cache'];
+
+        return 'login' . md5(trim($key) . $cache->getKey());
     }
 }

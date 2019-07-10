@@ -1,14 +1,11 @@
 name: Markdown Font Awesome
-version: 1.1.0
+version: 1.0.1
 description: "Adds support for Font Awesome icons in Markdown using :emoji: syntax"
 icon: flag
 author:
-  name: Nathan Parsons
-  email: github@tantalum.blue
-  url: https://github.com/n-parsons
-homepage: https://github.com/n-parsons/grav-plugin-markdown-fontawesome
-keywords: font awesome, emoji, icons
-bugs: https://github.com/n-parsons/grav-plugin-markdown-fontawesome/issues
+  name: Joshua Lotz
+  email: joshualotz@gmail.com
+  url: https://github.com/yoshikin
 license: MIT
 
 form:

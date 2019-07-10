@@ -1,9 +1,8 @@
 <?php
-
 /**
- * @package    Grav\Common
+ * @package    Grav.Common
  *
- * @copyright  Copyright (C) 2015 - 2019 Trilby Media, LLC. All rights reserved.
+ * @copyright  Copyright (C) 2014 - 2017 RocketTheme, LLC. All rights reserved.
  * @license    MIT License; see LICENSE file for details.
  */
 
@@ -34,7 +33,7 @@ class Plugins extends Iterator
             if (!$directory->isDir()) {
                 continue;
             }
-            $plugins[] = $directory->getFilename();
+            $plugins[] = $directory->getBasename();
         }
 
         natsort($plugins);
@@ -90,7 +89,7 @@ class Plugins extends Iterator
     /**
      * Registers all plugins.
      *
-     * @return Plugin[] array of Plugin objects
+     * @return array|Plugin[] array of Plugin objects
      * @throws \RuntimeException
      */
     public function init()
@@ -117,7 +116,7 @@ class Plugins extends Iterator
     /**
      * Add a plugin
      *
-     * @param Plugin $plugin
+     * @param $plugin
      */
     public function add($plugin)
     {
@@ -133,25 +132,12 @@ class Plugins extends Iterator
      */
     public static function all()
     {
-        $grav = Grav::instance();
-        $plugins = $grav['plugins'];
+        $plugins = Grav::instance()['plugins'];
         $list = [];
 
         foreach ($plugins as $instance) {
             $name = $instance->name;
-
-            try {
-                $result = self::get($name);
-            } catch (\Exception $e) {
-                $exception = new \RuntimeException(sprintf('Plugin %s: %s', $name, $e->getMessage()), $e->getCode(), $e);
-
-                /** @var Debugger $debugger */
-                $debugger = $grav['debugger'];
-                $debugger->addMessage("Plugin {$name} cannot be loaded, please check Exceptions tab", 'error');
-                $debugger->addException($exception);
-
-                continue;
-            }
+            $result = self::get($name);
 
             if ($result) {
                 $list[$name] = $result;
@@ -181,7 +167,7 @@ class Plugins extends Iterator
             return null;
         }
 
-        $obj = new Data((array)$file->content(), $blueprint);
+        $obj = new Data($file->content(), $blueprint);
 
         // Override with user configuration.
         $obj->merge(Grav::instance()['config']->get('plugins.' . $name) ?: []);
@@ -198,31 +184,24 @@ class Plugins extends Iterator
         $grav = Grav::instance();
         $locator = $grav['locator'];
 
-        $file = $locator->findResource('plugins://' . $name . DS . $name . PLUGIN_EXT);
-
-        if (is_file($file)) {
-            // Local variables available in the file: $grav, $config, $name, $file
-            $class = include_once $file;
-
-            $pluginClassFormat = [
-                'Grav\\Plugin\\' . ucfirst($name). 'Plugin',
-                'Grav\\Plugin\\' . Inflector::camelize($name) . 'Plugin'
-            ];
-
-            foreach ($pluginClassFormat as $pluginClass) {
-                if (class_exists($pluginClass)) {
-                    $class = new $pluginClass($name, $grav);
-                    break;
-                }
-            }
-        } else {
+        $filePath = $locator->findResource('plugins://' . $name . DS . $name . PLUGIN_EXT);
+        if (!is_file($filePath)) {
             $grav['log']->addWarning(
                 sprintf("Plugin '%s' enabled but not found! Try clearing cache with `bin/grav clear-cache`", $name)
             );
             return null;
         }
 
-        return $class;
+        require_once $filePath;
+
+        $pluginClassName = 'Grav\\Plugin\\' . ucfirst($name) . 'Plugin';
+        if (!class_exists($pluginClassName)) {
+            $pluginClassName = 'Grav\\Plugin\\' . $grav['inflector']->camelize($name) . 'Plugin';
+            if (!class_exists($pluginClassName)) {
+                throw new \RuntimeException(sprintf("Plugin '%s' class not found! Try reinstalling this plugin.", $name));
+            }
+        }
+        return new $pluginClassName($name, $grav);
     }
 
 }

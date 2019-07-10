@@ -1,13 +1,14 @@
 <?php
-
 /**
- * @package    Grav\Common
+ * @package    Grav.Common
  *
- * @copyright  Copyright (C) 2015 - 2019 Trilby Media, LLC. All rights reserved.
+ * @copyright  Copyright (C) 2014 - 2017 RocketTheme, LLC. All rights reserved.
  * @license    MIT License; see LICENSE file for details.
  */
 
 namespace Grav\Common;
+
+use Grav\Common\Grav;
 
 /**
 * This file was originally part of the Akelos Framework
@@ -15,21 +16,21 @@ namespace Grav\Common;
 
 class Inflector
 {
-    protected static $plural;
-    protected static $singular;
-    protected static $uncountable;
-    protected static $irregular;
-    protected static $ordinals;
+    protected $plural;
+    protected $singular;
+    protected $uncountable;
+    protected $irregular;
+    protected $ordinals;
 
-    public static function init()
+    public function init()
     {
-        if (empty(static::$plural)) {
+        if (empty($this->plural)) {
             $language = Grav::instance()['language'];
-            static::$plural = $language->translate('GRAV.INFLECTOR_PLURALS', null, true) ?: [];
-            static::$singular = $language->translate('GRAV.INFLECTOR_SINGULAR', null, true) ?: [];
-            static::$uncountable = $language->translate('GRAV.INFLECTOR_UNCOUNTABLE', null, true) ?: [];
-            static::$irregular = $language->translate('GRAV.INFLECTOR_IRREGULAR', null, true) ?: [];
-            static::$ordinals = $language->translate('GRAV.INFLECTOR_ORDINALS', null, true) ?: [];
+            $this->plural = $language->translate('INFLECTOR_PLURALS', null, true) ?: [];
+            $this->singular = $language->translate('INFLECTOR_SINGULAR', null, true) ?: [];
+            $this->uncountable = $language->translate('INFLECTOR_UNCOUNTABLE', null, true) ?: [];
+            $this->irregular = $language->translate('INFLECTOR_IRREGULAR', null, true) ?: [];
+            $this->ordinals = $language->translate('INFLECTOR_ORDINALS', null, true) ?: [];
         }
     }
 
@@ -41,29 +42,29 @@ class Inflector
      *
      * @return string Plural noun
      */
-    public static function pluralize($word, $count = 2)
+    public function pluralize($word, $count = 2)
     {
-        static::init();
+        $this->init();
 
-        if ((int)$count === 1) {
+        if ($count == 1) {
             return $word;
         }
 
         $lowercased_word = strtolower($word);
 
-        foreach (static::$uncountable as $_uncountable) {
-            if (substr($lowercased_word, -1 * strlen($_uncountable)) === $_uncountable) {
+        foreach ($this->uncountable as $_uncountable) {
+            if (substr($lowercased_word, (-1 * strlen($_uncountable))) == $_uncountable) {
                 return $word;
             }
         }
 
-        foreach (static::$irregular as $_plural => $_singular) {
+        foreach ($this->irregular as $_plural => $_singular) {
             if (preg_match('/(' . $_plural . ')$/i', $word, $arr)) {
                 return preg_replace('/(' . $_plural . ')$/i', substr($arr[0], 0, 1) . substr($_singular, 1), $word);
             }
         }
 
-        foreach (static::$plural as $rule => $replacement) {
+        foreach ($this->plural as $rule => $replacement) {
             if (preg_match($rule, $word)) {
                 return preg_replace($rule, $replacement, $word);
             }
@@ -81,28 +82,28 @@ class Inflector
      *
      * @return string Singular noun.
      */
-    public static function singularize($word, $count = 1)
+    public function singularize($word, $count = 1)
     {
-        static::init();
+        $this->init();
 
-        if ((int)$count !== 1) {
+        if ($count != 1) {
             return $word;
         }
 
         $lowercased_word = strtolower($word);
-        foreach (static::$uncountable as $_uncountable) {
-            if (substr($lowercased_word, -1 * strlen($_uncountable)) === $_uncountable) {
+        foreach ($this->uncountable as $_uncountable) {
+            if (substr($lowercased_word, (-1 * strlen($_uncountable))) == $_uncountable) {
                 return $word;
             }
         }
 
-        foreach (static::$irregular as $_plural => $_singular) {
+        foreach ($this->irregular as $_plural => $_singular) {
             if (preg_match('/(' . $_singular . ')$/i', $word, $arr)) {
                 return preg_replace('/(' . $_singular . ')$/i', substr($arr[0], 0, 1) . substr($_plural, 1), $word);
             }
         }
 
-        foreach (static::$singular as $rule => $replacement) {
+        foreach ($this->singular as $rule => $replacement) {
             if (preg_match($rule, $word)) {
                 return preg_replace($rule, $replacement, $word);
             }
@@ -128,11 +129,11 @@ class Inflector
      *
      * @return string Text formatted as title
      */
-    public static function titleize($word, $uppercase = '')
+    public function titleize($word, $uppercase = '')
     {
-        $uppercase = $uppercase === 'first' ? 'ucfirst' : 'ucwords';
+        $uppercase = $uppercase == 'first' ? 'ucfirst' : 'ucwords';
 
-        return $uppercase(static::humanize(static::underscorize($word)));
+        return $uppercase($this->humanize($this->underscorize($word)));
     }
 
     /**
@@ -148,7 +149,7 @@ class Inflector
      *
      * @return string UpperCamelCasedWord
      */
-    public static function camelize($word)
+    public function camelize($word)
     {
         return str_replace(' ', '', ucwords(preg_replace('/[^A-Z^a-z^0-9]+/', ' ', $word)));
     }
@@ -165,7 +166,7 @@ class Inflector
      *
      * @return string Underscored word
      */
-    public static function underscorize($word)
+    public function underscorize($word)
     {
         $regex1 = preg_replace('/([A-Z]+)([A-Z][a-z])/', '\1_\2', $word);
         $regex2 = preg_replace('/([a-zd])([A-Z])/', '\1_\2', $regex1);
@@ -186,14 +187,13 @@ class Inflector
      *
      * @return string hyphenized word
      */
-    public static function hyphenize($word)
+    public function hyphenize($word)
     {
         $regex1 = preg_replace('/([A-Z]+)([A-Z][a-z])/', '\1-\2', $word);
-        $regex2 = preg_replace('/([a-z])([A-Z])/', '\1-\2', $regex1);
-        $regex3 = preg_replace('/([0-9])([A-Z])/', '\1-\2', $regex2);
-        $regex4 = preg_replace('/[^A-Z^a-z^0-9]+/', '-', $regex3);
+        $regex2 = preg_replace('/([a-zd])([A-Z])/', '\1-\2', $regex1);
+        $regex3 = preg_replace('/[^A-Z^a-z^0-9]+/', '-', $regex2);
 
-        return strtolower($regex4);
+        return strtolower($regex3);
     }
 
     /**
@@ -212,9 +212,9 @@ class Inflector
      *
      * @return string Human-readable word
      */
-    public static function humanize($word, $uppercase = '')
+    public function humanize($word, $uppercase = '')
     {
-        $uppercase = $uppercase === 'all' ? 'ucwords' : 'ucfirst';
+        $uppercase = $uppercase == 'all' ? 'ucwords' : 'ucfirst';
 
         return $uppercase(str_replace('_', ' ', preg_replace('/_id$/', '', $word)));
     }
@@ -232,9 +232,9 @@ class Inflector
      *
      * @return string Returns a lowerCamelCasedWord
      */
-    public static function variablize($word)
+    public function variablize($word)
     {
-        $word = static::camelize($word);
+        $word = $this->camelize($word);
 
         return strtolower($word[0]) . substr($word, 1);
     }
@@ -251,9 +251,9 @@ class Inflector
      *
      * @return string plural_table_name
      */
-    public static function tableize($class_name)
+    public function tableize($class_name)
     {
-        return static::pluralize(static::underscorize($class_name));
+        return $this->pluralize($this->underscorize($class_name));
     }
 
     /**
@@ -268,9 +268,9 @@ class Inflector
      *
      * @return string SingularClassName
      */
-    public static function classify($table_name)
+    public function classify($table_name)
     {
-        return static::camelize(static::singularize($table_name));
+        return $this->camelize($this->singularize($table_name));
     }
 
     /**
@@ -278,27 +278,31 @@ class Inflector
      *
      * This method converts 13 to 13th, 2 to 2nd ...
      *
-     * @param    int $number Number to get its ordinal value
+     * @param    integer $number Number to get its ordinal value
      *
      * @return string Ordinal representation of given string.
      */
-    public static function ordinalize($number)
+    public function ordinalize($number)
     {
-        static::init();
+        $this->init();
 
-        if (\in_array($number % 100, range(11, 13), true)) {
-            return $number . static::$ordinals['default'];
-        }
-
-        switch ($number % 10) {
-            case 1:
-                return $number . static::$ordinals['first'];
-            case 2:
-                return $number . static::$ordinals['second'];
-            case 3:
-                return $number . static::$ordinals['third'];
-            default:
-                return $number . static::$ordinals['default'];
+        if (in_array(($number % 100), range(11, 13))) {
+            return $number . $this->ordinals['default'];
+        } else {
+            switch (($number % 10)) {
+                case 1:
+                    return $number . $this->ordinals['first'];
+                    break;
+                case 2:
+                    return $number . $this->ordinals['second'];
+                    break;
+                case 3:
+                    return $number . $this->ordinals['third'];
+                    break;
+                default:
+                    return $number . $this->ordinals['default'];
+                    break;
+            }
         }
     }
 
@@ -309,7 +313,7 @@ class Inflector
      *
      * @return int
      */
-    public static function monthize($days)
+    public function monthize($days)
     {
         $now = new \DateTime();
         $end = new \DateTime();
@@ -320,7 +324,7 @@ class Inflector
 
         // handle years
         if ($diff->y > 0) {
-            $diff->m += 12 * $diff->y;
+            $diff->m = $diff->m + 12 * $diff->y;
         }
 
         return $diff->m;

@@ -1,23 +1,21 @@
 <?php
-
 /**
- * @package    Grav\Common\Page
+ * @package    Grav.Common.Page
  *
- * @copyright  Copyright (C) 2015 - 2019 Trilby Media, LLC. All rights reserved.
+ * @copyright  Copyright (C) 2014 - 2017 RocketTheme, LLC. All rights reserved.
  * @license    MIT License; see LICENSE file for details.
  */
 
 namespace Grav\Common\Page\Medium;
 
 use Grav\Common\Markdown\Parsedown;
-use Grav\Common\Page\Markdown\Excerpts;
 
 trait ParsedownHtmlTrait
 {
     /**
      * @var \Grav\Common\Markdown\Parsedown
      */
-    protected $parsedown;
+    protected $parsedown = null;
 
     /**
      * Return HTML markup from the medium.
@@ -34,7 +32,7 @@ trait ParsedownHtmlTrait
         $element = $this->parsedownElement($title, $alt, $class, $id, $reset);
 
         if (!$this->parsedown) {
-            $this->parsedown = new Parsedown(new Excerpts());
+            $this->parsedown = new Parsedown(null, null);
         }
 
         return $this->parsedown->elementToHtml($element);

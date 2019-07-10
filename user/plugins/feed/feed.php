@@ -138,11 +138,7 @@ class FeedPlugin extends Plugin
 
         /** @var Data\Blueprint $blueprint */
         $blueprint = $event['blueprint'];
-        $form = $blueprint->form();
-
-        $blog_tab_exists = isset($form['fields']['tabs']['fields']['blog']);
-
-        if (!$inEvent && $blog_tab_exists) {
+        if (!$inEvent && $blueprint->name == 'blog_list') {
             $inEvent = true;
             $blueprints = new Data\Blueprints(__DIR__ . '/blueprints/');
             $extends = $blueprints->get('feed');

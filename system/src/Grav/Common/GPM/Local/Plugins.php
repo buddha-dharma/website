@@ -1,9 +1,8 @@
 <?php
-
 /**
- * @package    Grav\Common\GPM
+ * @package    Grav.Common.GPM
  *
- * @copyright  Copyright (C) 2015 - 2019 Trilby Media, LLC. All rights reserved.
+ * @copyright  Copyright (C) 2014 - 2017 RocketTheme, LLC. All rights reserved.
  * @license    MIT License; see LICENSE file for details.
  */
 
@@ -25,7 +24,6 @@ class Plugins extends AbstractPackageCollection
     {
         /** @var \Grav\Common\Plugins $plugins */
         $plugins = Grav::instance()['plugins'];
-
         parent::__construct($plugins->all());
     }
 }

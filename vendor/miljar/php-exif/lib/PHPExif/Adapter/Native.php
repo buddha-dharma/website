@@ -12,6 +12,7 @@
 namespace PHPExif\Adapter;
 
 use PHPExif\Exif;
+use DateTime;
 
 /**
  * PHP Exif Native Reader Adapter
@@ -95,7 +96,7 @@ class Native extends AdapterAbstract
      * Setter for the EXIF sections
      *
      * @param array $sections List of EXIF sections
-     * @return \PHPExif\Adapter\Native Current instance for chaining
+     * @return \PHPExif\Reader Current instance for chaining
      */
     public function setRequiredSections(array $sections)
     {
@@ -108,7 +109,7 @@ class Native extends AdapterAbstract
      * Adds an EXIF section to the list
      *
      * @param string $section
-     * @return \PHPExif\Adapter\Native Current instance for chaining
+     * @return \PHPExif\Reader Current instance for chaining
      */
     public function addRequiredSection($section)
     {
@@ -123,7 +124,7 @@ class Native extends AdapterAbstract
      * Define if the thumbnail should be included into the EXIF data or not
      *
      * @param boolean $value
-     * @return \PHPExif\Adapter\Native Current instance for chaining
+     * @return \PHPExif\Reader Current instance for chaining
      */
     public function setIncludeThumbnail($value)
     {
@@ -146,7 +147,7 @@ class Native extends AdapterAbstract
      * Define if the sections should be parsed as arrays
      *
      * @param boolean $value
-     * @return \PHPExif\Adapter\Native Current instance for chaining
+     * @return \PHPExif\Reader Current instance for chaining
      */
     public function setSectionsAsArrays($value)
     {

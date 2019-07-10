@@ -1,21 +1,19 @@
 <?php
-
 /**
- * @package    Grav\Console\Cli
+ * @package    Grav.Console
  *
- * @copyright  Copyright (C) 2015 - 2019 Trilby Media, LLC. All rights reserved.
+ * @copyright  Copyright (C) 2014 - 2017 RocketTheme, LLC. All rights reserved.
  * @license    MIT License; see LICENSE file for details.
  */
 
 namespace Grav\Console\Cli;
 
-use Grav\Common\Backup\Backups;
 use Grav\Common\Grav;
+use Grav\Common\Backup\ZipBackup;
 use Grav\Console\ConsoleCommand;
+use RocketTheme\Toolbox\File\JsonFile;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Question\ChoiceQuestion;
-use Symfony\Component\Console\Style\SymfonyStyle;
 
 class BackupCommand extends ConsoleCommand
 {
@@ -25,89 +23,61 @@ class BackupCommand extends ConsoleCommand
     /** @var ProgressBar $progress */
     protected $progress;
 
+    /**
+     *
+     */
     protected function configure()
     {
         $this
-            ->setName('backup')
+            ->setName("backup")
             ->addArgument(
-                'id',
+                'destination',
                 InputArgument::OPTIONAL,
-                'The ID of the backup profile to perform without prompting'
+                'Where to store the backup (/backup is default)'
 
             )
-            ->setDescription('Creates a backup of the Grav instance')
-            ->setHelp('The <info>backup</info> creates a zipped backup.');
+            ->setDescription("Creates a backup of the Grav instance")
+            ->setHelp('The <info>backup</info> creates a zipped backup. Optionally can be saved in a different destination.');
 
         $this->source = getcwd();
     }
 
+    /**
+     * @return int|null|void
+     */
     protected function serve()
     {
         $this->progress = new ProgressBar($this->output);
-        $this->progress->setFormat('Archiving <cyan>%current%</cyan> files [<green>%bar%</green>] <white>%percent:3s%%</white> %elapsed:6s% <yellow>%message%</yellow>');
-        $this->progress->setBarWidth(100);
+        $this->progress->setFormat('Archiving <cyan>%current%</cyan> files [<green>%bar%</green>] %elapsed:6s% %memory:6s%');
 
         Grav::instance()['config']->init();
 
-        $io = new SymfonyStyle($this->input, $this->output);
-        $io->title('Grav Backup');
+        $destination = ($this->input->getArgument('destination')) ? $this->input->getArgument('destination') : null;
+        $log = JsonFile::instance(Grav::instance()['locator']->findResource("log://backup.log", true, true));
+        $backup = ZipBackup::backup($destination, [$this, 'output']);
 
-        /** @var Backups $backups */
-        $backups = Grav::instance()['backups'];
-        $backups_list = $backups->getBackupProfiles();
-        $backups_names = $backups->getBackupNames();
+        $log->content([
+            'time' => time(),
+            'location' => $backup
+        ]);
+        $log->save();
 
-        $id = null;
+        $this->output->writeln('');
+        $this->output->writeln('');
 
-        $inline_id = $this->input->getArgument('id');
-        if (null !== $inline_id && is_numeric($inline_id)) {
-            $id = $inline_id;
-        }
-
-        if (null === $id) {
-            if (\count($backups_list) > 1) {
-                $helper = $this->getHelper('question');
-                $question = new ChoiceQuestion(
-                    'Choose a backup?',
-                    $backups_names,
-                    0
-                );
-                $question->setErrorMessage('Option %s is invalid.');
-                $backup_name = $helper->ask($this->input, $this->output, $question);
-                $id = array_search($backup_name, $backups_names, true);
-
-                $io->newLine();
-                $io->note('Selected backup: ' . $backup_name);
-            } else {
-                $id = 0;
-            }
-        }
-
-        $backup = $backups->backup($id, [$this, 'outputProgress']);
-
-        $io->newline(2);
-        $io->success('Backup Successfully Created: ' . $backup);
     }
 
     /**
-     * @param array $args
+     * @param $args
      */
-    public function outputProgress($args)
+    public function output($args)
     {
         switch ($args['type']) {
-            case 'count':
-                $steps = $args['steps'];
-                $freq = (int)($steps > 100 ? round($steps / 100) : $steps);
-                $this->progress->setMaxSteps($steps);
-                $this->progress->setRedrawFrequency($freq);
-                $this->progress->setMessage('Adding files...');
-                break;
             case 'message':
-                $this->progress->setMessage($args['message']);
-                $this->progress->display();
+                $this->output->writeln($args['message']);
                 break;
             case 'progress':
-                if (isset($args['complete']) && $args['complete']) {
+                if ($args['complete']) {
                     $this->progress->finish();
                 } else {
                     $this->progress->advance();

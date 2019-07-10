@@ -249,14 +249,11 @@ class Native implements MapperInterface
     /**
      * Extract GPS coordinates from components array
      *
-     * @param array|string $components
+     * @param array $components
      * @return float
      */
-    protected function extractGPSCoordinate($components)
+    protected function extractGPSCoordinate(array $components)
     {
-        if (!is_array($components)) {
-            $components = array($components);
-        }
         $components = array_map(array($this, 'normalizeComponent'), $components);
 
         if (count($components) > 2) {

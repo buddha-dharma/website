@@ -8,13 +8,14 @@
     {{ content|raw }}
 
     {% if form %}
-        {% include 'partials/form-messages.html.twig' %}
-
+        {% if form.message %}
+        <div class="alert notices {{ form.message_color ?: 'green' }}"><p>{{ form.message|raw }}</p></div>
+        {% endif %}
         <p>{{ 'PLUGIN_FORM.DATA_SUMMARY'|t }}</p>
 
         {% include "forms/data.html.twig" %}
     {% else %}
-        <div class="notices warning yellow"><p>{{ 'PLUGIN_FORM.NO_FORM_DATA'|t }}</p></div>
+        <div class="alert notices yellow"><p>{{ 'PLUGIN_FORM.NO_FORM_DATA'|t }}</p></div>
     {% endif %}
 
 {% endblock %}

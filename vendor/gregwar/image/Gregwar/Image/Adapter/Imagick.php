@@ -392,11 +392,6 @@ class Imagick extends Common
         // TODO: Implement openPng() method.
     }
 
-    protected function openWebp($file)
-    {
-        // TODO: Implement openWebp() method.
-    }
-
     /**
      * Creates an image.
      */

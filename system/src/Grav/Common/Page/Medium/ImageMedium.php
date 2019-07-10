@@ -1,9 +1,8 @@
 <?php
-
 /**
- * @package    Grav\Common\Page
+ * @package    Grav.Common.Page
  *
- * @copyright  Copyright (C) 2015 - 2019 Trilby Media, LLC. All rights reserved.
+ * @copyright  Copyright (C) 2014 - 2017 RocketTheme, LLC. All rights reserved.
  * @license    MIT License; see LICENSE file for details.
  */
 
@@ -12,7 +11,6 @@ namespace Grav\Common\Page\Medium;
 use Grav\Common\Data\Blueprint;
 use Grav\Common\Grav;
 use Grav\Common\Utils;
-use RocketTheme\Toolbox\ResourceLocator\UniformResourceLocator;
 
 class ImageMedium extends Medium
 {
@@ -42,7 +40,7 @@ class ImageMedium extends Medium
     protected $default_quality;
 
     /**
-     * @var bool
+     * @var boolean
      */
     protected $debug_watermarked = false;
 
@@ -84,13 +82,11 @@ class ImageMedium extends Medium
 
         $config = Grav::instance()['config'];
 
-        $path = $this->get('filepath');
-        if (!$path || !file_exists($path) || !filesize($path)) {
+        if (filesize($this->get('filepath')) === 0) {
             return;
         }
 
-        $image_info = getimagesize($path);
-
+        $image_info = getimagesize($this->get('filepath'));
         $this->def('width', $image_info[0]);
         $this->def('height', $image_info[1]);
         $this->def('mime', $image_info['mime']);
@@ -107,22 +103,10 @@ class ImageMedium extends Medium
         }
     }
 
-    public function __destruct()
-    {
-        unset($this->image);
-    }
-
-    public function __clone()
-    {
-        $this->image = $this->image ? clone $this->image : null;
-
-        parent::__clone();
-    }
-
     /**
      * Add meta file for the medium.
      *
-     * @param string $filepath
+     * @param $filepath
      * @return $this
      */
     public function addMetaFile($filepath)
@@ -168,27 +152,21 @@ class ImageMedium extends Medium
      */
     public function url($reset = true)
     {
-        /** @var UniformResourceLocator $locator */
-        $locator = Grav::instance()['locator'];
-        $image_path = $locator->findResource('cache://images', true) ?: $locator->findResource('cache://images', true, true);
+        $image_path = Grav::instance()['locator']->findResource('cache://images', true);
+        $image_dir = Grav::instance()['locator']->findResource('cache://images', false);
         $saved_image_path = $this->saveImage();
 
-        $output = preg_replace('|^' . preg_quote(GRAV_ROOT, '|') . '|', '', $saved_image_path);
-
-        if ($locator->isStream($output)) {
-            $output = $locator->findResource($output, false);
-        }
+        $output = preg_replace('|^' . preg_quote(GRAV_ROOT) . '|', '', $saved_image_path);
 
         if (Utils::startsWith($output, $image_path)) {
-            $image_dir = $locator->findResource('cache://images', false);
-            $output = '/' . $image_dir . preg_replace('|^' . preg_quote($image_path, '|') . '|', '', $output);
+            $output = '/' . $image_dir . preg_replace('|^' . preg_quote($image_path) . '|', '', $output);
         }
 
         if ($reset) {
             $this->reset();
         }
 
-        return trim(Grav::instance()['base_url'] . '/' . $this->urlQuerystring($output), '\\');
+        return trim(Grav::instance()['base_url'] . '/' . ltrim($output . $this->querystring() . $this->urlHash(), '/'), '\\');
     }
 
     /**
@@ -226,7 +204,7 @@ class ImageMedium extends Medium
         foreach ($this->alternatives as $ratio => $medium) {
             $srcset[] = $medium->url($reset) . ' ' . $medium->get('width') . 'w';
         }
-        $srcset[] = str_replace(' ', '%20', $this->url($reset)) . ' ' . $this->get('width') . 'w';
+        $srcset[] = $this->url($reset) . ' ' . $this->get('width') . 'w';
 
         return implode(', ', $srcset);
     }
@@ -234,7 +212,7 @@ class ImageMedium extends Medium
     /**
      * Allows the ability to override the Inmage's Pretty name stored in cache
      *
-     * @param string $name
+     * @param $name
      */
     public function setImagePrettyName($name)
     {
@@ -248,13 +226,13 @@ class ImageMedium extends Medium
     {
         if ($this->get('prettyname')) {
             return $this->get('prettyname');
+        } else {
+            $basename = $this->get('basename');
+            if (preg_match('/[a-z0-9]{40}-(.*)/', $basename, $matches)) {
+                $basename = $matches[1];
+            }
+            return $basename;
         }
-
-        $basename = $this->get('basename');
-        if (preg_match('/[a-z0-9]{40}-(.*)/', $basename, $matches)) {
-            $basename = $matches[1];
-        }
-        return $basename;
     }
 
     /**
@@ -263,12 +241,11 @@ class ImageMedium extends Medium
      * widths. Existing image alternatives won't be overwritten.
      *
      * @param  int|int[] $min_width
-     * @param  int       $max_width
-     * @param  int       $step
+     * @param  int       [$max_width=2500]
+     * @param  int       [$step=200]
      * @return $this
      */
-    public function derivatives($min_width, $max_width = 2500, $step = 200)
-    {
+    public function derivatives($min_width, $max_width = 2500, $step = 200) {
         if (!empty($this->alternatives)) {
             $max = max(array_keys($this->alternatives));
             $base = $this->alternatives[$max];
@@ -303,7 +280,7 @@ class ImageMedium extends Medium
             // It's possible that MediumFactory::fromFile returns null if the
             // original image file no longer exists and this class instance was
             // retrieved from the page cache
-            if (null !== $derivative) {
+            if (isset($derivative)) {
                 $index = 2;
                 $alt_widths = array_keys($this->alternatives);
                 sort($alt_widths);
@@ -335,7 +312,7 @@ class ImageMedium extends Medium
      * Parsedown element for source display mode
      *
      * @param  array $attributes
-     * @param  bool $reset
+     * @param  boolean $reset
      * @return array
      */
     public function sourceParsedownElement(array $attributes, $reset = true)
@@ -348,7 +325,7 @@ class ImageMedium extends Medium
             $attributes['sizes'] = $this->sizes();
         }
 
-        return ['name' => 'img', 'attributes' => $attributes];
+        return [ 'name' => 'img', 'attributes' => $attributes ];
     }
 
     /**
@@ -362,7 +339,8 @@ class ImageMedium extends Medium
 
         if ($this->image) {
             $this->image();
-            $this->medium_querystring = [];
+            $this->image->clearOperations(); // Clear previously applied operations
+            $this->querystring('');
             $this->filter();
             $this->clearAlternatives();
         }
@@ -378,7 +356,7 @@ class ImageMedium extends Medium
     /**
      * Turn the current Medium into a Link
      *
-     * @param  bool $reset
+     * @param  boolean $reset
      * @param  array  $attributes
      * @return Link
      */
@@ -398,7 +376,7 @@ class ImageMedium extends Medium
      *
      * @param  int  $width
      * @param  int  $height
-     * @param  bool $reset
+     * @param  boolean $reset
      * @return Link
      */
     public function lightbox($width = null, $height = null, $reset = true)
@@ -408,7 +386,7 @@ class ImageMedium extends Medium
         }
 
         if ($width && $height) {
-            $this->__call('cropResize', [$width, $height]);
+            $this->cropResize($width, $height);
         }
 
         return parent::lightbox($width, $height, $reset);
@@ -418,7 +396,7 @@ class ImageMedium extends Medium
      * Sets or gets the quality of the image
      *
      * @param  int $quality 0-100 quality
-     * @return int|$this
+     * @return Medium
      */
     public function quality($quality = null)
     {
@@ -428,7 +406,6 @@ class ImageMedium extends Medium
             }
 
             $this->quality = $quality;
-
             return $this;
         }
 
@@ -448,7 +425,6 @@ class ImageMedium extends Medium
         }
 
         $this->format = $format;
-
         return $this;
     }
 
@@ -456,14 +432,13 @@ class ImageMedium extends Medium
      * Set or get sizes parameter for srcset media action
      *
      * @param  string $sizes
-     * @return string
+     * @return $this
      */
     public function sizes($sizes = null)
     {
 
         if ($sizes) {
             $this->sizes = $sizes;
-
             return $this;
         }
 
@@ -484,12 +459,10 @@ class ImageMedium extends Medium
      */
     public function width($value = 'auto')
     {
-        if (!$value || $value === 'auto') {
+        if (!$value || $value == 'auto')
             $this->attributes['width'] = $this->get('width');
-        } else {
+        else
             $this->attributes['width'] = $value;
-        }
-
         return $this;
     }
 
@@ -507,12 +480,10 @@ class ImageMedium extends Medium
      */
     public function height($value = 'auto')
     {
-        if (!$value || $value === 'auto') {
+        if (!$value || $value == 'auto')
             $this->attributes['height'] = $this->get('height');
-        } else {
+        else
             $this->attributes['height'] = $value;
-        }
-
         return $this;
     }
 
@@ -525,11 +496,11 @@ class ImageMedium extends Medium
      */
     public function __call($method, $args)
     {
-        if ($method === 'cropZoom') {
+        if ($method == 'cropZoom') {
             $method = 'zoomCrop';
         }
 
-        if (!\in_array($method, self::$magic_actions, true)) {
+        if (!in_array($method, self::$magic_actions)) {
             return parent::__call($method, $args);
         }
 
@@ -580,9 +551,6 @@ class ImageMedium extends Medium
         // Use existing cache folder or if it doesn't exist, create it.
         $cacheDir = $locator->findResource('cache://images', true) ?: $locator->findResource('cache://images', true, true);
 
-        // Make sure we free previous image.
-        unset($this->image);
-
         $this->image = ImageFile::open($file)
             ->setCacheDir($cacheDir)
             ->setActualCacheDir($cacheDir)
@@ -594,7 +562,7 @@ class ImageMedium extends Medium
     /**
      * Save the image with cache.
      *
-     * @return string
+     * @return mixed|string
      */
     protected function saveImage()
     {
@@ -608,7 +576,7 @@ class ImageMedium extends Medium
             return $this->result;
         }
 
-        if (!$this->debug_watermarked && $this->get('debug')) {
+        if ($this->get('debug') && !$this->debug_watermarked) {
             $ratio = $this->get('ratio');
             if (!$ratio) {
                 $ratio = 1;
@@ -619,7 +587,7 @@ class ImageMedium extends Medium
             $this->image->merge(ImageFile::open($overlay));
         }
 
-        return $this->image->cacheFile($this->format, $this->quality, false, [$this->get('width'), $this->get('height'), $this->get('modified')]);
+        return $this->image->cacheFile($this->format, $this->quality);
     }
 
     /**
@@ -655,9 +623,9 @@ class ImageMedium extends Medium
             }
 
             return $max;
+        } else {
+            return $this;
         }
-
-        return $this;
     }
 
 }

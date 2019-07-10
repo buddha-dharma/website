@@ -30,12 +30,13 @@ class Session implements \IteratorAggregate
     public function __construct($lifetime, $path, $domain = null)
     {
         // Session is a singleton.
-        if (null !== self::$instance) {
-            throw new \RuntimeException('Session has already been initialized.', 500);
+        if (isset(self::$instance)) {
+            throw new \RuntimeException("Session has already been initialized.", 500);
         }
 
         // Destroy any existing sessions started with session.auto_start
-        if ($this->isSessionStarted()) {
+        if ($this->isSessionStarted())
+        {
             session_unset();
             session_destroy();
         }
@@ -51,6 +52,12 @@ class Session implements \IteratorAggregate
         register_shutdown_function([$this, 'close']);
         session_cache_limiter('nocache');
 
+        if (isset($this->count)) {
+            $this->count++;
+        } else {
+            $this->count = 1;
+        }
+
         self::$instance = $this;
     }
 
@@ -62,7 +69,7 @@ class Session implements \IteratorAggregate
      */
     public function instance()
     {
-        if (null === self::$instance) {
+        if (!isset(self::$instance)) {
             throw new \RuntimeException("Session hasn't been initialized.", 500);
         }
 
@@ -94,7 +101,7 @@ class Session implements \IteratorAggregate
     /**
      * Get session ID
      *
-     * @return string|null Session ID
+     * @return string Session ID
      */
     public function getId()
     {
@@ -119,7 +126,7 @@ class Session implements \IteratorAggregate
     /**
      * Get session name
      *
-     * @return string|null
+     * @return string
      */
     public function getName()
     {

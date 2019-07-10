@@ -1,9 +1,8 @@
 <?php
-
 /**
- * @package    Grav\Common\GPM
+ * @package    Grav.Common.GPM
  *
- * @copyright  Copyright (C) 2015 - 2019 Trilby Media, LLC. All rights reserved.
+ * @copyright  Copyright (C) 2014 - 2017 RocketTheme, LLC. All rights reserved.
  * @license    MIT License; see LICENSE file for details.
  */
 
@@ -15,23 +14,23 @@ use Grav\Common\Grav;
 class Installer
 {
     /** @const No error */
-    public const OK = 0;
+    const OK = 0;
     /** @const Target already exists */
-    public const EXISTS = 1;
+    const EXISTS = 1;
     /** @const Target is a symbolic link */
-    public const IS_LINK = 2;
+    const IS_LINK = 2;
     /** @const Target doesn't exist */
-    public const NOT_FOUND = 4;
+    const NOT_FOUND = 4;
     /** @const Target is not a directory */
-    public const NOT_DIRECTORY = 8;
+    const NOT_DIRECTORY = 8;
     /** @const Target is not a Grav instance */
-    public const NOT_GRAV_ROOT = 16;
+    const NOT_GRAV_ROOT = 16;
     /** @const Error while trying to open the ZIP package */
-    public const ZIP_OPEN_ERROR = 32;
+    const ZIP_OPEN_ERROR = 32;
     /** @const Error while trying to extract the ZIP package */
-    public const ZIP_EXTRACT_ERROR = 64;
+    const ZIP_EXTRACT_ERROR = 64;
     /** @const Invalid source file */
-    public const INVALID_SOURCE = 128;
+    const INVALID_SOURCE = 128;
 
     /**
      * Destination folder on which validation checks are applied
@@ -40,14 +39,9 @@ class Installer
     protected static $target;
 
     /**
-     * @var int Error Code
+     * @var integer Error Code
      */
     protected static $error = 0;
-
-    /**
-     * @var int Zip Error Code
-     */
-    protected static $error_zip = 0;
 
     /**
      * @var string Post install message
@@ -75,10 +69,9 @@ class Installer
      * @param  string $destination The local path to the Grav Instance
      * @param  array $options Options to use for installing. ie, ['install_path' => 'user/themes/antimatter']
      * @param  string $extracted The local path to the extacted ZIP package
-     * @param  bool $keepExtracted True if you want to keep the original files
      * @return bool True if everything went fine, False otherwise.
      */
-    public static function install($zip, $destination, $options = [], $extracted = null, $keepExtracted = false)
+    public static function install($zip, $destination, $options = [], $extracted = null)
     {
         $destination = rtrim($destination, DS);
         $options = array_merge(self::$options, $options);
@@ -90,15 +83,15 @@ class Installer
             return false;
         }
 
-        if ((self::lastErrorCode() === self::IS_LINK && $options['ignore_symlinks']) ||
-            (self::lastErrorCode() === self::EXISTS && !$options['overwrite'])
+        if (self::lastErrorCode() == self::IS_LINK && $options['ignore_symlinks'] ||
+            self::lastErrorCode() == self::EXISTS && !$options['overwrite']
         ) {
             return false;
         }
 
         // Create a tmp location
         $tmp_dir = Grav::instance()['locator']->findResource('tmp://', true, true);
-        $tmp = $tmp_dir . '/Grav-' . uniqid('', false);
+        $tmp = $tmp_dir . '/Grav-' . uniqid();
 
         if (!$extracted) {
             $extracted = self::unZip($zip, $tmp);
@@ -112,6 +105,7 @@ class Installer
             self::$error = self::INVALID_SOURCE;
             return false;
         }
+
 
         $is_install = true;
         $installer = self::loadInstaller($extracted, $is_install);
@@ -141,7 +135,7 @@ class Installer
                 self::moveInstall($extracted, $install_path);
             }
         } else {
-            self::sophisticatedInstall($extracted, $install_path, $options['ignores'], $keepExtracted);
+            self::sophisticatedInstall($extracted, $install_path, $options['ignores']);
         }
 
         Folder::delete($tmp);
@@ -166,8 +160,8 @@ class Installer
     /**
      * Unzip a file to somewhere
      *
-     * @param string $zip_file
-     * @param string $destination
+     * @param $zip_file
+     * @param $destination
      * @return bool|string
      */
     public static function unZip($zip_file, $destination)
@@ -176,7 +170,7 @@ class Installer
         $archive = $zip->open($zip_file);
 
         if ($archive === true) {
-            Folder::create($destination);
+            Folder::mkdir($destination);
 
             $unzip = $zip->extractTo($destination);
 
@@ -190,14 +184,15 @@ class Installer
 
             $package_folder_name = preg_replace('#\./$#', '', $zip->getNameIndex(0));
             $zip->close();
+            $extracted_folder = $destination . '/' . $package_folder_name;
 
-            return $destination . '/' . $package_folder_name;
+            return $extracted_folder;
         }
 
         self::$error = self::ZIP_EXTRACT_ERROR;
-        self::$error_zip = $archive;
         return false;
     }
+
 
     /**
      * Instantiates and returns the package installer class
@@ -216,7 +211,7 @@ class Installer
         $install_file = $installer_file_folder . DS . 'install.php';
 
         if (file_exists($install_file)) {
-            require_once $install_file;
+            require_once($install_file);
         } else {
             return null;
         }
@@ -253,8 +248,8 @@ class Installer
     }
 
     /**
-     * @param string            $source_path
-     * @param string            $install_path
+     * @param             $source_path
+     * @param             $install_path
      *
      * @return bool
      */
@@ -270,8 +265,8 @@ class Installer
     }
 
     /**
-     * @param string            $source_path
-     * @param string            $install_path
+     * @param             $source_path
+     * @param             $install_path
      *
      * @return bool
      */
@@ -279,40 +274,34 @@ class Installer
     {
         if (empty($source_path)) {
             throw new \RuntimeException("Directory $source_path is missing");
+        } else {
+            Folder::rcopy($source_path, $install_path);
         }
-
-        Folder::rcopy($source_path, $install_path);
 
         return true;
     }
 
     /**
-     * @param string            $source_path
-     * @param string            $install_path
-     * @param array             $ignores
-     * @param bool              $keep_source
+     * @param             $source_path
+     * @param             $install_path
      *
      * @return bool
      */
-    public static function sophisticatedInstall($source_path, $install_path, $ignores = [], $keep_source = false)
+    public static function sophisticatedInstall($source_path, $install_path, $ignores = [])
     {
         foreach (new \DirectoryIterator($source_path) as $file) {
 
-            if ($file->isLink() || $file->isDot() || \in_array($file->getFilename(), $ignores, true)) {
+            if ($file->isLink() || $file->isDot() || in_array($file->getBasename(),$ignores)) {
                 continue;
             }
 
-            $path = $install_path . DS . $file->getFilename();
+            $path = $install_path . DS . $file->getBasename();
 
             if ($file->isDir()) {
                 Folder::delete($path);
-                if ($keep_source) {
-                    Folder::copy($file->getPathname(), $path);
-                } else {
-                    Folder::move($file->getPathname(), $path);
-                }
+                Folder::move($file->getPathname(), $path);
 
-                if ($file->getFilename() === 'bin') {
+                if ($file->getBasename() == 'bin') {
                     foreach (glob($path . DS . '*') as $bin_file) {
                         @chmod($bin_file, 0755);
                     }
@@ -332,7 +321,7 @@ class Installer
      * @param  string $path    The slug of the package(s)
      * @param  array  $options Options to use for uninstalling
      *
-     * @return bool True if everything went fine, False otherwise.
+     * @return boolean True if everything went fine, False otherwise.
      */
     public static function uninstall($path, $options = [])
     {
@@ -374,7 +363,7 @@ class Installer
      * @param  string $destination The directory to run validations at
      * @param  array  $exclude     An array of constants to exclude from the validation
      *
-     * @return bool True if validation passed. False otherwise
+     * @return boolean True if validation passed. False otherwise
      */
     public static function isValidDestination($destination, $exclude = [])
     {
@@ -391,11 +380,11 @@ class Installer
             self::$error = self::NOT_DIRECTORY;
         }
 
-        if (\count($exclude) && \in_array(self::$error, $exclude, true)) {
+        if (count($exclude) && in_array(self::$error, $exclude)) {
             return true;
         }
 
-        return !self::$error;
+        return !(self::$error);
     }
 
     /**
@@ -403,7 +392,7 @@ class Installer
      *
      * @param  string $target The local path to the Grav Instance
      *
-     * @return bool True if is a Grav Instance. False otherwise
+     * @return boolean True if is a Grav Instance. False otherwise
      */
     public static function isGravInstance($target)
     {
@@ -471,46 +460,7 @@ class Installer
                 break;
 
             case self::ZIP_EXTRACT_ERROR:
-                $msg = 'Unable to extract the package. ';
-                if (self::$error_zip) {
-                    switch(self::$error_zip) {
-                        case \ZipArchive::ER_EXISTS:
-                            $msg .= 'File already exists.';
-                            break;
-
-                        case \ZipArchive::ER_INCONS:
-                            $msg .= 'Zip archive inconsistent.';
-                            break;
-
-                        case \ZipArchive::ER_MEMORY:
-                            $msg .= 'Memory allocation failure.';
-                            break;
-
-                        case \ZipArchive::ER_NOENT:
-                            $msg .= 'No such file.';
-                            break;
-
-                        case \ZipArchive::ER_NOZIP:
-                            $msg .= 'Not a zip archive.';
-                            break;
-
-                        case \ZipArchive::ER_OPEN:
-                            $msg .= "Can't open file.";
-                            break;
-
-                        case \ZipArchive::ER_READ:
-                            $msg .= 'Read error.';
-                            break;
-
-                        case \ZipArchive::ER_SEEK:
-                            $msg .= 'Seek error.';
-                            break;
-                    }
-                }
-                break;
-
-            case self::INVALID_SOURCE:
-                $msg = 'Invalid source file';
+                $msg = 'An error occurred while extracting the package';
                 break;
 
             default:
@@ -523,7 +473,7 @@ class Installer
 
     /**
      * Returns the last error code of the occurred error
-     * @return int|string The code of the last error
+     * @return integer The code of the last error
      */
     public static function lastErrorCode()
     {

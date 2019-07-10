@@ -48,7 +48,7 @@ class File implements FileInterface
     /**
      * @var array|File[]
      */
-    static protected $instances = [];
+    static protected $instances = array();
 
     /**
      * Get file instance.
@@ -58,7 +58,7 @@ class File implements FileInterface
      */
     public static function instance($filename)
     {
-        if (!\is_string($filename) && $filename) {
+        if (!is_string($filename) && $filename) {
             throw new \InvalidArgumentException('Filename should be non-empty string');
         }
         if (!isset(static::$instances[$filename])) {
@@ -97,6 +97,8 @@ class File implements FileInterface
 
     /**
      * Prevent constructor from being used.
+     *
+     * @internal
      */
     protected function __construct()
     {
@@ -104,6 +106,8 @@ class File implements FileInterface
 
     /**
      * Prevent cloning.
+     *
+     * @internal
      */
     protected function __clone()
     {
@@ -188,7 +192,7 @@ class File implements FileInterface
     public function lock($block = true)
     {
         if (!$this->handle) {
-            if (!$this->mkdir(\dirname($this->filename))) {
+            if (!$this->mkdir(dirname($this->filename))) {
                 throw new \RuntimeException('Creating directory failed for ' . $this->filename);
             }
             $this->handle = @fopen($this->filename, 'cb+');
@@ -199,11 +203,7 @@ class File implements FileInterface
             }
         }
         $lock = $block ? LOCK_EX : LOCK_EX | LOCK_NB;
-
-        // Some filesystems do not support file locks, only fail if another process holds the lock.
-        $this->locked = flock($this->handle, $lock, $wouldblock) || !$wouldblock;
-
-        return $this->locked;
+        return $this->locked = $this->handle ? flock($this->handle, $lock) : false;
     }
 
     /**
@@ -224,7 +224,7 @@ class File implements FileInterface
     public function unlock()
     {
         if (!$this->handle) {
-            return false;
+            return;
         }
         if ($this->locked) {
             flock($this->handle, LOCK_UN);
@@ -232,8 +232,6 @@ class File implements FileInterface
         }
         fclose($this->handle);
         $this->handle = null;
-
-        return true;
     }
 
     /**
@@ -243,7 +241,7 @@ class File implements FileInterface
      */
     public function writable()
     {
-        return file_exists($this->filename) ? is_writable($this->filename) && is_file($this->filename) : $this->writableDir(\dirname($this->filename));
+        return is_writable($this->filename) || $this->writableDir(dirname($this->filename));
     }
 
     /**
@@ -272,7 +270,7 @@ class File implements FileInterface
             $this->content = null;
         }
 
-        if (!\is_string($this->raw)) {
+        if (!is_string($this->raw)) {
             $this->raw = $this->load();
         }
 
@@ -284,7 +282,6 @@ class File implements FileInterface
      *
      * @param mixed $var
      * @return string|array
-     * @throws \RuntimeException
      */
     public function content($var = null)
     {
@@ -318,41 +315,26 @@ class File implements FileInterface
             $this->content($data);
         }
 
-        $filename = $this->filename;
-        $dir = \dirname($filename);
-
-        if (!$this->mkdir($dir)) {
-            throw new \RuntimeException('Creating directory failed for ' . $filename);
-        }
-
-        try {
-            if ($this->handle) {
-                $tmp = true;
-                // As we are using non-truncating locking, make sure that the file is empty before writing.
-                if (@ftruncate($this->handle, 0) === false || @fwrite($this->handle, $this->raw()) === false) {
-                    // Writing file failed, throw an error.
-                    $tmp = false;
-                }
-            } else {
-                // Create file with a temporary name and rename it to make the save action atomic.
-                $tmp = $this->tempname($filename);
-                if (file_put_contents($tmp, $this->raw()) === false) {
-                    $tmp = false;
-                } elseif (@rename($tmp, $filename) === false) {
-                    @unlink($tmp);
-                    $tmp = false;
-                }
+        if (!$this->locked) {
+            // Obtain blocking lock or fail.
+            if (!$this->lock()) {
+                throw new \RuntimeException('Obtaining write lock failed on file: ' . $this->filename);
             }
-        } catch (\Exception $e) {
-            $tmp = false;
+            $lock = true;
         }
 
-        if ($tmp === false) {
-            throw new \RuntimeException('Failed to save file ' . $filename);
+        // As we are using non-truncating locking, make sure that the file is empty before writing.
+        if (@ftruncate($this->handle, 0) === false || @fwrite($this->handle, $this->raw()) === false) {
+            $this->unlock();
+            throw new \RuntimeException('Saving file failed: ' . $this->filename);
+        }
+
+        if (isset($lock)) {
+            $this->unlock();
         }
 
         // Touch the directory as well, thus marking it modified.
-        @touch($dir);
+        @touch(dirname($this->filename));
     }
 
     /**
@@ -426,21 +408,20 @@ class File implements FileInterface
 
     /**
      * @param  string  $dir
+     * @return bool
+     * @throws \RuntimeException
+     * @internal
      */
-    private function mkdir($dir)
+    protected function mkdir($dir)
     {
         // Silence error for open_basedir; should fail in mkdir instead.
-        if (@is_dir($dir)) {
-            return true;
-        }
+        if (!@is_dir($dir)) {
+            $success = @mkdir($dir, 0777, true);
 
-        $success = @mkdir($dir, 0777, true);
+            if (!$success) {
+                $error = error_get_last();
 
-        if (!$success) {
-            // Take yet another look, make sure that the folder doesn't exist.
-            clearstatcache(true, $dir);
-            if (!@is_dir($dir)) {
-                return false;
+                throw new \RuntimeException("Creating directory '{$dir}' failed on error {$error['message']}");
             }
         }
 
@@ -455,23 +436,9 @@ class File implements FileInterface
     protected function writableDir($dir)
     {
         if ($dir && !file_exists($dir)) {
-            return $this->writableDir(\dirname($dir));
+            return $this->writableDir(dirname($dir));
         }
 
         return $dir && is_dir($dir) && is_writable($dir);
-    }
-
-    /**
-     * @param string $filename
-     * @param int $length
-     * @return string
-     */
-    protected function tempname($filename, $length = 5)
-    {
-        do {
-            $test = $filename . substr(str_shuffle('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'), 0, $length);
-        } while (file_exists($test));
-
-        return $test;
     }
 }

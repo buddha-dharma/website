@@ -23,7 +23,7 @@ class MoFile extends File
     /**
      * @var array|File[]
      */
-    static protected $instances = [];
+    static protected $instances = array();
 
     /**
      * File can never be written.
@@ -64,7 +64,7 @@ class MoFile extends File
     {
         $this->endian = 'V';
         $this->str = $var;
-        $this->len = \strlen($var);
+        $this->len = strlen($var);
 
         $magic = $this->readInt() & 0xffffffff;
 

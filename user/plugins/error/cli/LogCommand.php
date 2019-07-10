@@ -90,7 +90,7 @@ class LogCommand extends ConsoleCommand
     }
 
     /**
-     * @param string $line
+     * @param $line
      *
      * @return null|string
      */

@@ -1,27 +1,30 @@
 <?php
-
 /**
- * @package    Grav\Console
+ * @package    Grav.Console
  *
- * @copyright  Copyright (C) 2015 - 2019 Trilby Media, LLC. All rights reserved.
+ * @copyright  Copyright (C) 2014 - 2017 RocketTheme, LLC. All rights reserved.
  * @license    MIT License; see LICENSE file for details.
  */
 
 namespace Grav\Console;
 
-use Grav\Common\Cache;
 use Grav\Common\Grav;
 use Grav\Common\Composer;
 use Grav\Common\GravTrait;
 use Grav\Console\Cli\ClearCacheCommand;
-use RocketTheme\Toolbox\File\YamlFile;
 use Symfony\Component\Console\Formatter\OutputFormatterStyle;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Yaml\Yaml;
 
 trait ConsoleTrait
 {
+    use GravTrait;
+
+    /**
+     * @var
+     */
     protected $argv;
 
     /* @var InputInterface $output */
@@ -29,9 +32,6 @@ trait ConsoleTrait
 
     /* @var OutputInterface $output */
     protected $output;
-
-    /** @var array */
-    protected $local_config;
 
     /**
      * Set colors style definition for the formatter.
@@ -59,7 +59,7 @@ trait ConsoleTrait
     }
 
     /**
-     * @param string $path
+     * @param $path
      */
     public function isGravInstance($path)
     {
@@ -81,7 +81,7 @@ trait ConsoleTrait
 
         if (!file_exists($path . DS . 'index.php') || !file_exists($path . DS . '.dependencies') || !file_exists($path . DS . 'system' . DS . 'config' . DS . 'system.yaml')) {
             $this->output->writeln('');
-            $this->output->writeln('<red>ERROR</red>: Destination chosen to install does not appear to be a Grav instance:');
+            $this->output->writeln("<red>ERROR</red>: Destination chosen to install does not appear to be a Grav instance:");
             $this->output->writeln("       <white>$path</white>");
             $this->output->writeln('');
             exit;
@@ -112,11 +112,6 @@ trait ConsoleTrait
         return $command->run($input, $this->output);
     }
 
-    public function invalidateCache()
-    {
-        Cache::invalidateCache();
-    }
-
     /**
      * Load the local config file
      *
@@ -128,9 +123,7 @@ trait ConsoleTrait
         $local_config_file = $home_folder . '/.grav/config';
 
         if (file_exists($local_config_file)) {
-            $file = YamlFile::instance($local_config_file);
-            $this->local_config = $file->content();
-            $file->free();
+            $this->local_config = Yaml::parse(file_get_contents($local_config_file));
             return $local_config_file;
         }
 

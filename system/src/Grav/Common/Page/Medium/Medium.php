@@ -1,9 +1,8 @@
 <?php
-
 /**
- * @package    Grav\Common\Page
+ * @package    Grav.Common.Page
  *
- * @copyright  Copyright (C) 2015 - 2019 Trilby Media, LLC. All rights reserved.
+ * @copyright  Copyright (C) 2014 - 2017 RocketTheme, LLC. All rights reserved.
  * @license    MIT License; see LICENSE file for details.
  */
 
@@ -13,16 +12,8 @@ use Grav\Common\File\CompiledYamlFile;
 use Grav\Common\Grav;
 use Grav\Common\Data\Data;
 use Grav\Common\Data\Blueprint;
-use Grav\Common\Media\Interfaces\MediaObjectInterface;
-use Grav\Common\Utils;
 
-/**
- * Class Medium
- * @package Grav\Common\Page\Medium
- *
- * @property string $mime
- */
-class Medium extends Data implements RenderableInterface, MediaObjectInterface
+class Medium extends Data implements RenderableInterface
 {
     use ParsedownHtmlTrait;
 
@@ -39,7 +30,7 @@ class Medium extends Data implements RenderableInterface, MediaObjectInterface
     /**
      * @var array
      */
-    protected $thumbnailTypes = ['page', 'default'];
+    protected $thumbnailTypes = [ 'page', 'default' ];
 
     protected $thumbnailType = null;
 
@@ -64,13 +55,6 @@ class Medium extends Data implements RenderableInterface, MediaObjectInterface
     protected $metadata = [];
 
     /**
-     * @var array
-     */
-    protected $medium_querystring = [];
-
-    protected $timestamp;
-
-    /**
      * Construct.
      *
      * @param array $items
@@ -81,26 +65,11 @@ class Medium extends Data implements RenderableInterface, MediaObjectInterface
         parent::__construct($items, $blueprint);
 
         if (Grav::instance()['config']->get('system.media.enable_media_timestamp', true)) {
-            $this->timestamp = Grav::instance()['cache']->getKey();
+            $this->querystring('&' . Grav::instance()['cache']->getKey());
         }
 
         $this->def('mime', 'application/octet-stream');
         $this->reset();
-    }
-
-    public function __clone()
-    {
-        // Allows future compatibility as parent::__clone() works.
-    }
-
-    /**
-     * Create a copy of this media object
-     *
-     * @return Medium
-     */
-    public function copy()
-    {
-        return clone $this;
     }
 
     /**
@@ -111,63 +80,6 @@ class Medium extends Data implements RenderableInterface, MediaObjectInterface
     public function meta()
     {
         return new Data($this->items);
-    }
-
-    /**
-     * Check if this medium exists or not
-     *
-     * @return bool
-     */
-    public function exists()
-    {
-        $path = $this->get('filepath');
-        if (file_exists($path)) {
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * Get file modification time for the medium.
-     *
-     * @return int|null
-     */
-    public function modified()
-    {
-        $path = $this->get('filepath');
-
-        if (!file_exists($path)) {
-            return null;
-        }
-
-        return filemtime($path) ?: null;
-    }
-
-    /**
-     * @return int
-     */
-    public function size()
-    {
-        $path = $this->get('filepath');
-
-        if (!file_exists($path)) {
-            return 0;
-        }
-
-        return filesize($path) ?: 0;
-    }
-
-    /**
-     * Set querystring to file modification timestamp (or value provided as a parameter).
-     *
-     * @param string|int|null $timestamp
-     * @return $this
-     */
-    public function setTimestamp($timestamp = null)
-    {
-        $this->timestamp = (string)($timestamp ?? $this->modified());
-
-        return $this;
     }
 
     /**
@@ -183,7 +95,7 @@ class Medium extends Data implements RenderableInterface, MediaObjectInterface
     /**
      * Add meta file for the medium.
      *
-     * @param string $filepath
+     * @param $filepath
      */
     public function addMetaFile($filepath)
     {
@@ -194,7 +106,7 @@ class Medium extends Data implements RenderableInterface, MediaObjectInterface
     /**
      * Add alternative Medium to this Medium.
      *
-     * @param int|float $ratio
+     * @param $ratio
      * @param Medium $alternative
      */
     public function addAlternative($ratio, Medium $alternative)
@@ -242,18 +154,11 @@ class Medium extends Data implements RenderableInterface, MediaObjectInterface
      */
     public function relativePath($reset = true)
     {
-        $output = preg_replace('|^' . preg_quote(GRAV_ROOT, '|') . '|', '', $this->get('filepath'));
-
-        $locator = Grav::instance()['locator'];
-        if ($locator->isStream($output)) {
-            $output = $locator->findResource($output, false);
-        }
-
         if ($reset) {
             $this->reset();
         }
 
-        return str_replace(GRAV_ROOT, '', $output);
+        return str_replace(GRAV_ROOT, '', $this->get('filepath'));
     }
 
     /**
@@ -264,71 +169,46 @@ class Medium extends Data implements RenderableInterface, MediaObjectInterface
      */
     public function url($reset = true)
     {
-        $output = preg_replace('|^' . preg_quote(GRAV_ROOT, '|') . '|', '', $this->get('filepath'));
-
-        $locator = Grav::instance()['locator'];
-        if ($locator->isStream($output)) {
-            $output = $locator->findResource($output, false);
-        }
+        $output = preg_replace('|^' . preg_quote(GRAV_ROOT) . '|', '', $this->get('filepath'));
 
         if ($reset) {
             $this->reset();
         }
 
-        return trim(Grav::instance()['base_url'] . '/' . $this->urlQuerystring($output), '\\');
+        return trim(Grav::instance()['base_url'] . '/' . ltrim($output . $this->querystring() . $this->urlHash(), '/'), '\\');
     }
 
     /**
      * Get/set querystring for the file's url
      *
      * @param  string  $querystring
-     * @param  bool $withQuestionmark
+     * @param  boolean $withQuestionmark
      * @return string
      */
     public function querystring($querystring = null, $withQuestionmark = true)
     {
-        if (null !== $querystring) {
-            $this->medium_querystring[] = ltrim($querystring, '?&');
+        if (!is_null($querystring)) {
+            $this->set('querystring', ltrim($querystring, '?&'));
+
             foreach ($this->alternatives as $alt) {
                 $alt->querystring($querystring, $withQuestionmark);
             }
         }
 
-        if (empty($this->medium_querystring)) {
-            return '';
+        $querystring = $this->get('querystring', '');
+
+        if ($withQuestionmark && !empty($querystring)) {
+            return '?' . $querystring;
+        } else {
+            return $querystring;
         }
-
-        // join the strings
-        $querystring = implode('&', $this->medium_querystring);
-        // explode all strings
-        $query_parts = explode('&', $querystring);
-        // Join them again now ensure the elements are unique
-        $querystring = implode('&', array_unique($query_parts));
-
-        return $withQuestionmark ? ('?' . $querystring) : $querystring;
-    }
-
-    /**
-     * Get the URL with full querystring
-     *
-     * @param string $url
-     * @return string
-     */
-    public function urlQuerystring($url)
-    {
-        $querystring = $this->querystring();
-        if (isset($this->timestamp) && !Utils::contains($querystring, $this->timestamp)) {
-            $querystring = empty($querystring) ? ('?' . $this->timestamp) : ($querystring . '&' . $this->timestamp);
-        }
-
-        return ltrim($url . $querystring . $this->urlHash(), '/');
     }
 
     /**
      * Get/set hash for the file's url
      *
      * @param  string  $hash
-     * @param  bool $withHash
+     * @param  boolean $withHash
      * @return string
      */
     public function urlHash($hash = null, $withHash = true)
@@ -339,7 +219,11 @@ class Medium extends Data implements RenderableInterface, MediaObjectInterface
 
         $hash = $this->get('urlHash', '');
 
-        return $withHash && !empty($hash) ? '#' . $hash : $hash;
+        if ($withHash && !empty($hash)) {
+            return '#' . $hash;
+        } else {
+            return $hash;
+        }
     }
 
     /**
@@ -349,7 +233,7 @@ class Medium extends Data implements RenderableInterface, MediaObjectInterface
      * @param  string  $alt
      * @param  string  $class
      * @param  string  $id
-     * @param  bool $reset
+     * @param  boolean $reset
      * @return array
      */
     public function parsedownElement($title = null, $alt = null, $class = null, $id = null, $reset = true)
@@ -376,14 +260,10 @@ class Medium extends Data implements RenderableInterface, MediaObjectInterface
         }
 
         if (empty($attributes['alt'])) {
-            if (!empty($alt)) {
+            if (!empty($alt) || $alt === '') {
                 $attributes['alt'] = $alt;
             } elseif (!empty($this->items['alt'])) {
                 $attributes['alt'] = $this->items['alt'];
-            } elseif (!empty($this->items['alt_text'])) {
-                $attributes['alt'] = $this->items['alt_text'];
-            } else {
-                $attributes['alt'] = '';
             }
         }
 
@@ -413,8 +293,6 @@ class Medium extends Data implements RenderableInterface, MediaObjectInterface
             case 'source':
                 $element = $this->sourceParsedownElement($attributes, false);
                 break;
-            default:
-                $element = [];
         }
 
         if ($reset) {
@@ -430,7 +308,7 @@ class Medium extends Data implements RenderableInterface, MediaObjectInterface
      * Parsedown element for source display mode
      *
      * @param  array $attributes
-     * @param  bool $reset
+     * @param  boolean $reset
      * @return array
      */
     protected function sourceParsedownElement(array $attributes, $reset = true)
@@ -442,7 +320,7 @@ class Medium extends Data implements RenderableInterface, MediaObjectInterface
      * Parsedown element for text display mode
      *
      * @param  array $attributes
-     * @param  bool $reset
+     * @param  boolean $reset
      * @return array
      */
     protected function textParsedownElement(array $attributes, $reset = true)
@@ -493,22 +371,6 @@ class Medium extends Data implements RenderableInterface, MediaObjectInterface
     }
 
     /**
-     * Helper method to determine if this media item has a thumbnail or not
-     *
-     * @param string $type;
-     *
-     * @return bool
-     */
-    public function thumbnailExists($type = 'page')
-    {
-        $thumbs = $this->get('thumbnails');
-        if (isset($thumbs[$type])) {
-            return true;
-        }
-        return false;
-    }
-
-    /**
      * Switch thumbnail.
      *
      * @param string $type
@@ -517,7 +379,7 @@ class Medium extends Data implements RenderableInterface, MediaObjectInterface
      */
     public function thumbnail($type = 'auto')
     {
-        if ($type !== 'auto' && !\in_array($type, $this->thumbnailTypes, true)) {
+        if ($type !== 'auto' && !in_array($type, $this->thumbnailTypes)) {
             return $this;
         }
 
@@ -530,11 +392,10 @@ class Medium extends Data implements RenderableInterface, MediaObjectInterface
         return $this;
     }
 
-
     /**
      * Turn the current Medium into a Link
      *
-     * @param  bool $reset
+     * @param  boolean $reset
      * @param  array  $attributes
      * @return Link
      */
@@ -558,7 +419,7 @@ class Medium extends Data implements RenderableInterface, MediaObjectInterface
      *
      * @param  int  $width
      * @param  int  $height
-     * @param  bool $reset
+     * @param  boolean $reset
      * @return Link
      */
     public function lightbox($width = null, $height = null, $reset = true)
@@ -583,7 +444,7 @@ class Medium extends Data implements RenderableInterface, MediaObjectInterface
     {
         $classes = func_get_args();
         if (!empty($classes)) {
-            $this->attributes['class'] = implode(',', $classes);
+            $this->attributes['class'] = implode(',', (array)$classes);
         }
 
         return $this;
@@ -593,7 +454,7 @@ class Medium extends Data implements RenderableInterface, MediaObjectInterface
      * Add an id to the element from Markdown or Twig
      * Example: ![Example](myimg.png?id=primary-img)
      *
-     * @param string $id
+     * @param $id
      * @return $this
      */
     public function id($id)
@@ -628,13 +489,8 @@ class Medium extends Data implements RenderableInterface, MediaObjectInterface
     public function __call($method, $args)
     {
         $qs = $method;
-        if (\count($args) > 1 || (\count($args) === 1 && !empty($args[0]))) {
-            $qs .= '=' . implode(',', array_map(function ($a) {
-                if (is_array($a)) {
-                    $a = '[' . implode(',', $a) . ']';
-                }
-                return rawurlencode($a);
-            }, $args));
+        if (count($args) > 1 || (count($args) == 1 && !empty($args[0]))) {
+            $qs .= '=' . implode(',', array_map(function ($a) { return urlencode($a); }, $args));
         }
 
         if (!empty($qs)) {

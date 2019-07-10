@@ -1,9 +1,8 @@
 <?php
-
 /**
- * @package    Grav\Console\Cli
+ * @package    Grav.Console
  *
- * @copyright  Copyright (C) 2015 - 2019 Trilby Media, LLC. All rights reserved.
+ * @copyright  Copyright (C) 2014 - 2017 RocketTheme, LLC. All rights reserved.
  * @license    MIT License; see LICENSE file for details.
  */
 
@@ -16,7 +15,9 @@ use Symfony\Component\Console\Input\InputOption;
 
 class SandboxCommand extends ConsoleCommand
 {
-    /** @var array */
+    /**
+     * @var array
+     */
     protected $directories = [
         '/assets',
         '/backup',
@@ -32,7 +33,9 @@ class SandboxCommand extends ConsoleCommand
         '/user/themes',
     ];
 
-    /** @var array */
+    /**
+     * @var array
+     */
     protected $files = [
         '/.dependencies',
         '/.htaccess',
@@ -40,10 +43,11 @@ class SandboxCommand extends ConsoleCommand
         '/user/config/system.yaml',
     ];
 
-    /** @var array */
+    /**
+     * @var array
+     */
     protected $mappings = [
         '/.gitignore'           => '/.gitignore',
-        '/.editorconfig'        => '/.editorconfig',
         '/CHANGELOG.md'         => '/CHANGELOG.md',
         '/LICENSE.txt'          => '/LICENSE.txt',
         '/README.md'            => '/README.md',
@@ -56,12 +60,18 @@ class SandboxCommand extends ConsoleCommand
         '/webserver-configs'    => '/webserver-configs',
     ];
 
-    /** @var string */
+    /**
+     * @var string
+     */
+
     protected $default_file = "---\ntitle: HomePage\n---\n# HomePage\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porttitor eu felis sed ornare. Sed a mauris venenatis, pulvinar velit vel, dictum enim. Phasellus ac rutrum velit. Nunc lorem purus, hendrerit sit amet augue aliquet, iaculis ultricies nisl. Suspendisse tincidunt euismod risus, quis feugiat arcu tincidunt eget. Nulla eros mi, commodo vel ipsum vel, aliquet congue odio. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque velit orci, laoreet at adipiscing eu, interdum quis nibh. Nunc a accumsan purus.";
 
     protected $source;
     protected $destination;
 
+    /**
+     *
+     */
     protected function configure()
     {
         $this
@@ -82,6 +92,9 @@ class SandboxCommand extends ConsoleCommand
         $this->source = getcwd();
     }
 
+    /**
+     * @return int|null|void
+     */
     protected function serve()
     {
         $this->destination = $this->input->getArgument('destination');
@@ -108,6 +121,9 @@ class SandboxCommand extends ConsoleCommand
         $this->perms();
     }
 
+    /**
+     *
+     */
     private function createDirectories()
     {
         $this->output->writeln('');
@@ -115,14 +131,14 @@ class SandboxCommand extends ConsoleCommand
         $dirs_created = false;
 
         if (!file_exists($this->destination)) {
-            Folder::create($this->destination);
+            mkdir($this->destination, 0777, true);
         }
 
         foreach ($this->directories as $dir) {
             if (!file_exists($this->destination . $dir)) {
                 $dirs_created = true;
                 $this->output->writeln('    <cyan>' . $dir . '</cyan>');
-                Folder::create($this->destination . $dir);
+                mkdir($this->destination . $dir, 0777, true);
             }
         }
 
@@ -131,6 +147,9 @@ class SandboxCommand extends ConsoleCommand
         }
     }
 
+    /**
+     *
+     */
     private function copy()
     {
         $this->output->writeln('');
@@ -138,7 +157,7 @@ class SandboxCommand extends ConsoleCommand
 
 
         foreach ($this->mappings as $source => $target) {
-            if ((string)(int)$source === (string)$source) {
+            if ((int)$source == $source) {
                 $source = $target;
             }
 
@@ -150,6 +169,9 @@ class SandboxCommand extends ConsoleCommand
         }
     }
 
+    /**
+     *
+     */
     private function symlink()
     {
         $this->output->writeln('');
@@ -157,7 +179,7 @@ class SandboxCommand extends ConsoleCommand
 
 
         foreach ($this->mappings as $source => $target) {
-            if ((string)(int)$source === (string)$source) {
+            if ((int)$source == $source) {
                 $source = $target;
             }
 
@@ -175,6 +197,9 @@ class SandboxCommand extends ConsoleCommand
         }
     }
 
+    /**
+     *
+     */
     private function initFiles()
     {
         $this->check();
@@ -185,7 +210,7 @@ class SandboxCommand extends ConsoleCommand
 
         // Copy files if they do not exist
         foreach ($this->files as $source => $target) {
-            if ((string)(int)$source === (string)$source) {
+            if ((int)$source == $source) {
                 $source = $target;
             }
 
@@ -204,6 +229,9 @@ class SandboxCommand extends ConsoleCommand
         }
     }
 
+    /**
+     *
+     */
     private function pages()
     {
         $this->output->writeln('');
@@ -213,7 +241,7 @@ class SandboxCommand extends ConsoleCommand
         $pages_dir = $this->destination . '/user/pages';
         $pages_files = array_diff(scandir($pages_dir), ['..', '.']);
 
-        if (\count($pages_files) === 0) {
+        if (count($pages_files) == 0) {
             $destination = $this->source . '/user/pages';
             Folder::rcopy($destination, $pages_dir);
             $this->output->writeln('    <cyan>' . $destination . '</cyan> <comment>-></comment> Created');
@@ -221,6 +249,9 @@ class SandboxCommand extends ConsoleCommand
         }
     }
 
+    /**
+     *
+     */
     private function perms()
     {
         $this->output->writeln('');
@@ -238,6 +269,9 @@ class SandboxCommand extends ConsoleCommand
         $this->output->writeln("");
     }
 
+    /**
+     *
+     */
     private function check()
     {
         $success = true;

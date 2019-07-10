@@ -38,7 +38,7 @@ interface FileInterface
     public function modified();
 
     /**
-     * Lock file for writing.
+     * Lock file for writing. Lock gets automatically released during the save().
      *
      * @param bool $block  For non-blocking lock, set the parameter to false.
      * @return bool

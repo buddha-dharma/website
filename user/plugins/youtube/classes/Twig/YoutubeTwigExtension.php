@@ -2,11 +2,12 @@
 
 namespace Grav\Plugin\Youtube\Twig;
 
-
-use Grav\Common\Grav;
+use Grav\Common\GravTrait;
 
 class YoutubeTwigExtension extends \Twig_Extension
 {
+    use GravTrait;
+
     /**
      * Returns extension name.
      *
@@ -37,7 +38,7 @@ class YoutubeTwigExtension extends \Twig_Extension
      */
     public function embedUrl($video_id, array $player_parameters = array(), $privacy_enhanced_mode = FALSE)
     {
-        $grav = Grav::instance();
+        $grav = static::getGrav();
 
         // build base video embed URL (while respecting privacy enhanced mode setting)
         $url = 'https://www.youtube' . ($privacy_enhanced_mode ? '-nocookie' : '') . '.com/embed/' . $video_id;

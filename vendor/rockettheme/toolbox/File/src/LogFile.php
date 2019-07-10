@@ -13,7 +13,7 @@ class LogFile extends File
     /**
      * @var array|File[]
      */
-    static protected $instances = [];
+    static protected $instances = array();
 
     /**
      * Constructor.
@@ -41,11 +41,11 @@ class LogFile extends File
      *
      * @param string $var
      * @return string|void
-     * @throws \BadMethodCallException
+     * @throws \Exception
      */
     protected function encode($var)
     {
-        throw new \BadMethodCallException('Saving log file is forbidden.');
+        throw new \Exception('Saving log file is forbidden.');
     }
 
     /**

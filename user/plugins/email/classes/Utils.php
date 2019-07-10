@@ -3,8 +3,6 @@
 namespace Grav\Plugin\Email;
 
 use Grav\Common\Grav;
-use Grav\Common\Twig\Twig;
-use Grav\Common\Utils as GravUtils;
 
 /**
  * Class Utils
@@ -15,34 +13,45 @@ class Utils
     /**
      * Quick utility method to send an HTML email.
      *
-     * @param array<int,mixed> $params
+     * @param        $subject
+     * @param string $content
+     * @param string $to
+     * @param null $from
+     * @param string $mimetype
      *
      * @return bool True if the action was performed.
      */
-    public static function sendEmail(...$params)
+    public static function sendEmail($subject, $content, $to, $from = null, $mimetype = 'text/html')
     {
-        if (is_array($params[0])) {
-            $params = array_shift($params);
-        } else {
-            $keys = ['subject', 'body', 'to', 'from', 'content_type'];
-            $params = GravUtils::arrayCombine($keys, $params);
+        $grav = Grav::instance();
+
+        if (!$from) {
+            $from = $grav['config']->get('plugins.email.from');
         }
-        
-        //Initialize twig if not yet initialized
-        /** @var Twig $twig */
-        $twig = Grav::instance()['twig']->init();
 
-        /** @var Email $email */
-        $email = Grav::instance()['Email'];
+        if (!isset($grav['Email']) || empty($from)) {
+            throw new \RuntimeException($grav['language']->translate('PLUGIN_EMAIL.PLEASE_CONFIGURE_A_FROM_ADDRESS'));
+        }
 
-        if (empty($params['to']) || empty($params['subject']) || empty($params['body'])) {
+        if (empty($to) || empty($subject) || empty($content)) {
             return false;
         }
 
-        $params['body'] = $twig->processTemplate('email/base.html.twig', ['content' => $params['body']]);
+        //Initialize twig if not yet initialized
+        $grav['twig']->init();
 
-        $message = $email->buildMessage($params);
+        $body = $grav['twig']->processTemplate('email/base.html.twig', ['content' => $content]);
 
-        return $email->send($message);
+        $message = $grav['Email']->message($subject, $body, $mimetype)
+            ->setFrom($from)
+            ->setTo($to);
+
+        $sent = $grav['Email']->send($message);
+
+        if ($sent < 1) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }

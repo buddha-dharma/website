@@ -1,5 +1,5 @@
 name: Error
-version: 1.6.2
+version: 1.6.0
 description: Displays the error page.
 icon: warning
 author:
@@ -28,5 +28,5 @@ form:
     routes.404:
       type: text
       size: medium
-      label: PLUGIN_ERROR.ROUTE_404
+      label: 404 Route
       default: '/error'

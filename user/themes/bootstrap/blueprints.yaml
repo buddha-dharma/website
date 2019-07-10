@@ -1,5 +1,5 @@
 name: Bootstrap
-version: 1.7.0
+version: 1.6.0
 description: "Bootstrap is built using the popular **Bootstrap** Framework"
 icon: bold
 author:
@@ -13,8 +13,7 @@ bugs: https://github.com/getgrav/grav-theme-bootstrap/issues
 license: MIT
 
 dependencies:
-  - { name: bootstrapper }
-  - { name: grav, version: '>=1.5.10' }
+  - bootstrapper
 
 form:
   validation: strict

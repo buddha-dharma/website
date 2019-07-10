@@ -34,9 +34,7 @@ class RedisStorage implements StorageInterface
      */
     public function save($id, $data)
     {
-        $this->redis->hset("$this->hash:meta", $id, serialize($data['__meta']));
-        unset($data['__meta']);
-        $this->redis->hset("$this->hash:data", $id, serialize($data));
+        $this->redis->hset($this->hash, $id, serialize($data));
     }
 
     /**
@@ -44,8 +42,7 @@ class RedisStorage implements StorageInterface
      */
     public function get($id)
     {
-        return array_merge(unserialize($this->redis->hget("$this->hash:data", $id)),
-            array('__meta' => unserialize($this->redis->hget("$this->hash:meta", $id))));
+        return unserialize($this->redis->hget($this->hash, $id));
     }
 
     /**
@@ -54,23 +51,14 @@ class RedisStorage implements StorageInterface
     public function find(array $filters = array(), $max = 20, $offset = 0)
     {
         $results = array();
-        $cursor = "0";
-        do {
-            list($cursor, $data) = $this->redis->hscan("$this->hash:meta", $cursor);
-
-            foreach ($data as $meta) {
-                if ($meta = unserialize($meta)) {
-                    if ($this->filter($meta, $filters)) {
-                        $results[] = $meta;
-                    }
+        foreach ($this->redis->hgetall($this->hash) as $id => $data) {
+            if ($data = unserialize($data)) {
+                $meta = $data['__meta'];
+                if ($this->filter($meta, $filters)) {
+                    $results[] = $meta;
                 }
             }
-        } while($cursor);
-        
-        usort($results, function ($a, $b) {
-            return $a['utime'] < $b['utime'];
-        });
-        
+        }
         return array_slice($results, $offset, $max);
     }
 

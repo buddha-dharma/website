@@ -490,17 +490,7 @@ if (typeof(PhpDebugBar) == 'undefined') {
             this.$list = new ListWidget({ itemRenderer: function(li, e) {
                 $('<span />').addClass(csscls('message')).text(e.message).appendTo(li);
                 if (e.file) {
-                    var header = $('<span />').addClass(csscls('filename')).text(e.file + "#" + e.line);
-                    if (e.xdebug_link) {
-                        if (e.xdebug_link.ajax) {
-                            $('<a title="' + e.xdebug_link.url + '"></a>').on('click', function () {
-                                $.ajax(e.xdebug_link.url);
-                            }).addClass(csscls('editor-link')).appendTo(header);
-                        } else {
-                            $('<a href="' + e.xdebug_link.url + '"></a>').addClass(csscls('editor-link')).appendTo(header);
-                        }
-                    }
-                    header.appendTo(li);
+                    $('<span />').addClass(csscls('filename')).text(e.file + "#" + e.line).appendTo(li);
                 }
                 if (e.type) {
                     $('<span />').addClass(csscls('type')).text(e.type).appendTo(li);
