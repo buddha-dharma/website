@@ -1,5 +1,5 @@
 ---
-title: Home
+title: Online Dharma Practice
 blog_url: home
 body_classes: header-image fullwidth
 child_type: item
