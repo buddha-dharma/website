@@ -11,6 +11,6 @@ It contains free books, lectures, courses, videos and articles and is open sourc
 
 [Explore Resources](https://github.com/buddha-dharma/buddhism)
 
-Open Dharma also provides online means for practicioners to talk about their practice.
+Open Dharma also provides channels for practicioners to connect.
 
 [Explore Community](/community)
