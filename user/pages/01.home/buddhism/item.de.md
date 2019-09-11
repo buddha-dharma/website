@@ -10,4 +10,6 @@ Der Buddha war ein Mensch der tiefe Einsichten in die Natur unseres Unbehangens 
 
 Buddhismus ist ein Weg der uns Hilft unser eigenes Leiden und ein Weg aus dem Leiden zu erkennen.
 
-Buddhismus erfordert keinen glauben an Übersinnliches. Ein sehr wichtiger Aspekt der Praxis ist die direkte Erfahrung und anstelle blinder Akzeptanz wird eigenes Erfahren und Entdecken wie mit der Wissenschaftlichen Methode ermutigt.
+Buddhismus erfordert keinen glauben an Übersinnliches. Ein wichtiger Aspekt der Praxis ist die direkte Erfahrung wird eigenes Erfahren und Entdecken wie mit der Wissenschaftlichen Methode ermutigt.
+
+Du musst nicht Buddhist sein um vom Dharma und den Übungen zu Profitieren.
