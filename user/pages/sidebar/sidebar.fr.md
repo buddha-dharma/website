@@ -6,7 +6,7 @@ routable: false
 
 ##### À propos de Buddha Dharma
 
-Le site Web Bouddha-Dharma est un projet open source qui promeut et organise un Open Sangha (sangha ouvert) suivant un [code de conduite](/code).
+The Buddha-Dharma website is an open source project for meditators and dharma practitioners to exchange [resources](/resources) and to [talk about practice](/community).
 
 Si vous êtes développeur, vous pouvez nous aider à améliorer ce site Web, [venez nous visiter sur Github](https://github.com/buddha-dharma).
 
