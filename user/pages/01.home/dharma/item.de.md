@@ -8,6 +8,6 @@ continue_link: false
 ---
 Open Dharma ist eine Initiative um eine [Liste kostenloser und freier Resourcen](https://github.com/buddha-dharma/buddhismus) zur Verfügung zu stellen.
 
-Open Dharma stellt auch Kanäle bereit die es Praktizierenden ermöglicht mit anderen Praktizierenden zu kommunizieren.
+Open Dharma stellt auch Kanäle bereit die es Praktizierenden ermöglichen mit anderen Praktizierenden zu kommunizieren.
 
 [Kommunikationskanäle kennenlernen](/community)
