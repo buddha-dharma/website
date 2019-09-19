@@ -1,8 +1,9 @@
 <?php
+
 /**
  * @package    Grav\Framework\Collection
  *
- * @copyright  Copyright (C) 2014 - 2017 RocketTheme, LLC. All rights reserved.
+ * @copyright  Copyright (C) 2015 - 2019 Trilby Media, LLC. All rights reserved.
  * @license    MIT License; see LICENSE file for details.
  */
 
@@ -30,4 +31,30 @@ interface CollectionInterface extends Collection, \JsonSerializable
      * @return static
      */
     public function shuffle();
+
+    /**
+     * Split collection into chunks.
+     *
+     * @param int $size     Size of each chunk.
+     * @return array
+     */
+    public function chunk($size);
+
+    /**
+     * Select items from collection.
+     *
+     * Collection is returned in the order of $keys given to the function.
+     *
+     * @param array $keys
+     * @return static
+     */
+    public function select(array $keys);
+
+    /**
+     * Un-select items from collection.
+     *
+     * @param array $keys
+     * @return static
+     */
+    public function unselect(array $keys);
 }

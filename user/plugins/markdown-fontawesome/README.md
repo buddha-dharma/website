@@ -1,55 +1,62 @@
-# Grav Markdown Font Awesome Plugin
+# Grav Markdown Notices Plugin
 
-The **Font Awesome plugin** for [Grav](http://github.com/getgrav/grav) allows you to use Font Awesome icons inline with markdown by wrapping the icon name in colons (Github/Slack "emoji style"):
+The **markdown-notices plugin** for [Grav](http://github.com/getgrav/grav) allows generation of notice blocks of text via markdown:
 
-![Font Awesome flag icon](assets/fa-flag-to-icon.png)
+![](assets/screenshot.png)
 
-# Prerequisites
+# Installation
 
-The plugin works by looking for colon-wrapped icon names starting with the `:fa-` prefix and converting them to `<i>` tags.
+This plugin is easy to install with GPM.
 
-This plugin doesn't contain the actual Font Awesome fonts, so make sure you are using a plugin or theme (such as Learn2 or Antimatter) that include the Font Awesome assets.
-
-Also, Markdown Extra must be disabled.
-
-# Manual installation
-
-Download zip version of this repository, unzip to `/your/site/grav/user/plugins` and rename directory to `markdown-fontawesome`.
+```
+$ bin/gpm install markdown-notices
+```
 
 # Configuration
 
-The markdown-fontawesome.yaml file contains only one configuration which turns the plugin on/off.
+Simply copy the `user/plugins/markdown-notices/markdown-notices.yaml` into `user/config/plugins/markdown-notices.yaml` and make your modifications.
 
 ```
 enabled: true
+built_in_css: true
+base_classes: 'notices'
+level_classes: [yellow, red, blue, green]
 ```
 
 # Examples
 
-```
-Grab a cup of :fa-coffee: and write some :fa-code:
-```
-
-Will produce the following HTML:
+Using one level of `!`
 
 ```
-Grab a cup of <i class="fa fa-coffee"></i> and write some <i class="fa fa-code"></i>
+! Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris feugiat quam erat, ut iaculis diam posuere nec.
+! Vestibulum eu condimentum urna. Vestibulum feugiat odio ut sodales porta. Donec sit amet ante mi. Donec lobortis
+! orci dolor. Donec tristique volutpat ultricies. Nullam tempus, enim sit amet fringilla facilisis, ipsum ex
+! tincidunt ipsum, vel placerat sem sem vitae risus. Aenean posuere sed purus nec pretium.
 ```
 
-# Known limitations
+You will output the following HTML
 
-- Does not work with Markdown Extra enabled (conflicts with definition lists which start with a colon)
-- Icon names are not validated, so html tags are created even for non-existent icons like `:fa-not-a-real-icon:``
-- Additional fa classes such as `fa-spin` and `fa-2x` not yet supported.
+```
+<div class="notices yellow">
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris feugiat quam erat, ut iaculis diam posuere nec.
+        Vestibulum eu condimentum urna. Vestibulum feugiat odio ut sodales porta. Donec sit amet ante mi. Donec lobortis
+        orci dolor. Donec tristique volutpat ultricies. Nullam tempus, enim sit amet fringilla facilisis, ipsum ex
+        tincidunt ipsum, vel placerat sem sem vitae risus. Aenean posuere sed purus nec pretium.
+    </p>
+</div>
+```
 
-# Alternatives
+The `notices` class determined by the `base_classes` and `yellow` class is determined by the `level_classes` in the configuration. You can customize this as you need.
 
-If you prefer shortcode syntax `[fa=cog /]`, consider using the [Grav Shortcode Plugin](https://github.com/getgrav/grav-plugin-shortcode-core#fontawesome) which also supports Font Awesome.
+```
+!! Lorem ipsum dolor sit amet, **consectetur adipiscing** elit. Mauris feugiat quam erat, ut iaculis diam posuere nec.
+!!
+!! * List item a
+!! * List item b
+!!
+!! orci dolor. Donec tristique volutpat ultricies. Nullam tempus, enim sit amet fringilla facilisis, ipsum ex
+!! tincidunt ipsum, vel placerat sem sem vitae risus. Aenean posuere sed purus nec pretium.
+```
 
-# License
-
-MIT license. See [LICENSE](LICENSE.txt)
-
-# Cred
-
-This plugin was inspired by the python markdown extension [fontawesome-markdown](https://github.com/bmcorser/fontawesome-markdown) and the first version was based on code from the [Grav Markdown Color Plugin](https://github.com/getgrav/grav-plugin-markdown-color).
+Two levels of `!!` will use the second level class etc.  You can also use complex markdown inside the notices.

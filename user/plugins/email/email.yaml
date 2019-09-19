@@ -3,8 +3,13 @@ from:
 from_name:
 to:
 to_name:
+queue:
+  enabled: false
+  flush_frequency: '* * * * *'
+  flush_msg_limit: 10
+  flush_time_limit: 100
 mailer:
-  engine: mail
+  engine: sendmail
   smtp:
     server: localhost
     port: 25
@@ -12,6 +17,6 @@ mailer:
     user: ''
     password: ''
   sendmail:
-    bin: '/usr/sbin/sendmail'
+    bin: '/usr/sbin/sendmail -bs'
 content_type: text/html
 debug: false
