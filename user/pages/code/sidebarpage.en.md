@@ -6,6 +6,9 @@ This is a code of conduct for the Open Dharma Community.
 ### Open Dharma Online Community
 - The community is not a suitable replacement for a sangha. It is for talking about practice and challenges.
 
+#### Goals
+- Connect practicioners with an authentic sangha nearby.
+
 ### Open Dharma Meditation Group
 If you want to form a meditation group in your area we recommend adapting these rules.
 
@@ -17,5 +20,6 @@ If you want to form a meditation group in your area we recommend adapting these 
 - Groups are not quality controlled. We depend on members of a group to report if a group does not agree with this code of conduct. If a group does not feel right, there is nothing wrong with founding your own group.
 
 #### Goals
+- Connect practicioners with an authentic sangha nearby.
 - Make you feel better and empower you as a human being.
 - Advertise the group and help people that are too far away to found and advertise their own group.
