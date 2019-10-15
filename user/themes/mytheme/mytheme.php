@@ -7,7 +7,7 @@ class myTheme extends Theme
 {
   public function getFileContent(string $path)
   {
-      return file_get_contents($path);
+      return str_replace("#","##",file_get_contents($path));
   }
 
   public function onTwigInitialized() {
