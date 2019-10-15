@@ -5,8 +5,18 @@ use Grav\Common\Theme;
 
 class myTheme extends Theme
 {
-  public function onThemeInitialized() {
+  public function getFileContent(string $path)
+  {
+      return file_get_contents($path);
+  }
 
+  public function onTwigInitialized() {
+      $this->grav['twig']->twig()->addFunction(
+          new \Twig_SimpleFunction('rawcontent', [$this, 'getFileContent'])
+        );
+  }
+
+  public function onThemeInitialized() {
     if ($this->isAdmin()) {
         return;
     }
