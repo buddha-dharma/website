@@ -1,0 +1,45 @@
+{# new twig template file - hibbittsdesign.org #}
+{% embed 'partials/base.html.twig' %}
+
+  {% block content %}
+    <div class="container">
+      <div class="row">
+        {# check content display flag - hibbittsdesign.org #}
+        {% if not (grav.uri.param('chromeless')) %}
+          <div class="col-sm-8 blog-main">
+{% else %}
+<div class="col-sm-12 blog-main">
+{% endif %}
+          {% if not page.header.hidepagetitle %}
+          <h3>{{page.title}}</h3>
+          {% else %}
+          <h3 aria-label={{page.title}}></h3>
+          {% endif %}
+            {{ page.content }}
+            {% if page.header.embed %}
+              {{ rawcontent(page.header.embed)|markdown }}
+            {% else %}
+No embed yo
+            {% endif %}
+            {# Git repository edit link -  hibbittsdesign.org #}
+            {% if config.site.gitrepo.editlinklocation == 'page' and not (page.header.hidegitrepoeditlink) and not (page.slug == 'pages') %}
+              <hr>
+              <br>
+              <span style="color: #888888;">
+              <p>{{ config.site.gitrepo.editnotetext }}
+              {% include 'partials/gitrepo_link.html.twig' %}
+              </p>
+              <br>
+            {% endif %}
+          </div>
+          {# check content display flag - hibbittsdesign.org #}
+          {% if not (grav.uri.param('chromeless')) %}
+            <div class="col-sm-4 blog-sidebar">
+              {% include 'partials/sidebar.html.twig' with {'blog':page} %}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    {% endblock %}
+
+  {% endembed %}
