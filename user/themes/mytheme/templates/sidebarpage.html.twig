@@ -11,9 +11,9 @@
 <div class="col-sm-12 blog-main">
 {% endif %}
           {% if not page.header.hidepagetitle %}
-          <h3>{{page.title}}</h3>
+          <h1>{{page.title}}</h1>
           {% else %}
-          <h3 aria-label={{page.title}}></h3>
+          <h1 aria-label={{page.title}}></h1>
           {% endif %}
             {{ page.content }}
             {% if page.header.embed %}
