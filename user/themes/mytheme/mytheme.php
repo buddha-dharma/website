@@ -7,7 +7,6 @@ class myTheme extends Theme
 {
   public function getFileContent(string $path)
   {
-      $kill = false;
       $handle = fopen($path, "r");
       $output = "";
       if ($handle) {
