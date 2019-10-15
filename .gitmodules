@@ -1,0 +1,3 @@
+[submodule "user/data/external/resources"]
+	path = user/data/external/resources
+	url = git@github.com:buddha-dharma/buddhism.git
