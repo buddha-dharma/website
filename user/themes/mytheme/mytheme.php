@@ -7,7 +7,22 @@ class myTheme extends Theme
 {
   public function getFileContent(string $path)
   {
-      return str_replace("#","##",file_get_contents($path));
+      //      return str_replace("# ","## ",file_get_contents($path));
+      $kill = false;
+      $handle = fopen($path, "r");
+      $output = "";
+      if ($handle) {
+          while (!feof($handle)) {
+              $buffer = fgets($handle);
+
+              if(!preg_match('/\<\!\-\- github link \-\-\>.*?\n/',$buffer)) {
+                  $output .= $buffer;
+                  $kill = false;
+              }
+          }
+          fclose($handle);
+      }
+      return str_replace("# ","## ", $output);
   }
 
   public function onTwigInitialized() {
