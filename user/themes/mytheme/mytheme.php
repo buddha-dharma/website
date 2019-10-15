@@ -7,7 +7,6 @@ class myTheme extends Theme
 {
   public function getFileContent(string $path)
   {
-      //      return str_replace("# ","## ",file_get_contents($path));
       $kill = false;
       $handle = fopen($path, "r");
       $output = "";
