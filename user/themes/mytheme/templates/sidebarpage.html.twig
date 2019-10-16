@@ -18,8 +18,6 @@
             {{ page.content }}
             {% if page.header.embed %}
               {{ rawcontent(page.header.embed)|markdown }}
-            {% else %}
-No embed yo
             {% endif %}
             {# Git repository edit link -  hibbittsdesign.org #}
             {% if config.site.gitrepo.editlinklocation == 'page' and not (page.header.hidegitrepoeditlink) and not (page.slug == 'pages') %}
