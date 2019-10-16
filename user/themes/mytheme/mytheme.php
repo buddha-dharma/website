@@ -14,7 +14,7 @@ class myTheme extends Theme
               $buffer = fgets($handle);
 
               if(!preg_match('/\<\!\-\- github link \-\-\>.*?\n/',$buffer)) {
-                  $output .= $buffer;
+                  $output .= $buffer . "\n";
                   $kill = false;
               }
           }
