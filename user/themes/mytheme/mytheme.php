@@ -7,6 +7,7 @@ class myTheme extends Theme
 {
   public function getFileContent(string $path)
   {
+      $indentHeadlines = false;
       $handle = fopen($path, "r");
       $output = "";
       if ($handle) {
@@ -20,7 +21,12 @@ class myTheme extends Theme
           }
           fclose($handle);
       }
-      return str_replace("# ","## ", $output);
+      if ($indentHeadlines) {
+
+          return str_replace("# ","## ", $output);
+      }
+
+      return $output;
   }
 
   public function onTwigInitialized() {
