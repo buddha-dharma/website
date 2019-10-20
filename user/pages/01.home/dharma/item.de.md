@@ -9,7 +9,7 @@ continue_link: false
 
 Open Dharma is a curated list of free and open resources. It contains free books, lectures, courses, videos and articles and is open source so everyone can contribute.
 
-[Explore Resources](https://github.com/buddha-dharma/buddhism)
+[Explore Resources](/resources)
 
 Open Dharma also provides channels for practicioners to connect.
 
