@@ -1,6 +1,6 @@
 * * *
 
-hidepagetitle: true embed: "user://data/external/resources/README.md"
+hidepagetitle: true embed: "user://data/external/resources/README.md" persistcheckboxes: true
 
 * * *
 
