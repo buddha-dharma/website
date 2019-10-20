@@ -1,5 +1,6 @@
 ---
 title: Resourcen
+slug: resourcen
 hidepagetitle: true
 embed: "user://data/external/resources-de/README.md"
 ---
