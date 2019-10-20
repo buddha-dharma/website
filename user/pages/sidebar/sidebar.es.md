@@ -12,7 +12,7 @@ If you are a developer you can help us improve this website [visit us on Github]
 
 ##### Other Languages
 
-<a href="/de">Deutsch</a>, <a href="/fr">Français</a>, <a href="/nl">Nederlands</a>
+<a href="/de">Deutsch</a>
 
 ##### Twitter
 
