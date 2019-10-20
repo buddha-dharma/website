@@ -1,7 +1,11 @@
 {# new twig template file - hibbittsdesign.org #}
 {% embed 'partials/base.html.twig' %}
 
-  {% block content %}
+    {% if page.header.persistcheckboxes %}
+        {% do assets.addJs('theme://js/persistent-checkboxes/persistent-checkboxes.js', 9) %}
+    {% endif %}
+
+    {% block content %}
     <div class="container">
       <div class="row">
         {# check content display flag - hibbittsdesign.org #}

@@ -15,8 +15,11 @@ class myTheme extends Theme
               $buffer = fgets($handle);
 
               if(!preg_match('/\<\!\-\- github link \-\-\>.*?\n/',$buffer)) {
+                  $checkboxId  = substr(sha1($buffer), 0, 5);
+                  $checkboxCode =
+                      "- <input type=\"checkbox\" id=\"". $checkboxId . "\" name=\"foo\"> ";
+                  $buffer = preg_replace("/^-\s/", $checkboxCode, $buffer);
                   $output .= $buffer . "\n";
-                  $kill = false;
               }
           }
           fclose($handle);
@@ -36,6 +39,7 @@ class myTheme extends Theme
   }
 
   public function onThemeInitialized() {
+      $this->grav['assets']->addJs($this->grav['base_url'] . '/user/themes/mytheme/js/persistent-checkboxes/persistent-checkboxes.js', ['group' => 'bottom']);
     if ($this->isAdmin()) {
         return;
     }
