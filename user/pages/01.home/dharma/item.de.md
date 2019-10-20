@@ -6,7 +6,7 @@ icon: lightbulb-o
 hidefrompostlist: false
 continue_link: false
 ---
-Open Dharma ist eine Initiative um eine [Liste kostenloser und freier Resourcen](https://github.com/buddha-dharma/buddhismus) zur Verfügung zu stellen.
+Open Dharma ist eine Initiative um eine [Liste kostenloser und freier Resourcen](/resourcen) zur Verfügung zu stellen.
 
 Open Dharma stellt auch Kanäle bereit die es Praktizierenden ermöglichen mit anderen Praktizierenden zu kommunizieren.
 
