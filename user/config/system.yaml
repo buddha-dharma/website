@@ -12,8 +12,6 @@ languages:
   supported:
     - en
     - de
-    - fr
-    - nl
   include_default_lang: false
   translations: true
   translations_fallback: true
