@@ -39,7 +39,7 @@ class myTheme extends Theme
   }
 
   public function onThemeInitialized() {
-      $this->grav['assets']->addJs($this->grav['base_url'] . '/user/themes/mytheme/js/persistent-checkboxes/persistent-checkboxes.js', ['group' => 'bottom']);
+      $this->grav['assets']->addJs($this->grav['base_url'] . '/user/themes/mytheme/js/theme.js', 9);
     if ($this->isAdmin()) {
         return;
     }
