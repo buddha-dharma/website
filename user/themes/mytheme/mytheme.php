@@ -13,7 +13,6 @@ class myTheme extends Theme
       if ($handle) {
           while (!feof($handle)) {
               $buffer = fgets($handle);
-
               if(!preg_match('/\<\!\-\- github link \-\-\>.*?\n/',$buffer)) {
                   $checkboxId  = substr(sha1($buffer), 0, 5);
                   $checkboxCode =
