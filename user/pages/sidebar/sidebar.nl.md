@@ -16,4 +16,4 @@ Als u een ontwikkelaar bent dan kunt u ons helpen bij het verbeteren van deze we
 
 ##### Twitter
 
-<a class="twitter-timeline" data-width="500" data-height="600" data-theme="light" href="https://twitter.com/global_dharma?ref_src=twsrc%5Etfw">Tweets door global_dharma</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<a class="twitter-timeline"  data-dnt="true" data-width="500" data-height="600" href="https://twitter.com/global_dharma?ref_src=twsrc%5Etfw">Tweets by global_dharma</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
