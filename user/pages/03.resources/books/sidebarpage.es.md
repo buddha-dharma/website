@@ -5,4 +5,4 @@ persistcheckboxes: true
 slug: books.md
 ---
 
-Back to [Resources](/resources)
+Volver a [Recursos](/resources)
