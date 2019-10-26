@@ -7,10 +7,10 @@ hidefrompostlist: false
 continue_link: false
 ---
 
-Open Dharma is a curated list of free and open resources. It contains free books, lectures, courses, videos and articles and is open source so everyone can contribute.
+Open Dharma es una lista curada de recursos libres y abiertos. Contiene libros, clases, cursos, videos y artículos gratuitos y es de código abierto para que todos puedan contribuir.
 
-[Explore Resources](/resources)
+[Explorar Recursos](/resources)
 
-Open Dharma also provides channels for practicioners to connect.
+Open Dharma también proporciona canales para que los practicantes se conecten.
 
-[Explore Community](/community)
+[Explorar la Comunidad](/community)
