@@ -4,4 +4,4 @@ hidepagetitle: true embed: "user://data/external/resources/README.md" persistche
 
 * * *
 
-[Edit/View this list on Github](https://github.com/buddha-dharma/buddhism)
+[Editar/Ver esta lista en Github](https://github.com/buddha-dharma/buddhism)
