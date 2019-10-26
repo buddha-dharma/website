@@ -4,4 +4,4 @@ routable: false
 visible: false
 ---
 
-Built with [Grav CMS](http://getgrav.org) Course Hub package by [hibbittsdesign.org](http://hibbittsdesign.org)
+Hecho con [Grav CMS](http://getgrav.org) Course Hub por [hibbittsdesign.org](http://hibbittsdesign.org)
