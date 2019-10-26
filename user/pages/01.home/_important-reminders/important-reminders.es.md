@@ -1,6 +1,6 @@
 ---
-title: 'Important Reminders'
+title: 'Recordatorios importantes'
 published: true
 ---
 
-* This website is open source. Help us improve it on github.
+* Este sitio web es de código abierto. Ayúdanos a mejorarlo en github.
