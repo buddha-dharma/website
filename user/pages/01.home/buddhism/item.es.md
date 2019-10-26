@@ -1,5 +1,5 @@
 ---
-title: Why Buddhism
+title: Por qué el Budismo
 date: 10/30/2017
 header_image: 0
 icon: lightbulb-o
@@ -7,10 +7,10 @@ hidefrompostlist: false
 continue_link: false
 ---
 
-The Buddha was a human being who had a deep insight into the nature of our discomfort and the nature of the universe.
+El Buda era un ser humano que tenía una profunda comprensión de la naturaleza de nuestra incomodidad y la naturaleza del universo.
 
-Buddhism is a path that helps us recognize our own suffering and a way out of the suffering.
+El budismo es un camino que nos ayuda a reconocer nuestro propio sufrimiento y una salida del sufrimiento.
 
-An important aspect of the practice is direct experience and you are encouraged to experience and investigate much like the scientific method.
+Un aspecto importante de la práctica es la experiencia directa y se te anima a experimentar e investigar de forma parecida al método científico.
 
-You don't have to be a buddhist to profit from the Dharma and practices.
+No tienes que ser budista para beneficiarte del Dharma y sus prácticas.
