@@ -1,9 +1,9 @@
-This website is an open source project on github.
+Este sitio web es un proyecto de código abierto en github.
 
-Check [the github contributions page](https://github.com/buddha-dharma/micro-site/graphs/contributors) to see the contributors to this website.
+Compruebe [la página de contribuciones de github](https://github.com/buddha-dharma/micro-site/graphs/contributors) para ver los colaboradores de este sitio web.
 
-Open Dharma Meditation Groups are independent and agree to operate under our [code of conduct](../code/).
+Los grupos de Meditación Abierta de Open Dharma son independientes y aceptan operar bajo nuestro [código de conducta](../code/).
 
-### Credit
+### Créditos
 
-Header Image by Frida Aguilar Estrada
+Imagen de encabezado por Frida Aguilar Estrada
