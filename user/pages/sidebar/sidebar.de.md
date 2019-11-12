@@ -5,7 +5,7 @@ routable: false
 ---
 
 ##### Über Buddha Dharma
-Die Buddha-Dharma-Webseite ist ein Open-Source-Projekt für Meditierende und Praktizierende des Dharmas um [Resourcen](/resources) zu Teilen und sich [über die Praxis auszutauschen](/community).
+Die Buddha-Dharma-Webseite ist ein Open-Source-Projekt für Meditierende und Praktizierende des Dharmas um [Resourcen](/resourcen) zu Teilen und sich [über die Praxis auszutauschen](/gemeinschaft).
 
 Wenn du ein Entwickler bist, kannst du uns helfen diese Webseite zu verbessern.
 Besuche uns [auf Github](https://github.com/buddha-dharma).

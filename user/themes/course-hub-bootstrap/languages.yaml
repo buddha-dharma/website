@@ -4,12 +4,18 @@ en:
   MEDITATION:
     TEXT: Meditation
     URL: http://www.starting-meditation.com/
+  STUDY:
+    TEXT: Study
+    URL: https://studybuddhism.com
 de:
   GITHUB:
     EDIT_LINK_TEXT: bearbeiten
   MEDITATION:
     TEXT: Meditation
     URL: http://www.starting-meditation.com/de
+  STUDY:
+    TEXT: Lernen
+    URL: https://studybuddhism.com/de
 fr:
   GITHUB:
     EDIT_LINK_TEXT: Modifier

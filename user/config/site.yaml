@@ -30,6 +30,9 @@ menu:
   - text: "MEDITATION.TEXT"
     url:  "MEDITATION.URL"
     external: true
+  - text: "STUDY.TEXT"
+    url:  "STUDY.URL"
+    external: true
 hidehomemenulink: true
 hidesidebaronblogpages:
   enabled: false
