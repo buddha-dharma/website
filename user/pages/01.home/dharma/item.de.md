@@ -10,4 +10,4 @@ Open Dharma ist eine Initiative um eine [Liste kostenloser und freier Resourcen]
 
 Open Dharma stellt auch Kanäle bereit die es Praktizierenden ermöglichen mit anderen Praktizierenden zu kommunizieren.
 
-[Kommunikationskanäle kennenlernen](/community)
+[Kommunikationskanäle kennenlernen](/gemeinschaft)
