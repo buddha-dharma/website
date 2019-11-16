@@ -16,7 +16,8 @@ class myTheme extends Theme
               if(!preg_match('/\<\!\-\- github link \-\-\>.*?\n/',$buffer)) {
                   $checkboxId  = substr(sha1($buffer), 0, 5);
                   $checkboxCode =
-                      "- <input type=\"checkbox\" id=\"". $checkboxId . "\" name=\"foo\"> ";
+                      "- <input type=\"checkbox\" id=\"". $checkboxId . "\" class=\"read-indicator\" name=\"foo\"> ";
+                  $checkboxCode .= "<div id=\"checkbox-button\"><label><input id=\"". $checkboxId . "-fav\" type=\"checkbox\" value=\"1\"><span>&#9733;</span></label></div>";
                   $buffer = preg_replace("/^-\s/", $checkboxCode, $buffer);
                   $output .= $buffer . "\n";
               }

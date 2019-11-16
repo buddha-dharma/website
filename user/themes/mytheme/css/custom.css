@@ -1,5 +1,31 @@
-/*
-===============================================================================================================================
-Put your custom CSS in this file.
-===============================================================================================================================
-*/
+.read-indicator {
+    float: right;
+}
+
+#checkbox-button {
+    color: lightgrey;
+    overflow:auto;
+    float: left;
+}
+
+#checkbox-button:hover {
+}
+
+#checkbox-button label {
+    float:left;
+    width:1.5em;
+}
+
+#checkbox-button label span {
+    text-align:center;
+    display:block;
+    font-size: 18px;
+}
+
+#checkbox-button label input {
+    display: none;
+}
+
+#checkbox-button input:checked + span {
+    color: black;
+}
