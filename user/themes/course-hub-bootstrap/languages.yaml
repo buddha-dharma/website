@@ -7,6 +7,9 @@ en:
   STUDY:
     TEXT: Study
     URL: https://studybuddhism.com
+  BLOG:
+    NEXT: Next
+    PREVIOUS: Previous
 de:
   GITHUB:
     EDIT_LINK_TEXT: bearbeiten
@@ -16,6 +19,9 @@ de:
   STUDY:
     TEXT: Lernen
     URL: https://studybuddhism.com/de
+  BLOG:
+    NEXT: weiter
+    PREVIOUS: zurück
 fr:
   GITHUB:
     EDIT_LINK_TEXT: Modifier
