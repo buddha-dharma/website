@@ -5,5 +5,8 @@ streams:
      prefixes:
        '':
        - user/themes/mytheme
+       - user/themes/course-hub-bones
        - user/themes/course-hub-bootstrap
        - user/themes/bootstrap
+dropdown:
+  enabled: false
