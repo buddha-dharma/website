@@ -7,24 +7,21 @@ Este es el código de conducta para la Comunidad de Open Dharma.
 ### Comunidad en línea de Open Dharma
 
 - La comunidad no es un sustituto adecuado para una sangha, sino para hablar de la práctica y los desafíos.
-
-#### Objetivos
-
-- Conectar a los practicantes con una cercana y auténtica sangha.
+- The goal is to connect practicioners with an authentic sangha and teacher nearby or if that is not possible at least online.
 
 ### Grupo de Meditación de Open Dharma
 
 Si deseas formar un grupo de meditación en tu área, recomendamos adaptar estas reglas.
 
-- Los grupos no son un sustituto adecuado para una sangha, sino para practicar juntos y hablar de la práctica y sus desafíos.
-- No hay ningún líder de grupo o propietario.
-- Los grupos son gratis. No hay comisiones ni donaciones para desbloquear premios/beneficios.
-- Los grupos no se centran en un solo profesor y sus libros.
-- Los grupos acogen con satisfacción las críticas desde el exterior y las toman en serio.
-- Los grupos no tienen control de calidad. Dependemos de que los miembros del grupo informen si el grupo no está de acuerdo con este código de conducta. Si no te sientes bien en un grupo, no hay nada malo en fundar tu propio grupo.
+- Groups are not a suitable replacement for a sangha. They are for practicing together and talking about practice and challenges.
+- There is no group leader or owner.
+- Groups are free. There are no fees or donations to unlock perks.
+- Groups don't focus on one single teacher and his books.
+- Groups welcome criticism from outside and take it seriously.
+- Groups are not quality controlled. We depend on members of a group to report if a group does not agree with this code of conduct. If a group does not feel right, there is nothing wrong with founding your own group.
 
 #### Objetivos
 
-- Conectar a los practicantes con una cercana y auténtica sangha.
-- Hacerte sentir mejor y empoderado como ser humano.
-- Promover el grupo y ayudar a personas que estén lejos a encontrar y promover su propio grupo.
+- Connect practicioners with an authentic sangha nearby.
+- Make you feel better and empower you as a human being.
+- Advertise the group and help people that are too far away to found and advertise their own group.
