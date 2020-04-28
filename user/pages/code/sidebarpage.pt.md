@@ -7,10 +7,7 @@ This is a code of conduct for the Open Dharma Community.
 ### Open Dharma Online Community
 
 - The community is not a suitable replacement for a sangha. It is for talking about practice and challenges.
-
-#### Goals
-
-- Connect practicioners with an authentic sangha nearby.
+- The goal is to connect practicioners with an authentic sangha and teacher nearby or if that is not possible at least online.
 
 ### Open Dharma Meditation Group
 
