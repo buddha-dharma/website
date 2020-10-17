@@ -7,7 +7,7 @@ routable: false
 ##### About Buddha Dharma
 The Buddha-Dharma website is an open source project for meditators and dharma practitioners to exchange [resources](/resources) and to [talk about practice](/community).
 
-If you are a developer you can help us improve this website
+If you are a developer you can help me improve this website
 [visit us on Github](https://github.com/buddha-dharma).
 ##### Other Languages
 <a href="/de">Deutsch</a>
