@@ -8,7 +8,7 @@ routable: false
 
 El sitio web Buddha-Dharma es un proyecto de código abierto para los meditadores y los practicantes de dharma para intercambiar [recursos](/resources) y para [hablar de la práctica](/community).
 
-Si eres un desarrollador puedes ayudarnos a mejorar este sitio web [visítanos en Github](https://github.com/buddha-dharma).
+If you are a developer you can help me improve this website [visit us on Github](https://github.com/buddha-dharma).
 
 ##### Otros Idiomas
 
