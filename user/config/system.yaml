@@ -134,13 +134,7 @@ media:
   auto_metadata_exif: false
   upload_limit: 33554432
 session:
-  enabled: true
-  timeout: 1800
-  name: grav-site
-  secure: false
-  httponly: true
-  split: true
-  path: null
+  enabled: false
 gpm:
   releases: stable
   proxy_url: null
