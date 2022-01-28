@@ -7,10 +7,10 @@ hidefrompostlist: false
 continue_link: false
 ---
 
-The Buddha was a human being who had a deep insight into the nature of our discomfort and the nature of the universe.
+Le Bouddha était un être humain qui avait une vision profonde de la nature de nature de notre inconfort et de la nature de l'univers.
 
 Le bouddhisme est une voie qui nous aide à reconnaître notre propre souffrance, ainsi qu'un moyen d'en sortir.
 
-An important aspect of the practice is direct experience and you are encouraged to experience and investigate much like the scientific method.
+Un aspect important de la pratique est l'expérience directe et vous êtes encouragé à expérimenter et investiger à l'instar de la méthode scientifique.
 
-You don't have to be a buddhist to profit from the Dharma and practices.
+Vous n'avez pas besoin d'être bouddhiste pour profiter du Dharma et pratiquer.
